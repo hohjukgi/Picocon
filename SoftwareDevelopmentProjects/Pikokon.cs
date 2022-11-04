@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SoftwareDevelopmentProjects
 {
-    public partial class Form1 : Form
+    public partial class Pikokon : Form
     {
-        public Form1()
+        public Pikokon()
         {
             InitializeComponent();
 

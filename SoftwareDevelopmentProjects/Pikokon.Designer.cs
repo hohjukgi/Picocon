@@ -1,7 +1,7 @@
 ﻿
 namespace SoftwareDevelopmentProjects
 {
-    partial class Form1
+    partial class Pikokon
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -107,7 +107,7 @@ namespace SoftwareDevelopmentProjects
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
             // 
-            // Form1
+            // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -118,8 +118,8 @@ namespace SoftwareDevelopmentProjects
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Pikokon";
+            this.Text = "Pikokon";
             this.ResumeLayout(false);
             this.PerformLayout();
 
