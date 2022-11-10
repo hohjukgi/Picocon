@@ -37,6 +37,7 @@ namespace SoftwareDevelopmentProjects
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -63,7 +64,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(49, 212);
+            this.button2.Location = new System.Drawing.Point(49, 278);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 95);
             this.button2.TabIndex = 6;
@@ -107,11 +108,22 @@ namespace SoftwareDevelopmentProjects
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(49, 163);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(108, 41);
+            this.buttonDelete.TabIndex = 10;
+            this.buttonDelete.Text = "削除";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 497);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
@@ -120,6 +132,7 @@ namespace SoftwareDevelopmentProjects
             this.Controls.Add(this.button1);
             this.Name = "Pikokon";
             this.Text = "Pikokon";
+            this.Load += new System.EventHandler(this.Pikokon_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +147,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 
