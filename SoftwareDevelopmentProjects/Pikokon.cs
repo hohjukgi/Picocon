@@ -57,7 +57,7 @@ namespace SoftwareDevelopmentProjects
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime datetime = DateTime.Now;
-            label2.Text = datetime.ToLongTimeString();
+            label2.Text = datetime.ToString();
         }
 
 
@@ -149,6 +149,12 @@ namespace SoftwareDevelopmentProjects
                 }
                 
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }
