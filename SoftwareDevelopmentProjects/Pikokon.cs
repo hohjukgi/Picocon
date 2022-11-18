@@ -41,6 +41,13 @@ namespace SoftwareDevelopmentProjects
         private void button1_Click(object sender, EventArgs e)
         {
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
+            if (button1.Text == "開始")
+            {
+                button1.Text = "停止";
+            } else
+            {
+                button1.Text = "開始";
+            }
             /*
 
                     //カラムを追加
