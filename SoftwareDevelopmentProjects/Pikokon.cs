@@ -27,6 +27,7 @@ namespace SoftwareDevelopmentProjects
             listView1.GridLines = true;
 
             listView1.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
+            listView1.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
 
             ImageList imageListSmall = new ImageList();
             imageListSmall.ImageSize = new Size(1, 30);
@@ -140,7 +141,10 @@ namespace SoftwareDevelopmentProjects
                             return;
                         }
                     }
-                    listView1.Items.Add(str);
+
+                    DateTime dateTime = DateTime.Now;
+                    string[] row = { str, dateTime.ToString("t") };
+                    listView1.Items.Add(new ListViewItem(row));
                     studentId.Add(str);
                     //リスト項目を追加
                 }

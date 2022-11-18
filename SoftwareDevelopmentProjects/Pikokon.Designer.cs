@@ -92,7 +92,7 @@ namespace SoftwareDevelopmentProjects
             // listView1
             // 
             this.listView1.AutoArrange = false;
-            this.listView1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.listView1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(289, 136);
             this.listView1.Name = "listView1";
