@@ -8,23 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using FelicaLib;
 
 namespace SoftwareDevelopmentProjects
 {
     public partial class Pikokon : Form
     {
+        public List<string> studentId;
         public Pikokon()
         {
             InitializeComponent();
 
-            timer1.Start();
+            studentId = new List<string>();
+
+            dateTimer.Start();
 
             listView1.View = View.Details;
             listView1.GridLines = true;
 
-            listView1.Columns.Add("クラス", 100, HorizontalAlignment.Left);
-            listView1.Columns.Add("氏名", 100, HorizontalAlignment.Left);
-            listView1.Columns.Add("講義名", 100, HorizontalAlignment.Left);
+            listView1.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
 
             ImageList imageListSmall = new ImageList();
             imageListSmall.ImageSize = new Size(1, 30);
@@ -37,24 +39,24 @@ namespace SoftwareDevelopmentProjects
 
         private void button1_Click(object sender, EventArgs e)
         {
-    
+            fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
+            /*
 
-            //カラムを追加
-   
+                    //カラムを追加
 
-            string[] row1 = { "XXX", "愛知太郎", "XXXX"};
 
-            //リスト項目を追加
-            listView1.Items.Add(new ListViewItem(row1));
-            DateTime nowdt = DateTime.Now;
-            textBox1.Text = nowdt.ToString();
+                    string[] row1 = { "XXX", "愛知太郎", "XXXX"};
 
+                    //リスト項目を追加
+                    listView1.Items.Add(new ListViewItem(row1));
+                    DateTime nowdt = DateTime.Now;
+                    textBox1.Text = nowdt.ToString();
+            */
 
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime datetime = DateTime.Now;
-
             label2.Text = datetime.ToLongTimeString();
         }
 
@@ -118,6 +120,35 @@ namespace SoftwareDevelopmentProjects
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void fericaLoadTimer_Tick(object sender, EventArgs e)
+        {
+            using (Felica f = new Felica())
+            {
+                try
+                {
+                    string str = FericaFunc.readStudentId(f);
+                    if(str == "00000000")
+                    {
+                        return;
+                    }
+                    for (int i = 0; i < studentId.Count; i++)
+                    {
+                        if (studentId[i] == str)
+                        {
+                            return;
+                        }
+                    }
+                    listView1.Items.Add(str);
+                    studentId.Add(str);
+                    //リスト項目を追加
+                }
+                catch(Exception){
+                    
+                }
+                
+            }
         }
     }
 }

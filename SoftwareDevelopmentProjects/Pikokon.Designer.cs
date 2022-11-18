@@ -35,10 +35,11 @@ namespace SoftwareDevelopmentProjects
             this.button2 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dateTimer = new System.Windows.Forms.Timer(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.fericaLoadTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -93,9 +94,9 @@ namespace SoftwareDevelopmentProjects
             this.label2.Text = "時間";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // timer1
+            // dateTimer
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.dateTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // listView1
             // 
@@ -127,6 +128,11 @@ namespace SoftwareDevelopmentProjects
             this.textBox1.TabIndex = 11;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
+            // fericaLoadTimer
+            // 
+            this.fericaLoadTimer.Interval = 1000;
+            this.fericaLoadTimer.Tick += new System.EventHandler(this.fericaLoadTimer_Tick);
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -155,10 +161,11 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer dateTimer;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Timer fericaLoadTimer;
     }
 }
 
