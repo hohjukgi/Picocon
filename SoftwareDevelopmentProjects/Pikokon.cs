@@ -158,11 +158,21 @@ namespace SoftwareDevelopmentProjects
                             }
                         }
 
+                        Task task = Task.Run(() =>
+                        {
+                            //オーディオリソースを取り出す
+                            System.IO.Stream strm = Properties.Resources.system_sound;
+                            //同期再生する
+                            System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
+                            player.PlaySync();
+                            //後始末
+                            player.Dispose();
+                        });
+
                         DateTime dateTime = DateTime.Now;
                         string[] row = { str, dateTime.ToString("t") };
                         listView1.Items.Add(new ListViewItem(row));
                         studentId.Add(str);
-                        //リスト項目を追加
                     }
                     catch (Exception)
                     {
