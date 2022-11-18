@@ -27,6 +27,7 @@ namespace SoftwareDevelopmentProjects
             listView1.GridLines = true;
 
             listView1.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
+            listView1.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
 
             ImageList imageListSmall = new ImageList();
             imageListSmall.ImageSize = new Size(1, 30);
@@ -64,7 +65,7 @@ namespace SoftwareDevelopmentProjects
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime datetime = DateTime.Now;
-            label2.Text = datetime.ToLongTimeString();
+            label2.Text = datetime.ToString();
         }
 
 
@@ -111,6 +112,8 @@ namespace SoftwareDevelopmentProjects
         {
             if (listView1.SelectedItems.Count > 0)
             {
+                //指定した学籍番号をリストから削除
+                studentId.Remove(listView1.SelectedItems[0].Text);
                 listView1.Items.Remove(listView1.SelectedItems[0]);
             }
         }
@@ -147,7 +150,10 @@ namespace SoftwareDevelopmentProjects
                             return;
                         }
                     }
-                    listView1.Items.Add(str);
+
+                    DateTime dateTime = DateTime.Now;
+                    string[] row = { str, dateTime.ToString("t") };
+                    listView1.Items.Add(new ListViewItem(row));
                     studentId.Add(str);
                     //リスト項目を追加
                 }
@@ -156,6 +162,12 @@ namespace SoftwareDevelopmentProjects
                 }
                 
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }

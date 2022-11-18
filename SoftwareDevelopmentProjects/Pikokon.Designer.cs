@@ -33,13 +33,13 @@ namespace SoftwareDevelopmentProjects
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
             this.listView1 = new System.Windows.Forms.ListView();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.fericaLoadTimer = new System.Windows.Forms.Timer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -77,23 +77,11 @@ namespace SoftwareDevelopmentProjects
             this.button2.Text = "保存";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(482, 30);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(371, 48);
-            this.dateTimePicker1.TabIndex = 7;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(865, 42);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 36);
             this.label2.TabIndex = 8;
@@ -107,7 +95,7 @@ namespace SoftwareDevelopmentProjects
             // listView1
             // 
             this.listView1.AutoArrange = false;
-            this.listView1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.listView1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(482, 204);
             this.listView1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -142,16 +130,23 @@ namespace SoftwareDevelopmentProjects
             this.fericaLoadTimer.Interval = 1000;
             this.fericaLoadTimer.Tick += new System.EventHandler(this.fericaLoadTimer_Tick);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(263, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 746);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -169,13 +164,13 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer dateTimer;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer fericaLoadTimer;
+        private System.Windows.Forms.Label label3;
     }
 }
 
