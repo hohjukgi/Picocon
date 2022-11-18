@@ -104,6 +104,8 @@ namespace SoftwareDevelopmentProjects
         {
             if (listView1.SelectedItems.Count > 0)
             {
+                //指定した学籍番号をリストから削除
+                studentId.Remove(listView1.SelectedItems[0].Text);
                 listView1.Items.Remove(listView1.SelectedItems[0]);
             }
         }
