@@ -36,18 +36,22 @@ namespace SoftwareDevelopmentProjects
 
         }
 
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void ToggleFelica()
         {
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
             if (button1.Text == "開始")
             {
                 button1.Text = "停止";
-            } else
+            }
+            else
             {
                 button1.Text = "開始";
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ToggleFelica();
             /*
 
                     //カラムを追加
@@ -134,33 +138,42 @@ namespace SoftwareDevelopmentProjects
 
         private void fericaLoadTimer_Tick(object sender, EventArgs e)
         {
-            using (Felica f = new Felica())
+            try
             {
-                try
+                using (Felica f = new Felica())
                 {
-                    string str = FericaFunc.readStudentId(f);
-                    if(str == "00000000")
+                    try
                     {
-                        return;
-                    }
-                    for (int i = 0; i < studentId.Count; i++)
-                    {
-                        if (studentId[i] == str)
+                        string str = FericaFunc.readStudentId(f);
+                        if (str == "00000000")
                         {
                             return;
                         }
+                        for (int i = 0; i < studentId.Count; i++)
+                        {
+                            if (studentId[i] == str)
+                            {
+                                return;
+                            }
+                        }
+
+                        DateTime dateTime = DateTime.Now;
+                        string[] row = { str, dateTime.ToString("t") };
+                        listView1.Items.Add(new ListViewItem(row));
+                        studentId.Add(str);
+                        //リスト項目を追加
+                    }
+                    catch (Exception)
+                    {
+
                     }
 
-                    DateTime dateTime = DateTime.Now;
-                    string[] row = { str, dateTime.ToString("t") };
-                    listView1.Items.Add(new ListViewItem(row));
-                    studentId.Add(str);
-                    //リスト項目を追加
                 }
-                catch(Exception){
-                    
-                }
-                
+            } catch (Exception ex)
+            {
+                ToggleFelica();
+                MessageBox.Show(ex.Message);
+                return;
             }
         }
 
