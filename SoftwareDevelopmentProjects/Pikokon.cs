@@ -65,7 +65,8 @@ namespace SoftwareDevelopmentProjects
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime datetime = DateTime.Now;
-            label2.Text = datetime.ToString();
+
+            label2.Text = datetime.ToString("MM月dd日　HH:mm:ss");
         }
 
 
@@ -167,6 +168,16 @@ namespace SoftwareDevelopmentProjects
         private void label3_Click(object sender, EventArgs e)
         {
             
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
 
         }
     }
