@@ -161,9 +161,10 @@ namespace SoftwareDevelopmentProjects
             // namePicture
             // 
             this.namePicture.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
-            this.namePicture.Location = new System.Drawing.Point(23, 20);
+            this.namePicture.Location = new System.Drawing.Point(12, 12);
             this.namePicture.Name = "namePicture";
-            this.namePicture.Size = new System.Drawing.Size(100, 50);
+            this.namePicture.Size = new System.Drawing.Size(200, 50);
+            this.namePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.namePicture.TabIndex = 12;
             this.namePicture.TabStop = false;
             // 
