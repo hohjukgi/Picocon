@@ -42,6 +42,8 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.namePicture = new System.Windows.Forms.PictureBox();
+            this.logText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.namePicture)).BeginInit();
@@ -49,7 +51,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.Location = new System.Drawing.Point(32, 35);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 73);
@@ -60,7 +62,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(32, 297);
+            this.button2.Location = new System.Drawing.Point(32, 299);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 95);
             this.button2.TabIndex = 6;
@@ -72,11 +74,11 @@ namespace SoftwareDevelopmentProjects
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(223, 20);
+            this.label2.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(387, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 37);
+            this.label2.Size = new System.Drawing.Size(88, 41);
             this.label2.TabIndex = 8;
             this.label2.Text = "時間";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -90,16 +92,16 @@ namespace SoftwareDevelopmentProjects
             this.listView1.AutoArrange = false;
             this.listView1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(178, 105);
+            this.listView1.Location = new System.Drawing.Point(178, 35);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(302, 301);
+            this.listView1.Size = new System.Drawing.Size(302, 359);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(32, 131);
+            this.buttonDelete.Location = new System.Drawing.Point(32, 195);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(108, 41);
             this.buttonDelete.TabIndex = 10;
@@ -135,6 +137,8 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.logText);
             this.tabPage1.Controls.Add(this.buttonDelete);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.button2);
@@ -168,19 +172,40 @@ namespace SoftwareDevelopmentProjects
             this.namePicture.TabIndex = 12;
             this.namePicture.TabStop = false;
             // 
+            // logText
+            // 
+            this.logText.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.logText.Location = new System.Drawing.Point(32, 414);
+            this.logText.Name = "logText";
+            this.logText.ReadOnly = true;
+            this.logText.Size = new System.Drawing.Size(448, 19);
+            this.logText.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(29, 398);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Message:";
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(601, 584);
             this.Controls.Add(this.namePicture);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label2);
             this.Name = "Pikokon";
-            this.Text = "Pikokon";
+            this.Text = "Picocon";
             this.Load += new System.EventHandler(this.Pikokon_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.namePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -201,6 +226,8 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.PictureBox namePicture;
+        private System.Windows.Forms.TextBox logText;
+        private System.Windows.Forms.Label label1;
     }
 }
 

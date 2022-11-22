@@ -70,7 +70,7 @@ namespace SoftwareDevelopmentProjects
         {
             DateTime datetime = DateTime.Now;
 
-            label2.Text = datetime.ToString("MM月dd日　HH:mm:ss");
+            label2.Text = datetime.ToString("MM月dd日\nHH:mm:ss");
         }
 
 
@@ -183,7 +183,7 @@ namespace SoftwareDevelopmentProjects
             } catch (Exception ex)
             {
                 ToggleFelica();
-                MessageBox.Show(ex.Message);
+                logText.Text = ex.Message;
                 return;
             }
         }
