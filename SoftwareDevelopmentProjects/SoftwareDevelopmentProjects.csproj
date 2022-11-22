@@ -123,7 +123,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Sniglet-ExtraBold.otf" />
+    <None Include="Resources\Sniglet-Regular.otf" />
     <None Include="Resources\system_sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
