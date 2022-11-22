@@ -31,7 +31,6 @@ namespace SoftwareDevelopmentProjects
         {
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
@@ -42,8 +41,10 @@ namespace SoftwareDevelopmentProjects
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.namePicture = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.namePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -56,18 +57,6 @@ namespace SoftwareDevelopmentProjects
             this.button1.Text = "開始";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Font = new System.Drawing.Font("HGP創英角ﾎﾟｯﾌﾟ体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(33, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 35);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "ピココン！";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button2
             // 
@@ -169,19 +158,29 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // namePicture
+            // 
+            this.namePicture.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
+            this.namePicture.Location = new System.Drawing.Point(23, 20);
+            this.namePicture.Name = "namePicture";
+            this.namePicture.Size = new System.Drawing.Size(100, 50);
+            this.namePicture.TabIndex = 12;
+            this.namePicture.TabStop = false;
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 584);
+            this.Controls.Add(this.namePicture);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "Pikokon";
             this.Text = "Pikokon";
             this.Load += new System.EventHandler(this.Pikokon_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.namePicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,7 +189,6 @@ namespace SoftwareDevelopmentProjects
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer dateTimer;
@@ -201,6 +199,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.PictureBox namePicture;
     }
 }
 
