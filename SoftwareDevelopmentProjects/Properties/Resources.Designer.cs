@@ -71,26 +71,6 @@ namespace SoftwareDevelopmentProjects.Properties {
         }
         
         /// <summary>
-        ///   型 System.Byte[] のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static byte[] Sniglet_ExtraBold {
-            get {
-                object obj = ResourceManager.GetObject("Sniglet_ExtraBold", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Byte[] のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static byte[] Sniglet_Regular {
-            get {
-                object obj = ResourceManager.GetObject("Sniglet_Regular", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream system_sound {
