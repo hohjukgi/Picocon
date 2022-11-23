@@ -23,15 +23,15 @@ namespace SoftwareDevelopmentProjects
 
             dateTimer.Start();
 
-            listView1.View = View.Details;
-            listView1.GridLines = true;
+            listStudentId.View = View.Details;
+            listStudentId.GridLines = true;
 
-            listView1.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
-            listView1.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
+            listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
+            listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
 
             ImageList imageListSmall = new ImageList();
             imageListSmall.ImageSize = new Size(1, 30);
-            listView1.SmallImageList = imageListSmall;
+            listStudentId.SmallImageList = imageListSmall;
 
             logText.Text = "初期化完了";
         }
@@ -42,16 +42,16 @@ namespace SoftwareDevelopmentProjects
         private void ToggleFelica()
         {
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
-            if (button1.Text == "開始")
+            if (buttonRead.Text == "開始")
             {
                 //例外発生防止のため、ボタン操作を停止する
-                button1.Enabled = false;
-                button1.Text = "停止";
+                buttonRead.Enabled = false;
+                buttonRead.Text = "停止";
             }
             else
             {
-                button1.Enabled = true;
-                button1.Text = "開始";
+                buttonRead.Enabled = true;
+                buttonRead.Text = "開始";
             }
         }
 
@@ -117,21 +117,28 @@ namespace SoftwareDevelopmentProjects
 
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+            if(listStudentId.SelectedItems.Count > 0)
+            {
+                buttonDelete.Enabled = true;
+            }
+            else
+            {
+                buttonDelete.Enabled = false;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)
+            if (listStudentId.SelectedItems.Count > 0)
             {
                 //指定した学籍番号をリストから削除
-                studentId.Remove(listView1.SelectedItems[0].Text);
-                listView1.Items.Remove(listView1.SelectedItems[0]);
+                studentId.Remove(listStudentId.SelectedItems[0].Text);
+                listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 logText.Text = "削除成功";
             }
             else
             {
-                logText.Text = "削除失敗";
+                
             }
         }
 
@@ -187,14 +194,14 @@ namespace SoftwareDevelopmentProjects
 
                         DateTime dateTime = DateTime.Now;
                         string[] row = { str, dateTime.ToString("t") };
-                        listView1.Items.Add(new ListViewItem(row));
+                        listStudentId.Items.Add(new ListViewItem(row));
                         studentId.Add(str);
                         logText.Text = "学生証を読み取りました";
                     }
                     catch (Exception)//学生証を読み取れなかった場合など
                     {
                         //ボタンの追操作を許可
-                        button1.Enabled = true;
+                        buttonRead.Enabled = true;
                     }
                 }
             } 

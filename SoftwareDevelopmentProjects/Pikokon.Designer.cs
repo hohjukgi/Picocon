@@ -30,11 +30,11 @@ namespace SoftwareDevelopmentProjects
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonRead = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listStudentId = new System.Windows.Forms.ListView();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.fericaLoadTimer = new System.Windows.Forms.Timer(this.components);
             this.label3 = new System.Windows.Forms.Label();
@@ -49,16 +49,16 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.namePicture)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonRead
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(32, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 73);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "開始";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRead.BackColor = System.Drawing.Color.Transparent;
+            this.buttonRead.Location = new System.Drawing.Point(32, 35);
+            this.buttonRead.Name = "buttonRead";
+            this.buttonRead.Size = new System.Drawing.Size(108, 73);
+            this.buttonRead.TabIndex = 0;
+            this.buttonRead.Text = "開始";
+            this.buttonRead.UseVisualStyleBackColor = false;
+            this.buttonRead.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -87,20 +87,21 @@ namespace SoftwareDevelopmentProjects
             // 
             this.dateTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // listView1
+            // listStudentId
             // 
-            this.listView1.AutoArrange = false;
-            this.listView1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(178, 35);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(302, 359);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
+            this.listStudentId.AutoArrange = false;
+            this.listStudentId.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.listStudentId.HideSelection = false;
+            this.listStudentId.Location = new System.Drawing.Point(178, 35);
+            this.listStudentId.Name = "listStudentId";
+            this.listStudentId.Size = new System.Drawing.Size(302, 359);
+            this.listStudentId.TabIndex = 9;
+            this.listStudentId.UseCompatibleStateImageBehavior = false;
+            this.listStudentId.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
             // 
             // buttonDelete
             // 
+            this.buttonDelete.Enabled = false;
             this.buttonDelete.Location = new System.Drawing.Point(32, 195);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(108, 41);
@@ -140,9 +141,9 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.logText);
             this.tabPage1.Controls.Add(this.buttonDelete);
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.buttonRead);
             this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.listView1);
+            this.tabPage1.Controls.Add(this.listStudentId);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -215,11 +216,11 @@ namespace SoftwareDevelopmentProjects
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRead;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer dateTimer;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listStudentId;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Timer fericaLoadTimer;
         private System.Windows.Forms.Label label3;
