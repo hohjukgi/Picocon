@@ -41,10 +41,12 @@ namespace SoftwareDevelopmentProjects
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
             if (button1.Text == "開始")
             {
+                button1.Enabled = false;
                 button1.Text = "停止";
             }
             else
             {
+                button1.Enabled = true;
                 button1.Text = "開始";
             }
         }
@@ -148,35 +150,42 @@ namespace SoftwareDevelopmentProjects
             {
                 using (Felica f = new Felica())
                 {
-                    string str = FericaFunc.readStudentId(f);
-                    if (str == "00000000")
+                    try
                     {
-                        return;
-                    }
-                    for (int i = 0; i < studentId.Count; i++)
-                    {
-                        if (studentId[i] == str)
+                        string str = FericaFunc.readStudentId(f);
+                        if (str == "00000000")
                         {
                             return;
                         }
+                        for (int i = 0; i < studentId.Count; i++)
+                        {
+                            if (studentId[i] == str)
+                            {
+                                return;
+                            }
+                        }
+
+                        Task task = Task.Run(() =>
+                        {
+                        //オーディオリソースを取り出す
+                        System.IO.Stream strm = Properties.Resources.system_sound;
+                        //同期再生する
+                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
+                            player.PlaySync();
+                        //後始末
+                        player.Dispose();
+                        });
+
+                        DateTime dateTime = DateTime.Now;
+                        string[] row = { str, dateTime.ToString("t") };
+                        listView1.Items.Add(new ListViewItem(row));
+                        studentId.Add(str);
+                        logText.Text = "学生証を読み取りました";
                     }
-
-                    Task task = Task.Run(() =>
+                    catch (Exception)
                     {
-                            //オーディオリソースを取り出す
-                            System.IO.Stream strm = Properties.Resources.system_sound;
-                            //同期再生する
-                            System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
-                        player.PlaySync();
-                            //後始末
-                            player.Dispose();
-                    });
-
-                    DateTime dateTime = DateTime.Now;
-                    string[] row = { str, dateTime.ToString("t") };
-                    listView1.Items.Add(new ListViewItem(row));
-                    studentId.Add(str);
-                    logText.Text = "学生証を読み取りました";
+                        button1.Enabled = true;
+                    }
                 }
             } 
             catch (Exception ex)
