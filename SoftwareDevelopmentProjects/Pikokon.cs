@@ -77,7 +77,7 @@ namespace SoftwareDevelopmentProjects
             DateTime datetime = DateTime.Now;
 
             //時間ラベルを更新する
-            label2.Text = datetime.ToString("MM月dd日\nHH:mm:ss");
+            labelTime.Text = datetime.ToString("MM月dd日\nHH:mm:ss");
         }
 
 

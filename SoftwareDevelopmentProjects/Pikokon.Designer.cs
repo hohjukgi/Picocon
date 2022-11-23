@@ -32,7 +32,7 @@ namespace SoftwareDevelopmentProjects
             this.components = new System.ComponentModel.Container();
             this.buttonRead = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
             this.listStudentId = new System.Windows.Forms.ListView();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -43,10 +43,10 @@ namespace SoftwareDevelopmentProjects
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.namePicture = new System.Windows.Forms.PictureBox();
+            this.labelName = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.namePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -70,18 +70,18 @@ namespace SoftwareDevelopmentProjects
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label2
+            // labelTime
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(387, 12);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 41);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "時間";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.labelTime.AutoSize = true;
+            this.labelTime.BackColor = System.Drawing.Color.Transparent;
+            this.labelTime.Font = new System.Drawing.Font("UD デジタル 教科書体 NK-B", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelTime.Location = new System.Drawing.Point(387, 12);
+            this.labelTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(88, 41);
+            this.labelTime.TabIndex = 8;
+            this.labelTime.Text = "時間";
+            this.labelTime.Click += new System.EventHandler(this.label2_Click);
             // 
             // dateTimer
             // 
@@ -183,15 +183,15 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // namePicture
+            // labelName
             // 
-            this.namePicture.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
-            this.namePicture.Location = new System.Drawing.Point(12, 12);
-            this.namePicture.Name = "namePicture";
-            this.namePicture.Size = new System.Drawing.Size(200, 50);
-            this.namePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.namePicture.TabIndex = 12;
-            this.namePicture.TabStop = false;
+            this.labelName.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
+            this.labelName.Location = new System.Drawing.Point(12, 12);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(200, 50);
+            this.labelName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.labelName.TabIndex = 12;
+            this.labelName.TabStop = false;
             // 
             // Pikokon
             // 
@@ -199,16 +199,16 @@ namespace SoftwareDevelopmentProjects
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(601, 584);
-            this.Controls.Add(this.namePicture);
+            this.Controls.Add(this.labelName);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelTime);
             this.Name = "Pikokon";
             this.Text = "Picocon";
             this.Load += new System.EventHandler(this.Pikokon_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.namePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,7 +218,7 @@ namespace SoftwareDevelopmentProjects
 
         private System.Windows.Forms.Button buttonRead;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Timer dateTimer;
         private System.Windows.Forms.ListView listStudentId;
         private System.Windows.Forms.Button buttonDelete;
@@ -227,7 +227,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.PictureBox namePicture;
+        private System.Windows.Forms.PictureBox labelName;
         private System.Windows.Forms.TextBox logText;
         private System.Windows.Forms.Label label1;
     }
