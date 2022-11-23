@@ -76,6 +76,7 @@ namespace SoftwareDevelopmentProjects
         {
             DateTime datetime = DateTime.Now;
 
+            //時間ラベルを更新する
             label2.Text = datetime.ToString("MM月dd日\nHH:mm:ss");
         }
 
@@ -156,6 +157,7 @@ namespace SoftwareDevelopmentProjects
                 {
                     try
                     {
+                        //学生証を読み取り
                         string str = FericaFunc.readStudentId(f);
                         if (str == "00000000")
                         {
