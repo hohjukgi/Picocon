@@ -33,7 +33,7 @@ namespace SoftwareDevelopmentProjects
             imageListSmall.ImageSize = new Size(1, 30);
             listView1.SmallImageList = imageListSmall;
 
-
+            logText.Text = "初期化完了";
         }
 
         private void ToggleFelica()
@@ -120,6 +120,11 @@ namespace SoftwareDevelopmentProjects
                 //指定した学籍番号をリストから削除
                 studentId.Remove(listView1.SelectedItems[0].Text);
                 listView1.Items.Remove(listView1.SelectedItems[0]);
+                logText.Text = "削除成功";
+            }
+            else
+            {
+                logText.Text = "削除失敗";
             }
         }
 
@@ -143,44 +148,38 @@ namespace SoftwareDevelopmentProjects
             {
                 using (Felica f = new Felica())
                 {
-                    try
+                    string str = FericaFunc.readStudentId(f);
+                    if (str == "00000000")
                     {
-                        string str = FericaFunc.readStudentId(f);
-                        if (str == "00000000")
+                        return;
+                    }
+                    for (int i = 0; i < studentId.Count; i++)
+                    {
+                        if (studentId[i] == str)
                         {
                             return;
                         }
-                        for (int i = 0; i < studentId.Count; i++)
-                        {
-                            if (studentId[i] == str)
-                            {
-                                return;
-                            }
-                        }
+                    }
 
-                        Task task = Task.Run(() =>
-                        {
+                    Task task = Task.Run(() =>
+                    {
                             //オーディオリソースを取り出す
                             System.IO.Stream strm = Properties.Resources.system_sound;
                             //同期再生する
                             System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
-                            player.PlaySync();
+                        player.PlaySync();
                             //後始末
                             player.Dispose();
-                        });
+                    });
 
-                        DateTime dateTime = DateTime.Now;
-                        string[] row = { str, dateTime.ToString("t") };
-                        listView1.Items.Add(new ListViewItem(row));
-                        studentId.Add(str);
-                    }
-                    catch (Exception)
-                    {
-
-                    }
-
+                    DateTime dateTime = DateTime.Now;
+                    string[] row = { str, dateTime.ToString("t") };
+                    listView1.Items.Add(new ListViewItem(row));
+                    studentId.Add(str);
+                    logText.Text = "学生証を読み取りました";
                 }
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)
             {
                 ToggleFelica();
                 logText.Text = ex.Message;
