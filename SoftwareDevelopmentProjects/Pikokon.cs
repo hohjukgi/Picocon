@@ -36,11 +36,15 @@ namespace SoftwareDevelopmentProjects
             logText.Text = "初期化完了";
         }
 
+        /// <summary>
+        /// 学籍番号読み取り開始ボタンの切り替え
+        /// </summary>
         private void ToggleFelica()
         {
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
             if (button1.Text == "開始")
             {
+                //例外発生防止のため、ボタン操作を停止する
                 button1.Enabled = false;
                 button1.Text = "停止";
             }
@@ -155,16 +159,19 @@ namespace SoftwareDevelopmentProjects
                         string str = FericaFunc.readStudentId(f);
                         if (str == "00000000")
                         {
+                            //稀に発生する00000000の学籍番号
                             return;
                         }
                         for (int i = 0; i < studentId.Count; i++)
                         {
                             if (studentId[i] == str)
                             {
+                                //同名の学籍番号
                                 return;
                             }
                         }
 
+                        //オーディオ再生処理
                         Task task = Task.Run(() =>
                         {
                         //オーディオリソースを取り出す
@@ -182,14 +189,16 @@ namespace SoftwareDevelopmentProjects
                         studentId.Add(str);
                         logText.Text = "学生証を読み取りました";
                     }
-                    catch (Exception)
+                    catch (Exception)//学生証を読み取れなかった場合など
                     {
+                        //ボタンの追操作を許可
                         button1.Enabled = true;
                     }
                 }
             } 
-            catch (Exception ex)
+            catch (Exception ex)//重大な例外
             {
+                //読み取りを停止する
                 ToggleFelica();
                 logText.Text = ex.Message;
                 return;
