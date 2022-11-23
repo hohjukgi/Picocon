@@ -40,10 +40,10 @@ namespace SoftwareDevelopmentProjects
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.namePicture = new System.Windows.Forms.PictureBox();
-            this.logText = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.namePicture)).BeginInit();
@@ -152,6 +152,26 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.Location = new System.Drawing.Point(29, 398);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Message:";
+            // 
+            // logText
+            // 
+            this.logText.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.logText.Location = new System.Drawing.Point(32, 414);
+            this.logText.Name = "logText";
+            this.logText.ReadOnly = true;
+            this.logText.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.logText.Size = new System.Drawing.Size(448, 19);
+            this.logText.TabIndex = 11;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
@@ -171,25 +191,6 @@ namespace SoftwareDevelopmentProjects
             this.namePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.namePicture.TabIndex = 12;
             this.namePicture.TabStop = false;
-            // 
-            // logText
-            // 
-            this.logText.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.logText.Location = new System.Drawing.Point(32, 414);
-            this.logText.Name = "logText";
-            this.logText.ReadOnly = true;
-            this.logText.Size = new System.Drawing.Size(448, 19);
-            this.logText.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(29, 398);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Message:";
             // 
             // Pikokon
             // 
