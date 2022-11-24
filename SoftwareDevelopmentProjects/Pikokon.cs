@@ -34,6 +34,7 @@ namespace SoftwareDevelopmentProjects
             listStudentId.SmallImageList = imageListSmall;
 
             logText.Text = "初期化完了";
+            LogManager.LogOutput("初期化完了");
         }
 
         /// <summary>
@@ -47,11 +48,13 @@ namespace SoftwareDevelopmentProjects
                 //例外発生防止のため、ボタン操作を停止する
                 buttonRead.Enabled = false;
                 buttonRead.Text = "停止";
+                LogManager.LogOutput("学籍番号の取得開始");
             }
             else
             {
                 buttonRead.Enabled = true;
                 buttonRead.Text = "開始";
+                LogManager.LogOutput("学籍番号の取得停止");
             }
         }
 
@@ -135,6 +138,7 @@ namespace SoftwareDevelopmentProjects
                 studentId.Remove(listStudentId.SelectedItems[0].Text);
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 logText.Text = "削除成功";
+                LogManager.LogOutput("選択した項目を削除");
             }
             else
             {
@@ -169,6 +173,7 @@ namespace SoftwareDevelopmentProjects
                         if (str == "00000000")
                         {
                             //稀に発生する00000000の学籍番号
+                            LogManager.LogOutput("00000000の学籍番号を取得");
                             return;
                         }
                         for (int i = 0; i < studentId.Count; i++)
@@ -176,6 +181,7 @@ namespace SoftwareDevelopmentProjects
                             if (studentId[i] == str)
                             {
                                 //同名の学籍番号
+                                LogManager.LogOutput("重複する学籍番号を取得");
                                 return;
                             }
                         }
@@ -197,6 +203,7 @@ namespace SoftwareDevelopmentProjects
                         listStudentId.Items.Add(new ListViewItem(row));
                         studentId.Add(str);
                         logText.Text = "学生証を読み取りました";
+                        LogManager.LogOutput("学籍番号を取得: " + str);
                     }
                     catch (Exception)//学生証を読み取れなかった場合など
                     {
@@ -210,6 +217,7 @@ namespace SoftwareDevelopmentProjects
                 //読み取りを停止する
                 ToggleFelica();
                 logText.Text = ex.Message;
+                LogManager.LogOutput(ex.Message);
                 return;
             }
         }
