@@ -23,29 +23,38 @@ namespace SoftwareDevelopmentProjects
 
             dateTimer.Start();
 
-            listView1.View = View.Details;
-            listView1.GridLines = true;
+            listStudentId.View = View.Details;
+            listStudentId.GridLines = true;
 
-            listView1.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
-            listView1.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
+            listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
+            listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
 
             ImageList imageListSmall = new ImageList();
             imageListSmall.ImageSize = new Size(1, 30);
-            listView1.SmallImageList = imageListSmall;
+            listStudentId.SmallImageList = imageListSmall;
 
-
+            logText.Text = "初期化完了";
+            LogManager.LogOutput("初期化完了");
         }
 
+        /// <summary>
+        /// 学籍番号読み取り開始ボタンの切り替え
+        /// </summary>
         private void ToggleFelica()
         {
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
-            if (button1.Text == "開始")
+            if (buttonRead.Text == "開始")
             {
-                button1.Text = "停止";
+                //例外発生防止のため、ボタン操作を停止する
+                buttonRead.Enabled = false;
+                buttonRead.Text = "停止";
+                LogManager.LogOutput("学籍番号の取得開始");
             }
             else
             {
-                button1.Text = "開始";
+                buttonRead.Enabled = true;
+                buttonRead.Text = "開始";
+                LogManager.LogOutput("学籍番号の取得停止");
             }
         }
 
@@ -70,7 +79,8 @@ namespace SoftwareDevelopmentProjects
         {
             DateTime datetime = DateTime.Now;
 
-            label2.Text = datetime.ToString("MM月dd日\nHH:mm:ss");
+            //時間ラベルを更新する
+            labelTime.Text = datetime.ToString("MM月dd日\nHH:mm:ss");
         }
 
 
@@ -110,16 +120,29 @@ namespace SoftwareDevelopmentProjects
 
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+            if(listStudentId.SelectedItems.Count > 0)
+            {
+                buttonDelete.Enabled = true;
+            }
+            else
+            {
+                buttonDelete.Enabled = false;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)
+            if (listStudentId.SelectedItems.Count > 0)
             {
                 //指定した学籍番号をリストから削除
-                studentId.Remove(listView1.SelectedItems[0].Text);
-                listView1.Items.Remove(listView1.SelectedItems[0]);
+                studentId.Remove(listStudentId.SelectedItems[0].Text);
+                listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
+                logText.Text = "削除成功";
+                LogManager.LogOutput("選択した項目を削除");
+            }
+            else
+            {
+                
             }
         }
 
@@ -145,45 +168,56 @@ namespace SoftwareDevelopmentProjects
                 {
                     try
                     {
+                        //学生証を読み取り
                         string str = FericaFunc.readStudentId(f);
                         if (str == "00000000")
                         {
+                            //稀に発生する00000000の学籍番号
+                            LogManager.LogOutput("00000000の学籍番号を取得");
                             return;
                         }
                         for (int i = 0; i < studentId.Count; i++)
                         {
                             if (studentId[i] == str)
                             {
+                                //同名の学籍番号
+                                LogManager.LogOutput("重複する学籍番号を取得");
                                 return;
                             }
                         }
 
+                        //オーディオ再生処理
                         Task task = Task.Run(() =>
                         {
-                            //オーディオリソースを取り出す
-                            System.IO.Stream strm = Properties.Resources.system_sound;
-                            //同期再生する
-                            System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
+                        //オーディオリソースを取り出す
+                        System.IO.Stream strm = Properties.Resources.system_sound;
+                        //同期再生する
+                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
                             player.PlaySync();
-                            //後始末
-                            player.Dispose();
+                        //後始末
+                        player.Dispose();
                         });
 
                         DateTime dateTime = DateTime.Now;
                         string[] row = { str, dateTime.ToString("t") };
-                        listView1.Items.Add(new ListViewItem(row));
+                        listStudentId.Items.Add(new ListViewItem(row));
                         studentId.Add(str);
+                        logText.Text = "学生証を読み取りました";
+                        LogManager.LogOutput("学籍番号を取得: " + str);
                     }
-                    catch (Exception)
+                    catch (Exception)//学生証を読み取れなかった場合など
                     {
-
+                        //ボタンの追操作を許可
+                        buttonRead.Enabled = true;
                     }
-
                 }
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)//重大な例外
             {
+                //読み取りを停止する
                 ToggleFelica();
                 logText.Text = ex.Message;
+                LogManager.LogOutput(ex.Message);
                 return;
             }
         }

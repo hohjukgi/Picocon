@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="FelicaFunc.cs" />
     <Compile Include="FelicaLib.cs" />
+    <Compile Include="LogManager.cs" />
     <Compile Include="Pikokon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,8 +124,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Sniglet-ExtraBold.otf" />
-    <None Include="Resources\Sniglet-Regular.otf" />
     <None Include="Resources\system_sound.wav" />
   </ItemGroup>
   <ItemGroup>
