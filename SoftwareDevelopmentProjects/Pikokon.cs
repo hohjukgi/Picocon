@@ -190,7 +190,7 @@ namespace SoftwareDevelopmentProjects
                         Task task = Task.Run(() =>
                         {
                         //オーディオリソースを取り出す
-                        System.IO.Stream strm = Properties.Resources.system_sound;
+                        System.IO.Stream strm = Properties.Resources.Motion_Pop02_1__online_audio_converter_com_;
                         //同期再生する
                         System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
                             player.PlaySync();
