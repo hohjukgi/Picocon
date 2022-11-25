@@ -1,10 +1,15 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace SoftwareDevelopmentProjects
 {
     public static class LogManager
     {
+        /// <summary>
+        /// ログを出力するテキストボックス
+        /// </summary>
+        public static TextBox logTextBox;
 
         /// <summary>
         /// ログを出力する
@@ -16,6 +21,7 @@ namespace SoftwareDevelopmentProjects
             {
                 sw.WriteLine("[" + DateTime.Now.ToString("G") + "] " + msg);
             }
+            logTextBox.Text = msg;
         }
     }
 }

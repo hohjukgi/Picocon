@@ -36,6 +36,7 @@ namespace SoftwareDevelopmentProjects
             StreamWriter sw = new StreamWriter("test.csv");
             sw.WriteLine(exportText);
             sw.Close();
+            LogManager.LogOutput("CSVに出力");
         }
     }
 }

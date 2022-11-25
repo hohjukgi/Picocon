@@ -58,6 +58,7 @@ namespace SoftwareDevelopmentProjects
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -194,6 +195,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label5);
@@ -372,6 +374,15 @@ namespace SoftwareDevelopmentProjects
             this.label7.TabIndex = 11;
             this.label7.Text = "開始";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(436, 216);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(55, 23);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "保存";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -411,7 +422,6 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.PictureBox labelName;
-        private System.Windows.Forms.TextBox logText;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ListBox listBox1;
@@ -427,6 +437,8 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button4;
+        public System.Windows.Forms.TextBox logText;
     }
 }
 
