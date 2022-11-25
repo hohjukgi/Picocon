@@ -230,7 +230,7 @@ namespace SoftwareDevelopmentProjects
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SaveClass.ConvertToSaveData();
+            SaveClass.ConvertToSaveData(listStudentId.Items);
             SaveClass.ExportCsv();
         }
 
