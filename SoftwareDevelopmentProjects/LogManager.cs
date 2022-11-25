@@ -4,7 +4,6 @@ using System.Windows.Forms;
 
 namespace SoftwareDevelopmentProjects
 {
-
     public static class LogManager
     {
         /// <summary>
