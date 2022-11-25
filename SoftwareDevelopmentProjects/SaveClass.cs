@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SoftwareDevelopmentProjects
 {
@@ -14,9 +15,12 @@ namespace SoftwareDevelopmentProjects
         /// <summary>
         /// 保存してあるデータをexportTextにまとめる
         /// </summary>
-        public static void ConvertToSaveData()
+        public static void ConvertToSaveData(ListView.ListViewItemCollection Idlist)
         {
+            for(int i = 0; i < Idlist.Count; i++)
+            {
 
+            }
         }
 
         /// <summary>
