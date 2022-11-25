@@ -192,6 +192,7 @@ namespace SoftwareDevelopmentProjects
             this.labelName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.labelName.TabIndex = 12;
             this.labelName.TabStop = false;
+            this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
             // Pikokon
             // 

@@ -132,5 +132,8 @@
   <ItemGroup>
     <None Include="Resources\Motion-Pop02-1 %28online-audio-converter.com%29.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chikoku_sound.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
