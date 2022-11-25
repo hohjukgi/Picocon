@@ -14,12 +14,9 @@ namespace SoftwareDevelopmentProjects
 {
     public partial class Pikokon : Form
     {
-        public List<string> studentId;
         public Pikokon()
         {
             InitializeComponent();
-
-            studentId = new List<string>();
 
             dateTimer.Start();
 
@@ -135,7 +132,6 @@ namespace SoftwareDevelopmentProjects
             if (listStudentId.SelectedItems.Count > 0)
             {
                 //指定した学籍番号をリストから削除
-                studentId.Remove(listStudentId.SelectedItems[0].Text);
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 logText.Text = "削除成功";
                 LogManager.LogOutput("選択した項目を削除");
@@ -176,9 +172,9 @@ namespace SoftwareDevelopmentProjects
                             LogManager.LogOutput("00000000の学籍番号を取得");
                             return;
                         }
-                        for (int i = 0; i < studentId.Count; i++)
+                        for (int i = 0; i < listStudentId.Items.Count; i++)
                         {
-                            if (studentId[i] == str)
+                            if (listStudentId.Items[0].SubItems[i].Text == str)
                             {
                                 //同名の学籍番号
                                 LogManager.LogOutput("重複する学籍番号を取得");
@@ -201,7 +197,6 @@ namespace SoftwareDevelopmentProjects
                         DateTime dateTime = DateTime.Now;
                         string[] row = { str, dateTime.ToString("t") };
                         listStudentId.Items.Add(new ListViewItem(row));
-                        studentId.Add(str);
                         logText.Text = "学生証を読み取りました";
                         LogManager.LogOutput("学籍番号を取得: " + str);
                     }
