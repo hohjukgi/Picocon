@@ -174,7 +174,7 @@ namespace SoftwareDevelopmentProjects
                         }
                         for (int i = 0; i < listStudentId.Items.Count; i++)
                         {
-                            if (listStudentId.Items[0].SubItems[i].Text == str)
+                            if (listStudentId.Items[i].SubItems[0].Text == str)
                             {
                                 //同名の学籍番号
                                 LogManager.LogOutput("重複する学籍番号を取得");
