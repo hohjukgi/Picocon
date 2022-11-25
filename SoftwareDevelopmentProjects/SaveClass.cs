@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,9 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         public static void ExportCsv()
         {
-
+            StreamWriter sw = new StreamWriter("test.csv");
+            sw.WriteLine(exportText);
+            sw.Close();
         }
     }
 }
