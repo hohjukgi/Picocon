@@ -17,10 +17,14 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         public static void ConvertToSaveData(ListView.ListViewItemCollection Idlist)
         {
+            exportText = "";
             for(int i = 0; i < Idlist.Count; i++)
             {
-
+                exportText += Idlist[i].SubItems[0].Text + "," + Idlist[i].SubItems[1].Text +"\n";
             }
+
+            //確認用メッセージボックス
+            //MessageBox.Show(exportText);
         }
 
         /// <summary>
