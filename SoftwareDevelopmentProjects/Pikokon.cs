@@ -20,6 +20,8 @@ namespace SoftwareDevelopmentProjects
 
             dateTimer.Start();
 
+            LogManager.logTextBox = logText;
+            
             listStudentId.View = View.Details;
             listStudentId.GridLines = true;
 
@@ -30,7 +32,6 @@ namespace SoftwareDevelopmentProjects
             imageListSmall.ImageSize = new Size(1, 30);
             listStudentId.SmallImageList = imageListSmall;
 
-            logText.Text = "初期化完了";
             LogManager.LogOutput("初期化完了");
         }
 
@@ -133,7 +134,6 @@ namespace SoftwareDevelopmentProjects
             {
                 //指定した学籍番号をリストから削除
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
-                logText.Text = "削除成功";
                 LogManager.LogOutput("選択した項目を削除");
             }
             else
@@ -174,7 +174,7 @@ namespace SoftwareDevelopmentProjects
                         }
                         for (int i = 0; i < listStudentId.Items.Count; i++)
                         {
-                            if (listStudentId.Items[i].SubItems[0].Text == str)
+                            if (listStudentId.Items[0].SubItems[i].Text == str)
                             {
                                 //同名の学籍番号
                                 LogManager.LogOutput("重複する学籍番号を取得");
@@ -197,7 +197,6 @@ namespace SoftwareDevelopmentProjects
                         DateTime dateTime = DateTime.Now;
                         string[] row = { str, dateTime.ToString("t") };
                         listStudentId.Items.Add(new ListViewItem(row));
-                        logText.Text = "学生証を読み取りました";
                         LogManager.LogOutput("学籍番号を取得: " + str);
                     }
                     catch (Exception)//学生証を読み取れなかった場合など
@@ -211,7 +210,6 @@ namespace SoftwareDevelopmentProjects
             {
                 //読み取りを停止する
                 ToggleFelica();
-                logText.Text = ex.Message;
                 LogManager.LogOutput(ex.Message);
                 return;
             }
