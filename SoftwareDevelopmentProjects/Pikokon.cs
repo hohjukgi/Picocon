@@ -231,6 +231,16 @@ namespace SoftwareDevelopmentProjects
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            CameraClass camera = new CameraClass();
+            camera.TakePhoto();
+            Bitmap bmp = camera.Image;
+            takePhotoPictureBox.Image = bmp;
+            bmp.Save("Test.bmp");
+            ImageProcessingLogText.Text += "Save a photo as Test.bmp\r\n";
+        }
     }
 }
 

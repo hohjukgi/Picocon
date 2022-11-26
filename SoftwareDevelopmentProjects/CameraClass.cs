@@ -12,8 +12,19 @@ namespace SoftwareDevelopmentProjects
     internal class CameraClass
     {
         private Mat _flame;
+        public Bitmap Image
+        {
+            get { 
+                return BitmapConverter.ToBitmap(_flame);
+            }
+        }
 
-        public Bitmap TakePhoto()
+        public CameraClass()
+        {
+            _flame = null;
+        }
+
+        public void TakePhoto()
         {
             using (var capture = new VideoCapture())
             {
@@ -41,7 +52,7 @@ namespace SoftwareDevelopmentProjects
                         if (_flame.Size().Width > 0)
                         {
                             //MatをBitMapに変換
-                            return BitmapConverter.ToBitmap(_flame);
+                            return;
                         }
 
                     }
@@ -51,7 +62,7 @@ namespace SoftwareDevelopmentProjects
                         break;
                     }
                 }
-                return null;
+                return;
             }
         }
     }

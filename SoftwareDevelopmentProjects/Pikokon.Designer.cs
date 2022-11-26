@@ -40,31 +40,36 @@ namespace SoftwareDevelopmentProjects
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ImageProcessingTestButton = new System.Windows.Forms.Button();
+            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.ImageProcessingLogText = new System.Windows.Forms.TextBox();
+            this.cameraCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -173,6 +178,28 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(82, 149);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(57, 20);
+            this.radioButton2.TabIndex = 14;
+            this.radioButton2.Text = "退席";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(82, 123);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(57, 20);
+            this.radioButton1.TabIndex = 13;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "出席";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -195,6 +222,10 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cameraCheckBox);
+            this.tabPage2.Controls.Add(this.ImageProcessingLogText);
+            this.tabPage2.Controls.Add(this.takePhotoPictureBox);
+            this.tabPage2.Controls.Add(this.ImageProcessingTestButton);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
@@ -214,6 +245,110 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(436, 216);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(55, 23);
+            this.button4.TabIndex = 12;
+            this.button4.Text = "保存";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(318, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 16);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "開始";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(433, 186);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(23, 16);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "分";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(362, 186);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(23, 16);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "時";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(392, 179);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(35, 23);
+            this.numericUpDown2.TabIndex = 8;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(321, 179);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(35, 23);
+            this.numericUpDown1.TabIndex = 7;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            13,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(378, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 16);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "時限";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "講義";
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 16;
+            this.listBox2.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "その他"});
+            this.listBox2.Location = new System.Drawing.Point(381, 41);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(58, 100);
+            this.listBox2.TabIndex = 4;
             // 
             // button3
             // 
@@ -257,131 +392,44 @@ namespace SoftwareDevelopmentProjects
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // listBox2
+            // ImageProcessingTestButton
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "その他"});
-            this.listBox2.Location = new System.Drawing.Point(381, 41);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(58, 100);
-            this.listBox2.TabIndex = 4;
+            this.ImageProcessingTestButton.Location = new System.Drawing.Point(232, 307);
+            this.ImageProcessingTestButton.Name = "ImageProcessingTestButton";
+            this.ImageProcessingTestButton.Size = new System.Drawing.Size(91, 23);
+            this.ImageProcessingTestButton.TabIndex = 13;
+            this.ImageProcessingTestButton.Text = "カメラテスト";
+            this.ImageProcessingTestButton.UseVisualStyleBackColor = true;
+            this.ImageProcessingTestButton.Click += new System.EventHandler(this.button5_Click);
             // 
-            // label2
+            // takePhotoPictureBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "講義";
+            this.takePhotoPictureBox.BackColor = System.Drawing.Color.Gainsboro;
+            this.takePhotoPictureBox.Location = new System.Drawing.Point(6, 307);
+            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
+            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 130);
+            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.takePhotoPictureBox.TabIndex = 14;
+            this.takePhotoPictureBox.TabStop = false;
             // 
-            // label4
+            // ImageProcessingLogText
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(378, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 16);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "時限";
+            this.ImageProcessingLogText.Location = new System.Drawing.Point(232, 336);
+            this.ImageProcessingLogText.Multiline = true;
+            this.ImageProcessingLogText.Name = "ImageProcessingLogText";
+            this.ImageProcessingLogText.Size = new System.Drawing.Size(270, 101);
+            this.ImageProcessingLogText.TabIndex = 15;
             // 
-            // numericUpDown1
+            // cameraCheckBox
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(321, 179);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            24,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(35, 23);
-            this.numericUpDown1.TabIndex = 7;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            13,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(392, 179);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(35, 23);
-            this.numericUpDown2.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(362, 186);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(24, 16);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "時";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(433, 186);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 16);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "分";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(82, 123);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 20);
-            this.radioButton1.TabIndex = 13;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "出席";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(82, 149);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(58, 20);
-            this.radioButton2.TabIndex = 14;
-            this.radioButton2.Text = "退席";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(318, 160);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 16);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "開始";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(436, 216);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(55, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "保存";
-            this.button4.UseVisualStyleBackColor = true;
+            this.cameraCheckBox.AutoSize = true;
+            this.cameraCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cameraCheckBox.Location = new System.Drawing.Point(6, 281);
+            this.cameraCheckBox.Name = "cameraCheckBox";
+            this.cameraCheckBox.Size = new System.Drawing.Size(211, 20);
+            this.cameraCheckBox.TabIndex = 17;
+            this.cameraCheckBox.Text = "複数の学生証所持者を検出";
+            this.cameraCheckBox.UseVisualStyleBackColor = true;
             // 
             // Pikokon
             // 
@@ -400,9 +448,10 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,6 +488,10 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button4;
         public System.Windows.Forms.TextBox logText;
+        private System.Windows.Forms.PictureBox takePhotoPictureBox;
+        private System.Windows.Forms.Button ImageProcessingTestButton;
+        private System.Windows.Forms.TextBox ImageProcessingLogText;
+        private System.Windows.Forms.CheckBox cameraCheckBox;
     }
 }
 
