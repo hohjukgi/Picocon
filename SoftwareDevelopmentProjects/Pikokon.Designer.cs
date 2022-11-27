@@ -30,6 +30,7 @@ namespace SoftwareDevelopmentProjects
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pikokon));
             this.buttonRead = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.labelTime = new System.Windows.Forms.Label();
@@ -45,6 +46,9 @@ namespace SoftwareDevelopmentProjects
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cameraCheckBox = new System.Windows.Forms.CheckBox();
+            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.ImageProcessingTestButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -59,17 +63,13 @@ namespace SoftwareDevelopmentProjects
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ImageProcessingTestButton = new System.Windows.Forms.Button();
-            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.ImageProcessingLogText = new System.Windows.Forms.TextBox();
-            this.cameraCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -223,7 +223,6 @@ namespace SoftwareDevelopmentProjects
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.cameraCheckBox);
-            this.tabPage2.Controls.Add(this.ImageProcessingLogText);
             this.tabPage2.Controls.Add(this.takePhotoPictureBox);
             this.tabPage2.Controls.Add(this.ImageProcessingTestButton);
             this.tabPage2.Controls.Add(this.button4);
@@ -245,6 +244,37 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cameraCheckBox
+            // 
+            this.cameraCheckBox.AutoSize = true;
+            this.cameraCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cameraCheckBox.Location = new System.Drawing.Point(6, 281);
+            this.cameraCheckBox.Name = "cameraCheckBox";
+            this.cameraCheckBox.Size = new System.Drawing.Size(211, 20);
+            this.cameraCheckBox.TabIndex = 17;
+            this.cameraCheckBox.Text = "複数の学生証所持者を検出";
+            this.cameraCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // takePhotoPictureBox
+            // 
+            this.takePhotoPictureBox.BackColor = System.Drawing.Color.Gainsboro;
+            this.takePhotoPictureBox.Location = new System.Drawing.Point(6, 307);
+            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
+            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 130);
+            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.takePhotoPictureBox.TabIndex = 14;
+            this.takePhotoPictureBox.TabStop = false;
+            // 
+            // ImageProcessingTestButton
+            // 
+            this.ImageProcessingTestButton.Location = new System.Drawing.Point(232, 307);
+            this.ImageProcessingTestButton.Name = "ImageProcessingTestButton";
+            this.ImageProcessingTestButton.Size = new System.Drawing.Size(91, 23);
+            this.ImageProcessingTestButton.TabIndex = 13;
+            this.ImageProcessingTestButton.Text = "カメラテスト";
+            this.ImageProcessingTestButton.UseVisualStyleBackColor = true;
+            this.ImageProcessingTestButton.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -379,7 +409,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // labelName
             // 
-            this.labelName.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
+            this.labelName.Image = ((System.Drawing.Image)(resources.GetObject("labelName.Image")));
             this.labelName.Location = new System.Drawing.Point(12, 12);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(200, 50);
@@ -391,45 +421,6 @@ namespace SoftwareDevelopmentProjects
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // ImageProcessingTestButton
-            // 
-            this.ImageProcessingTestButton.Location = new System.Drawing.Point(232, 307);
-            this.ImageProcessingTestButton.Name = "ImageProcessingTestButton";
-            this.ImageProcessingTestButton.Size = new System.Drawing.Size(91, 23);
-            this.ImageProcessingTestButton.TabIndex = 13;
-            this.ImageProcessingTestButton.Text = "カメラテスト";
-            this.ImageProcessingTestButton.UseVisualStyleBackColor = true;
-            this.ImageProcessingTestButton.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // takePhotoPictureBox
-            // 
-            this.takePhotoPictureBox.BackColor = System.Drawing.Color.Gainsboro;
-            this.takePhotoPictureBox.Location = new System.Drawing.Point(6, 307);
-            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
-            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 130);
-            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.takePhotoPictureBox.TabIndex = 14;
-            this.takePhotoPictureBox.TabStop = false;
-            // 
-            // ImageProcessingLogText
-            // 
-            this.ImageProcessingLogText.Location = new System.Drawing.Point(232, 336);
-            this.ImageProcessingLogText.Multiline = true;
-            this.ImageProcessingLogText.Name = "ImageProcessingLogText";
-            this.ImageProcessingLogText.Size = new System.Drawing.Size(270, 101);
-            this.ImageProcessingLogText.TabIndex = 15;
-            // 
-            // cameraCheckBox
-            // 
-            this.cameraCheckBox.AutoSize = true;
-            this.cameraCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cameraCheckBox.Location = new System.Drawing.Point(6, 281);
-            this.cameraCheckBox.Name = "cameraCheckBox";
-            this.cameraCheckBox.Size = new System.Drawing.Size(211, 20);
-            this.cameraCheckBox.TabIndex = 17;
-            this.cameraCheckBox.Text = "複数の学生証所持者を検出";
-            this.cameraCheckBox.UseVisualStyleBackColor = true;
             // 
             // Pikokon
             // 
@@ -448,10 +439,10 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -490,7 +481,6 @@ namespace SoftwareDevelopmentProjects
         public System.Windows.Forms.TextBox logText;
         private System.Windows.Forms.PictureBox takePhotoPictureBox;
         private System.Windows.Forms.Button ImageProcessingTestButton;
-        private System.Windows.Forms.TextBox ImageProcessingLogText;
         private System.Windows.Forms.CheckBox cameraCheckBox;
     }
 }
