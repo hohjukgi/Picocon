@@ -160,25 +160,6 @@
   <ItemGroup>
     <None Include="Resources\Motion-Pop02-1 %28online-audio-converter.com%29.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="DetectFace\haarcascade_eye.xml" />
-    <Content Include="DetectFace\haarcascade_eye_tree_eyeglasses.xml" />
-    <Content Include="DetectFace\haarcascade_frontalcatface.xml" />
-    <Content Include="DetectFace\haarcascade_frontalcatface_extended.xml" />
-    <Content Include="DetectFace\haarcascade_frontalface_alt.xml" />
-    <Content Include="DetectFace\haarcascade_frontalface_alt2.xml" />
-    <Content Include="DetectFace\haarcascade_frontalface_alt_tree.xml" />
-    <Content Include="DetectFace\haarcascade_frontalface_default.xml" />
-    <Content Include="DetectFace\haarcascade_fullbody.xml" />
-    <Content Include="DetectFace\haarcascade_lefteye_2splits.xml" />
-    <Content Include="DetectFace\haarcascade_license_plate_rus_16stages.xml" />
-    <Content Include="DetectFace\haarcascade_lowerbody.xml" />
-    <Content Include="DetectFace\haarcascade_profileface.xml" />
-    <Content Include="DetectFace\haarcascade_righteye_2splits.xml" />
-    <Content Include="DetectFace\haarcascade_russian_plate_number.xml" />
-    <Content Include="DetectFace\haarcascade_smile.xml" />
-    <Content Include="DetectFace\haarcascade_upperbody.xml" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

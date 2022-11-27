@@ -22,6 +22,7 @@ namespace SoftwareDevelopmentProjects
             _flame = null;
         }
 
+
         /// <summary>
         /// カメラから写真を撮る
         /// 撮った写真は_flameに格納される
@@ -69,6 +70,7 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /*
         /// <summary>
         /// _flameに保存されている画像から
         /// 顔検出を行う
@@ -85,6 +87,7 @@ namespace SoftwareDevelopmentProjects
                 throw new Exception("Image is null");
             }
 
+            //publish時にフォルダが変わる
             string classifierFilePath = Application.StartupPath + @"..\..\..\DetectFace\haarcascade_frontalface_default.xml";
 
             if (!File.Exists(classifierFilePath))
@@ -133,5 +136,6 @@ namespace SoftwareDevelopmentProjects
             matRetImage.Dispose();
             return retBitmap;
         }
+        */
     }
 }

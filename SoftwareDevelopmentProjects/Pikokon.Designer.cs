@@ -46,7 +46,6 @@ namespace SoftwareDevelopmentProjects
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cameraCheckBox = new System.Windows.Forms.CheckBox();
             this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.ImageProcessingTestButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -222,7 +221,6 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.cameraCheckBox);
             this.tabPage2.Controls.Add(this.takePhotoPictureBox);
             this.tabPage2.Controls.Add(this.ImageProcessingTestButton);
             this.tabPage2.Controls.Add(this.button4);
@@ -245,17 +243,6 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // cameraCheckBox
-            // 
-            this.cameraCheckBox.AutoSize = true;
-            this.cameraCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cameraCheckBox.Location = new System.Drawing.Point(6, 281);
-            this.cameraCheckBox.Name = "cameraCheckBox";
-            this.cameraCheckBox.Size = new System.Drawing.Size(211, 20);
-            this.cameraCheckBox.TabIndex = 17;
-            this.cameraCheckBox.Text = "複数の学生証所持者を検出";
-            this.cameraCheckBox.UseVisualStyleBackColor = true;
-            // 
             // takePhotoPictureBox
             // 
             this.takePhotoPictureBox.BackColor = System.Drawing.Color.Gainsboro;
@@ -268,7 +255,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // ImageProcessingTestButton
             // 
-            this.ImageProcessingTestButton.Location = new System.Drawing.Point(232, 307);
+            this.ImageProcessingTestButton.Location = new System.Drawing.Point(232, 414);
             this.ImageProcessingTestButton.Name = "ImageProcessingTestButton";
             this.ImageProcessingTestButton.Size = new System.Drawing.Size(91, 23);
             this.ImageProcessingTestButton.TabIndex = 13;
@@ -481,7 +468,6 @@ namespace SoftwareDevelopmentProjects
         public System.Windows.Forms.TextBox logText;
         private System.Windows.Forms.PictureBox takePhotoPictureBox;
         private System.Windows.Forms.Button ImageProcessingTestButton;
-        private System.Windows.Forms.CheckBox cameraCheckBox;
     }
 }
 

@@ -198,6 +198,10 @@ namespace SoftwareDevelopmentProjects
                         string[] row = { str, dateTime.ToString("t") };
                         listStudentId.Items.Add(new ListViewItem(row));
                         LogManager.LogOutput("学籍番号を取得: " + str);
+                        CameraClass camera = new CameraClass();
+                        camera.TakePhoto();
+                        camera.bitmap.Save(str + ".bmp");
+                        LogManager.LogOutput("学生証所持者を記録");
                     }
                     catch (Exception)//学生証を読み取れなかった場合など
                     {
@@ -234,9 +238,16 @@ namespace SoftwareDevelopmentProjects
 
         private void button5_Click(object sender, EventArgs e)
         {
-            CameraClass camera = new CameraClass();
-            camera.TakePhoto();
-            takePhotoPictureBox.Image = camera.DetectFace();
+            try
+            {
+                CameraClass camera = new CameraClass();
+                camera.TakePhoto();
+                takePhotoPictureBox.Image = camera.bitmap;
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogOutput(ex.Message + "\r\n");
+            }
         }
     }
 }
