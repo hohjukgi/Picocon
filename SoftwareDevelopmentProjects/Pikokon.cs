@@ -182,6 +182,17 @@ namespace SoftwareDevelopmentProjects
                             }
                         }
 
+                        //画像処理用クラスを生成
+                        CameraClass camera = new CameraClass();
+                        //カメラから写真を撮る
+                        camera.TakePhoto();
+                        //顔が検知できなかったら
+                        if(camera.DetectFace() == null)
+                        {
+                            LogManager.LogOutput("顔の検出に失敗");
+                            return;
+                        }
+
                         //オーディオ再生処理
                         Task task = Task.Run(() =>
                         {
@@ -198,10 +209,6 @@ namespace SoftwareDevelopmentProjects
                         string[] row = { str, dateTime.ToString("t") };
                         listStudentId.Items.Add(new ListViewItem(row));
                         LogManager.LogOutput("学籍番号を取得: " + str);
-                        CameraClass camera = new CameraClass();
-                        camera.TakePhoto();
-                        camera.bitmap.Save(str + ".bmp");
-                        LogManager.LogOutput("学生証所持者を記録");
                     }
                     catch (Exception)//学生証を読み取れなかった場合など
                     {
@@ -242,7 +249,7 @@ namespace SoftwareDevelopmentProjects
             {
                 CameraClass camera = new CameraClass();
                 camera.TakePhoto();
-                takePhotoPictureBox.Image = camera.bitmap;
+                takePhotoPictureBox.Image = camera.DetectFace();
             }
             catch (Exception ex)
             {
