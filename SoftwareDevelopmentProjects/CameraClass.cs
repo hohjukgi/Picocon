@@ -141,5 +141,29 @@ namespace SoftwareDevelopmentProjects
             matRetImage.Dispose();
             return retBitmap;
         }
+
+        /// <summary>
+        /// 画像の特徴点を抽出する
+        /// </summary>
+        private void ExtractFeatureValue()
+        {
+            //グレースケール画像保存クラス
+            Mat gray = new Mat();
+
+            //グレースケールに変換
+            Cv2.CvtColor(_flame, gray, ColorConversionCodes.RGB2GRAY);
+
+            //特徴量比較クラスを生成
+            AKAZE aKAZE = AKAZE.Create();
+
+            //キーポイント
+            KeyPoint[] keyPoints;
+
+            //特徴点?
+            Mat des = new Mat();
+
+            //特徴点を抽出する
+            aKAZE.DetectAndCompute(gray, null, out keyPoints, des);
+        }
     }
 }
