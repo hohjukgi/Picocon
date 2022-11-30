@@ -70,7 +70,7 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
-        /*
+        
         /// <summary>
         /// _flameに保存されている画像から
         /// 顔検出を行う
@@ -88,7 +88,7 @@ namespace SoftwareDevelopmentProjects
             }
 
             //publish時にフォルダが変わる
-            string classifierFilePath = Application.StartupPath + @"..\..\..\DetectFace\haarcascade_frontalface_default.xml";
+            string classifierFilePath = @"haarcascade_frontalface_default.xml";
 
             if (!File.Exists(classifierFilePath))
             {
@@ -118,6 +118,11 @@ namespace SoftwareDevelopmentProjects
                     minNeighbors: 3,
                     minSize: new OpenCvSharp.Size(100, 100));
 
+                if(faces == null || faces.Length <= 0)
+                {
+                    return null;
+                }
+
                 // 認識した顔の周りを枠線で囲む
                 foreach (var face in faces)
                 {
@@ -136,6 +141,5 @@ namespace SoftwareDevelopmentProjects
             matRetImage.Dispose();
             return retBitmap;
         }
-        */
     }
 }
