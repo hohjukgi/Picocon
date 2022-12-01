@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -10,6 +11,9 @@ namespace SoftwareDevelopmentProjects
     internal class CameraClass
     {
         private Mat _flame;
+        private List<Mat> dess;
+        private List<KeyPoint[]> points;
+
         public Bitmap bitmap
         {
             get { 
@@ -20,6 +24,8 @@ namespace SoftwareDevelopmentProjects
         public CameraClass()
         {
             _flame = null;
+            dess = new List<Mat>();
+            points = new List<KeyPoint[]>();
         }
 
 
@@ -121,6 +127,8 @@ namespace SoftwareDevelopmentProjects
                 }
             }
 
+            ExtractFeatureValue();
+
             return true;
         }
 
@@ -211,6 +219,16 @@ namespace SoftwareDevelopmentProjects
 
             //特徴点を抽出する
             aKAZE.DetectAndCompute(gray, null, out keyPoints, des);
+
+            dess.Add(des);
+            points.Add(keyPoints);
+        }
+
+        private void CompareFeature(int arg1, int arg2)
+        {
+            BFMatcher bFMatcher = new BFMatcher(NormTypes.Hamming, true);
+
+            DMatch[] dm = bFMatcher.Match(dess[arg1], dess[arg2]);
         }
     }
 }
