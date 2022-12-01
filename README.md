@@ -15,6 +15,6 @@ Felica学生証とPasoriを使用した出席管理を行います
 - Visual Studio 2019
 - .NET Core 3.1
 - PaSoRi RC-S300
-- Fericalib [[元配布ページ]](http://felicalib.tmurakam.org/)
+- Fericalib.dll [[元配布ページ]](http://felicalib.tmurakam.org/)
 [[ダウンロード]](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)
 - [NFCポートソフトウェア](https://www.sony.co.jp/Products/felica/consumer/support/download/nfcportsoftware.html?j-short=fsc_dl)
