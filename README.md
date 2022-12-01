@@ -21,4 +21,4 @@ Felica学生証とPasoriを使用した出席管理を行います<br>
 [[ダウンロード]](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)
 - NuGet: [OpenCvSharp4.Extensions](https://www.nuget.org/packages/OpenCvSharp4.Extensions/4.6.0.20220608?_src=template)
 - NuGet: [OpenCvSharp4.Windows](https://www.nuget.org/packages/OpenCvSharp4.Windows/4.6.0.20220608?_src=template)
-- 
+- [haarcascade_frontalface_default.xml](https://github.com/opencv/opencv/tree/master/data/haarcascades)
