@@ -187,7 +187,7 @@ namespace SoftwareDevelopmentProjects
                         //カメラから写真を撮る
                         camera.TakePhoto();
                         //顔が検知できなかったら
-                        if(camera.DetectFace() == null)
+                        if(camera.DetectFace() == false)
                         {
                             LogManager.LogOutput("顔の検出に失敗");
                             return;
@@ -249,7 +249,7 @@ namespace SoftwareDevelopmentProjects
             {
                 CameraClass camera = new CameraClass();
                 camera.TakePhoto();
-                takePhotoPictureBox.Image = camera.DetectFace();
+                takePhotoPictureBox.Image = camera.GetDetectedFace();
             }
             catch (Exception ex)
             {

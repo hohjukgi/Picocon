@@ -73,11 +73,58 @@ namespace SoftwareDevelopmentProjects
         
         /// <summary>
         /// _flameに保存されている画像から
-        /// 顔検出を行う
+        /// 顔が検出されたか
         /// </summary>
-        /// <returns>検出した顔</returns>
-        /// <exception cref="Exception">失敗した際の例外</exception>
-        public Bitmap DetectFace()
+        /// <returns>bool</returns>
+        public bool DetectFace()
+        {
+
+            if (_flame == null)
+            {
+                return false;
+            }
+
+            //publish時にフォルダが変わる
+            string classifierFilePath = @"haarcascade_frontalface_default.xml";
+
+            if (!File.Exists(classifierFilePath))
+            {
+                LogManager.LogOutput("顔認識用カスケードファイルがみつかりません");
+                return false;
+            }
+
+            // 顔認識用カスケード分類器を作成
+            using (var haarCascade = new CascadeClassifier(classifierFilePath))
+
+            // 判定画像ファイルをロード
+            using (var matSrcImage = _flame)
+            using (var matGrayscaleImage = new Mat())
+            {
+                Mat matRetImage = matSrcImage.Clone();
+
+                // 入力画像をグレースケール化
+                Cv2.CvtColor(
+                    src: matSrcImage,
+                    dst: matGrayscaleImage,
+                    code: ColorConversionCodes.BGR2GRAY);
+
+                // 顔認識を実行
+                var faces = haarCascade.DetectMultiScale(
+                    image: matGrayscaleImage,
+                    scaleFactor: 1.1,
+                    minNeighbors: 3,
+                    minSize: new OpenCvSharp.Size(100, 100));
+
+                if(faces == null || faces.Length <= 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public Bitmap GetDetectedFace()
         {
             // 結果画像
             Mat matRetImage = null;
@@ -118,7 +165,7 @@ namespace SoftwareDevelopmentProjects
                     minNeighbors: 3,
                     minSize: new OpenCvSharp.Size(100, 100));
 
-                if(faces == null || faces.Length <= 0)
+                if (faces == null || faces.Length <= 0)
                 {
                     return null;
                 }
