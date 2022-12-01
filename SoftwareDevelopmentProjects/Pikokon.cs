@@ -249,6 +249,7 @@ namespace SoftwareDevelopmentProjects
             {
                 CameraClass camera = new CameraClass();
                 camera.TakePhoto();
+                takePhotoPictureBox.Image = camera.bitmap;
                 takePhotoPictureBox.Image = camera.GetDetectedFace();
             }
             catch (Exception ex)

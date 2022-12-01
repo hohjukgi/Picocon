@@ -32,7 +32,7 @@ namespace SoftwareDevelopmentProjects
             using (var capture = new VideoCapture())
             {
                 //カメラの起動　
-                capture.Open(0);
+                capture.Open(0);//カメラ番号
 
                 if (!capture.IsOpened())
                 {
@@ -167,7 +167,7 @@ namespace SoftwareDevelopmentProjects
 
                 if (faces == null || faces.Length <= 0)
                 {
-                    return null;
+                    throw new Exception("Can't detect faces");
                 }
 
                 // 認識した顔の周りを枠線で囲む
