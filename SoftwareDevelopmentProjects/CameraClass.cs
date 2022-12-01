@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -10,6 +11,9 @@ namespace SoftwareDevelopmentProjects
     internal class CameraClass
     {
         private Mat _flame;
+        private List<Mat> dess;
+        private List<KeyPoint[]> points;
+
         public Bitmap bitmap
         {
             get { 
@@ -20,6 +24,8 @@ namespace SoftwareDevelopmentProjects
         public CameraClass()
         {
             _flame = null;
+            dess = new List<Mat>();
+            points = new List<KeyPoint[]>();
         }
 
 
@@ -32,7 +38,7 @@ namespace SoftwareDevelopmentProjects
             using (var capture = new VideoCapture())
             {
                 //カメラの起動　
-                capture.Open(0);
+                capture.Open(0);//カメラ番号
 
                 if (!capture.IsOpened())
                 {
@@ -73,11 +79,60 @@ namespace SoftwareDevelopmentProjects
         
         /// <summary>
         /// _flameに保存されている画像から
-        /// 顔検出を行う
+        /// 顔が検出されたか
         /// </summary>
-        /// <returns>検出した顔</returns>
-        /// <exception cref="Exception">失敗した際の例外</exception>
-        public Bitmap DetectFace()
+        /// <returns>bool</returns>
+        public bool DetectFace()
+        {
+
+            if (_flame == null)
+            {
+                return false;
+            }
+
+            //publish時にフォルダが変わる
+            string classifierFilePath = @"haarcascade_frontalface_default.xml";
+
+            if (!File.Exists(classifierFilePath))
+            {
+                LogManager.LogOutput("顔認識用カスケードファイルがみつかりません");
+                return false;
+            }
+
+            // 顔認識用カスケード分類器を作成
+            using (var haarCascade = new CascadeClassifier(classifierFilePath))
+
+            // 判定画像ファイルをロード
+            using (var matSrcImage = _flame)
+            using (var matGrayscaleImage = new Mat())
+            {
+                Mat matRetImage = matSrcImage.Clone();
+
+                // 入力画像をグレースケール化
+                Cv2.CvtColor(
+                    src: matSrcImage,
+                    dst: matGrayscaleImage,
+                    code: ColorConversionCodes.BGR2GRAY);
+
+                // 顔認識を実行
+                var faces = haarCascade.DetectMultiScale(
+                    image: matGrayscaleImage,
+                    scaleFactor: 1.1,
+                    minNeighbors: 3,
+                    minSize: new OpenCvSharp.Size(100, 100));
+
+                if(faces == null || faces.Length <= 0)
+                {
+                    return false;
+                }
+            }
+
+            ExtractFeatureValue();
+
+            return true;
+        }
+
+        public Bitmap GetDetectedFace()
         {
             // 結果画像
             Mat matRetImage = null;
@@ -118,9 +173,9 @@ namespace SoftwareDevelopmentProjects
                     minNeighbors: 3,
                     minSize: new OpenCvSharp.Size(100, 100));
 
-                if(faces == null || faces.Length <= 0)
+                if (faces == null || faces.Length <= 0)
                 {
-                    return null;
+                    throw new Exception("Can't detect faces");
                 }
 
                 // 認識した顔の周りを枠線で囲む
@@ -140,6 +195,40 @@ namespace SoftwareDevelopmentProjects
 
             matRetImage.Dispose();
             return retBitmap;
+        }
+
+        /// <summary>
+        /// 画像の特徴点を抽出する
+        /// </summary>
+        private void ExtractFeatureValue()
+        {
+            //グレースケール画像保存クラス
+            Mat gray = new Mat();
+
+            //グレースケールに変換
+            Cv2.CvtColor(_flame, gray, ColorConversionCodes.RGB2GRAY);
+
+            //特徴量比較クラスを生成
+            AKAZE aKAZE = AKAZE.Create();
+
+            //キーポイント
+            KeyPoint[] keyPoints;
+
+            //特徴点?
+            Mat des = new Mat();
+
+            //特徴点を抽出する
+            aKAZE.DetectAndCompute(gray, null, out keyPoints, des);
+
+            dess.Add(des);
+            points.Add(keyPoints);
+        }
+
+        private void CompareFeature(int arg1, int arg2)
+        {
+            BFMatcher bFMatcher = new BFMatcher(NormTypes.Hamming, true);
+
+            DMatch[] dm = bFMatcher.Match(dess[arg1], dess[arg2]);
         }
     }
 }
