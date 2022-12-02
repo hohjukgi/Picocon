@@ -236,35 +236,14 @@ namespace SoftwareDevelopmentProjects
         {
 
         }
-
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
             string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名","講義名を入力して下さい。");
             listBox1.Items.Add(this.Text = s1);
         }
 
-
-
-        class Dialog1 : Form
-        {
-            public Dialog1()
-            {
-            
-                this.Text = "講義名";
-   
-
-                // ダイアログボックス用の設定
-                this.MaximizeBox = false;         // 最大化ボタン
-                this.MinimizeBox = false;         // 最小化ボタン
-                this.ShowInTaskbar = false;
-                this.FormBorderStyle =
-                    FormBorderStyle.FixedDialog;  // 境界のスタイル
-                this.StartPosition =
-                    FormStartPosition.CenterParent;  // 親フォームの中央に配置
-            }
-        }
-
-            private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
         }
@@ -276,8 +255,29 @@ namespace SoftwareDevelopmentProjects
 
         private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
         {
-
+        
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedIndex <= 0)
+            {
+                LogManager.LogOutput("削除できる講義がありません");
+            }
+            else
+            {
+                DialogResult dialogResult = 
+                    MessageBox.Show("講義削除", "講義を削除します\r\nいいですか?", MessageBoxButtons.YesNo);
+
+                if(dialogResult == DialogResult.OK)
+                {
+                    LogManager.LogOutput("講義を削除: " + listBox1.SelectedItem.ToString());
+                    listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                    MessageBox.Show("講義を削除しました");
+                }
+            }
+        }
+        
     }
 }
 
