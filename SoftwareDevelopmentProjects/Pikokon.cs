@@ -189,7 +189,6 @@ namespace SoftwareDevelopmentProjects
                         //顔が検知できなかったら
                         if(camera.DetectFace() == false)
                         {
-                            LogManager.LogOutput("顔の検出に失敗");
                             return;
                         }
 

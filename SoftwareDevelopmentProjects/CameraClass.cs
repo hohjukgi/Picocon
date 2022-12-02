@@ -87,6 +87,7 @@ namespace SoftwareDevelopmentProjects
 
             if (_flame == null)
             {
+                LogManager.LogOutput("フレームがnullです");
                 return false;
             }
 
@@ -123,11 +124,14 @@ namespace SoftwareDevelopmentProjects
 
                 if(faces == null || faces.Length <= 0)
                 {
+                    LogManager.LogOutput("顔の検出に失敗");
                     return false;
                 }
             }
 
             ExtractFeatureValue();
+
+            LogManager.LogOutput("顔の検出に成功");
 
             return true;
         }
@@ -202,26 +206,32 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         private void ExtractFeatureValue()
         {
-            //グレースケール画像保存クラス
-            Mat gray = new Mat();
+            try
+            {
+                //グレースケール画像保存クラス
+                Mat gray = new Mat();
 
-            //グレースケールに変換
-            Cv2.CvtColor(_flame, gray, ColorConversionCodes.RGB2GRAY);
+                //グレースケールに変換
+                Cv2.CvtColor(_flame, gray, ColorConversionCodes.RGB2GRAY);
 
-            //特徴量比較クラスを生成
-            AKAZE aKAZE = AKAZE.Create();
+                //特徴量比較クラスを生成
+                AKAZE aKAZE = AKAZE.Create();
 
-            //特徴点
-            KeyPoint[] keyPoints;
+                //特徴点
+                KeyPoint[] keyPoints;
 
-            //各特徴点に対応する特徴記述子
-            Mat des = new Mat();
+                //各特徴点に対応する特徴記述子
+                Mat des = new Mat();
 
-            //特徴点を抽出する
-            aKAZE.DetectAndCompute(gray, null, out keyPoints, des);
+                //特徴点を抽出する
+                aKAZE.DetectAndCompute(gray, null, out keyPoints, des);
 
-            dess.Add(des);
-            points.Add(keyPoints);
+                dess.Add(des);
+                points.Add(keyPoints);
+            }catch(Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
+            }
         }
 
         private void CompareFeature(int arg1, int arg2)
