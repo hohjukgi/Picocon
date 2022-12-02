@@ -62,6 +62,9 @@ namespace SoftwareDevelopmentProjects
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.upDownCamera = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -69,6 +72,7 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -182,7 +186,7 @@ namespace SoftwareDevelopmentProjects
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(82, 149);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(57, 20);
+            this.radioButton2.Size = new System.Drawing.Size(58, 20);
             this.radioButton2.TabIndex = 14;
             this.radioButton2.Text = "退席";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -193,7 +197,7 @@ namespace SoftwareDevelopmentProjects
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(82, 123);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(57, 20);
+            this.radioButton1.Size = new System.Drawing.Size(58, 20);
             this.radioButton1.TabIndex = 13;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "出席";
@@ -221,6 +225,9 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.upDownCamera);
             this.tabPage2.Controls.Add(this.takePhotoPictureBox);
             this.tabPage2.Controls.Add(this.ImageProcessingTestButton);
             this.tabPage2.Controls.Add(this.button4);
@@ -277,7 +284,7 @@ namespace SoftwareDevelopmentProjects
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(318, 160);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 16);
+            this.label7.Size = new System.Drawing.Size(40, 16);
             this.label7.TabIndex = 11;
             this.label7.Text = "開始";
             // 
@@ -286,7 +293,7 @@ namespace SoftwareDevelopmentProjects
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(433, 186);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 16);
+            this.label6.Size = new System.Drawing.Size(24, 16);
             this.label6.TabIndex = 10;
             this.label6.Text = "分";
             // 
@@ -295,7 +302,7 @@ namespace SoftwareDevelopmentProjects
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(362, 186);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 16);
+            this.label5.Size = new System.Drawing.Size(24, 16);
             this.label5.TabIndex = 9;
             this.label5.Text = "時";
             // 
@@ -338,7 +345,7 @@ namespace SoftwareDevelopmentProjects
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(378, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 16);
+            this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "時限";
             // 
@@ -347,7 +354,7 @@ namespace SoftwareDevelopmentProjects
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 16);
+            this.label2.Size = new System.Drawing.Size(40, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "講義";
             // 
@@ -409,6 +416,31 @@ namespace SoftwareDevelopmentProjects
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // upDownCamera
+            // 
+            this.upDownCamera.Location = new System.Drawing.Point(238, 385);
+            this.upDownCamera.Name = "upDownCamera";
+            this.upDownCamera.Size = new System.Drawing.Size(42, 23);
+            this.upDownCamera.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(233, 358);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "カメラ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 289);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 16);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "カメラ設定";
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -430,6 +462,7 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,6 +501,9 @@ namespace SoftwareDevelopmentProjects
         public System.Windows.Forms.TextBox logText;
         private System.Windows.Forms.PictureBox takePhotoPictureBox;
         private System.Windows.Forms.Button ImageProcessingTestButton;
+        private System.Windows.Forms.NumericUpDown upDownCamera;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
 

@@ -33,12 +33,12 @@ namespace SoftwareDevelopmentProjects
         /// カメラから写真を撮る
         /// 撮った写真は_flameに格納される
         /// </summary>
-        public void TakePhoto()
+        public void TakePhoto(int selectedCamera)
         {
             using (var capture = new VideoCapture())
             {
                 //カメラの起動　
-                capture.Open(0);//カメラ番号
+                capture.Open(selectedCamera);
 
                 if (!capture.IsOpened())
                 {
