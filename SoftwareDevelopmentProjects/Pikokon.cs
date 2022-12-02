@@ -236,6 +236,27 @@ namespace SoftwareDevelopmentProjects
         {
 
         }
+        
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名","講義名を入力して下さい。");
+            listBox1.Items.Add(this.Text = s1);
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
+        {
+        
+        }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
@@ -256,6 +277,7 @@ namespace SoftwareDevelopmentProjects
                 }
             }
         }
+        
     }
 }
 
