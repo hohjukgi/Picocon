@@ -182,6 +182,18 @@ namespace SoftwareDevelopmentProjects
                             }
                         }
 
+                        /*
+                        //画像処理用クラスを生成
+                        CameraClass camera = new CameraClass();
+                        //カメラから写真を撮る
+                        camera.TakePhoto((int)upDownCamera.Value);
+                        //顔が検知できなかったら
+                        if(camera.DetectFace() == false)
+                        {
+                            return;
+                        }
+                        */
+
                         //オーディオ再生処理
                         Task task = Task.Run(() =>
                         {
@@ -232,14 +244,24 @@ namespace SoftwareDevelopmentProjects
 
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CameraClass camera = new CameraClass();
+                camera.TakePhoto((int)upDownCamera.Value);
+                takePhotoPictureBox.Image = camera.bitmap;
+                takePhotoPictureBox.Image = camera.GetDetectedFace();
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogOutput(ex.Message + "\r\n");
+             }
+        }
+        
         private void labelName_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            
         }
 
         private void button3_Click_1(object sender, EventArgs e)
