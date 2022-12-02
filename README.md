@@ -18,7 +18,7 @@ Felica学生証とPasoriを使用した出席管理を行います<br>
 ## プロジェクト動作
 - .NET Core 3.1
 - Fericalib.dll [[元配布ページ]](http://felicalib.tmurakam.org/)
-[[ダウンロード]](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)
-- NuGet: [OpenCvSharp4.Extensions](https://www.nuget.org/packages/OpenCvSharp4.Extensions/4.6.0.20220608?_src=template)
-- NuGet: [OpenCvSharp4.Windows](https://www.nuget.org/packages/OpenCvSharp4.Windows/4.6.0.20220608?_src=template)
-- 顔検出用: haarcascade_frontalface_default.xml[[Githubページ]](https://github.com/opencv/opencv/tree/master/data/haarcascades)
+[[ダウンロード]](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)**[Ferica読み取り用]**
+- NuGet: [OpenCvSharp4.Extensions](https://www.nuget.org/packages/OpenCvSharp4.Extensions/4.6.0.20220608?_src=template)**[ズル防止機能用]**
+- NuGet: [OpenCvSharp4.Windows](https://www.nuget.org/packages/OpenCvSharp4.Windows/4.6.0.20220608?_src=template)**[ズル防止機能用]**
+- 顔検出用: haarcascade_frontalface_default.xml[[Githubページ]](https://github.com/opencv/opencv/tree/master/data/haarcascades)**[ズル防止機能用]**
