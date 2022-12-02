@@ -211,10 +211,10 @@ namespace SoftwareDevelopmentProjects
             //特徴量比較クラスを生成
             AKAZE aKAZE = AKAZE.Create();
 
-            //キーポイント
+            //特徴点
             KeyPoint[] keyPoints;
 
-            //特徴点?
+            //各特徴点に対応する特徴記述子
             Mat des = new Mat();
 
             //特徴点を抽出する
