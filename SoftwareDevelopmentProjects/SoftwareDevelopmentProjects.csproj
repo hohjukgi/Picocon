@@ -125,9 +125,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\system_sound.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icon.png" />
   </ItemGroup>
   <ItemGroup>
