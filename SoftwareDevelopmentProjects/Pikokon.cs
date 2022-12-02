@@ -236,6 +236,26 @@ namespace SoftwareDevelopmentProjects
         {
 
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedIndex <= 0)
+            {
+                LogManager.LogOutput("削除できる講義がありません");
+            }
+            else
+            {
+                DialogResult dialogResult = 
+                    MessageBox.Show("講義削除", "講義を削除します\r\nいいですか?", MessageBoxButtons.YesNo);
+
+                if(dialogResult == DialogResult.OK)
+                {
+                    LogManager.LogOutput("講義を削除: " + listBox1.SelectedItem.ToString());
+                    listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                    MessageBox.Show("講義を削除しました");
+                }
+            }
+        }
     }
 }
 
