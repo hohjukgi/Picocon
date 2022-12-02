@@ -1,5 +1,7 @@
 ﻿
- namespace SoftwareDevelopmentProjects
+using System;
+
+namespace SoftwareDevelopmentProjects
 {
     partial class Pikokon
     {
