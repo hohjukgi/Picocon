@@ -31,7 +31,6 @@ namespace SoftwareDevelopmentProjects
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pikokon));
             this.buttonRead = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.labelTime = new System.Windows.Forms.Label();
@@ -47,6 +46,9 @@ namespace SoftwareDevelopmentProjects
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.upDownCamera = new System.Windows.Forms.NumericUpDown();
             this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.ImageProcessingTestButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -62,20 +64,11 @@ namespace SoftwareDevelopmentProjects
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.PictureBox();
-            this.upDownCamera = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
@@ -256,6 +249,31 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 289);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 16);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "カメラ設定";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(233, 358);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "カメラ";
+            // 
+            // upDownCamera
+            // 
+            this.upDownCamera.Location = new System.Drawing.Point(238, 385);
+            this.upDownCamera.Name = "upDownCamera";
+            this.upDownCamera.Size = new System.Drawing.Size(42, 23);
+            this.upDownCamera.TabIndex = 15;
+            // 
             // takePhotoPictureBox
             // 
             this.takePhotoPictureBox.BackColor = System.Drawing.Color.Gainsboro;
@@ -398,6 +416,7 @@ namespace SoftwareDevelopmentProjects
             this.button1.TabIndex = 2;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // listBox1
             // 
@@ -410,7 +429,6 @@ namespace SoftwareDevelopmentProjects
             // 
             // labelName
             // 
-            this.labelName.Image = ((System.Drawing.Image)(resources.GetObject("labelName.Image")));
             this.labelName.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
             this.labelName.Location = new System.Drawing.Point(12, 12);
             this.labelName.Name = "labelName";
@@ -418,31 +436,6 @@ namespace SoftwareDevelopmentProjects
             this.labelName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.labelName.TabIndex = 12;
             this.labelName.TabStop = false;
-            // 
-            // upDownCamera
-            // 
-            this.upDownCamera.Location = new System.Drawing.Point(238, 385);
-            this.upDownCamera.Name = "upDownCamera";
-            this.upDownCamera.Size = new System.Drawing.Size(42, 23);
-            this.upDownCamera.TabIndex = 15;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(233, 358);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 16);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "カメラ";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 289);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 16);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "カメラ設定";
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
             // Pikokon
@@ -462,11 +455,8 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
