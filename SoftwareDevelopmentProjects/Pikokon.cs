@@ -182,6 +182,7 @@ namespace SoftwareDevelopmentProjects
                             }
                         }
 
+                        /*
                         //画像処理用クラスを生成
                         CameraClass camera = new CameraClass();
                         //カメラから写真を撮る
@@ -191,6 +192,7 @@ namespace SoftwareDevelopmentProjects
                         {
                             return;
                         }
+                        */
 
                         //オーディオ再生処理
                         Task task = Task.Run(() =>
