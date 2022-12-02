@@ -62,7 +62,6 @@ namespace SoftwareDevelopmentProjects
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.upDownCamera = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -418,7 +417,7 @@ namespace SoftwareDevelopmentProjects
             this.labelName.Size = new System.Drawing.Size(200, 50);
             this.labelName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.labelName.TabIndex = 12;
-            this.labelName.TabStop = false
+            this.labelName.TabStop = false;
             // 
             // upDownCamera
             // 
