@@ -61,6 +61,15 @@ namespace SoftwareDevelopmentProjects.Properties {
         }
         
         /// <summary>
+        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream chikoku_sound {
+            get {
+                return ResourceManager.GetStream("chikoku_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Bitmap icon {
@@ -76,15 +85,6 @@ namespace SoftwareDevelopmentProjects.Properties {
         internal static System.IO.UnmanagedMemoryStream Motion_Pop02_1__online_audio_converter_com_ {
             get {
                 return ResourceManager.GetStream("Motion_Pop02_1__online_audio_converter_com_", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream system_sound {
-            get {
-                return ResourceManager.GetStream("system_sound", resourceCulture);
             }
         }
     }

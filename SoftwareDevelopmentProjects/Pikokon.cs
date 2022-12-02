@@ -174,7 +174,7 @@ namespace SoftwareDevelopmentProjects
                         }
                         for (int i = 0; i < listStudentId.Items.Count; i++)
                         {
-                            if (listStudentId.Items[0].SubItems[i].Text == str)
+                            if (listStudentId.Items[i].SubItems[0].Text == str)
                             {
                                 //同名の学籍番号
                                 LogManager.LogOutput("重複する学籍番号を取得");
@@ -256,6 +256,31 @@ namespace SoftwareDevelopmentProjects
             catch (Exception ex)
             {
                 LogManager.LogOutput(ex.Message + "\r\n");
+             }
+        }
+        
+        private void labelName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedIndex <= 0)
+            {
+                LogManager.LogOutput("削除できる講義がありません");
+            }
+            else
+            {
+                DialogResult dialogResult = 
+                    MessageBox.Show("講義削除", "講義を削除します\r\nいいですか?", MessageBoxButtons.YesNo);
+
+                if(dialogResult == DialogResult.OK)
+                {
+                    LogManager.LogOutput("講義を削除: " + listBox1.SelectedItem.ToString());
+                    listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                    MessageBox.Show("講義を削除しました");
+                }
             }
         }
     }

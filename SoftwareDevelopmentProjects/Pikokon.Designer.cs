@@ -1,4 +1,5 @@
-﻿
+using System;
+
 namespace SoftwareDevelopmentProjects
 {
     partial class Pikokon
@@ -73,6 +74,12 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -382,6 +389,7 @@ namespace SoftwareDevelopmentProjects
             this.button3.TabIndex = 3;
             this.button3.Text = "-";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // button1
             // 
@@ -404,17 +412,13 @@ namespace SoftwareDevelopmentProjects
             // labelName
             // 
             this.labelName.Image = ((System.Drawing.Image)(resources.GetObject("labelName.Image")));
+            this.labelName.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
             this.labelName.Location = new System.Drawing.Point(12, 12);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(200, 50);
             this.labelName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.labelName.TabIndex = 12;
-            this.labelName.TabStop = false;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.labelName.TabStop = false
             // 
             // upDownCamera
             // 
@@ -440,6 +444,7 @@ namespace SoftwareDevelopmentProjects
             this.label9.Size = new System.Drawing.Size(73, 16);
             this.label9.TabIndex = 17;
             this.label9.Text = "カメラ設定";
+            this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
             // Pikokon
             // 
@@ -463,6 +468,9 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,7 +491,6 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.PictureBox labelName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
