@@ -1,5 +1,5 @@
 ﻿
-namespace SoftwareDevelopmentProjects
+ namespace SoftwareDevelopmentProjects
 {
     partial class Pikokon
     {
@@ -359,6 +359,7 @@ namespace SoftwareDevelopmentProjects
             this.button1.TabIndex = 2;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // listBox1
             // 
@@ -425,7 +426,6 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.PictureBox labelName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
