@@ -290,6 +290,42 @@ namespace SoftwareDevelopmentProjects
             string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
             listBox1.Items.Add(s1);
         }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+            {
+                numericUpDown1.Text = "9";
+                numericUpDown2.Text = "30";
+            }
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                numericUpDown1.Text = "11";
+                numericUpDown2.Text = "10";
+            }
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton5.Checked)
+            {
+                numericUpDown1.Text = "13";
+                numericUpDown2.Text = "30";
+            }
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton6.Checked)
+            {
+                numericUpDown1.Text = "15";
+                numericUpDown2.Text = "10";
+            }
+        }
     }
 }
 
