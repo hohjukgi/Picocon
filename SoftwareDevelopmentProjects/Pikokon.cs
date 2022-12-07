@@ -25,6 +25,7 @@ namespace SoftwareDevelopmentProjects
             listStudentId.View = View.Details;
             listStudentId.GridLines = true;
 
+
             listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
             listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
 
@@ -287,7 +288,7 @@ namespace SoftwareDevelopmentProjects
         private void button1_Click_1(object sender, EventArgs e)
         {
             string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
-            listBox1.Items.Add(this.Text = s1);
+            listBox1.Items.Add(s1);
         }
     }
 }
