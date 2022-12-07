@@ -46,6 +46,7 @@ namespace SoftwareDevelopmentProjects
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
@@ -227,6 +228,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.radioButton6);
             this.tabPage2.Controls.Add(this.radioButton5);
             this.tabPage2.Controls.Add(this.radioButton4);
@@ -255,10 +257,21 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label10.Location = new System.Drawing.Point(74, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 15);
+            this.label10.TabIndex = 22;
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(329, 122);
+            this.radioButton6.Location = new System.Drawing.Point(329, 123);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(50, 20);
             this.radioButton6.TabIndex = 21;
@@ -270,7 +283,7 @@ namespace SoftwareDevelopmentProjects
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(329, 96);
+            this.radioButton5.Location = new System.Drawing.Point(329, 97);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(50, 20);
             this.radioButton5.TabIndex = 20;
@@ -282,7 +295,7 @@ namespace SoftwareDevelopmentProjects
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(329, 70);
+            this.radioButton4.Location = new System.Drawing.Point(329, 71);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(50, 20);
             this.radioButton4.TabIndex = 19;
@@ -350,17 +363,18 @@ namespace SoftwareDevelopmentProjects
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(384, 222);
+            this.button4.Location = new System.Drawing.Point(385, 258);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(55, 23);
             this.button4.TabIndex = 12;
             this.button4.Text = "保存";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(298, 160);
+            this.label7.Location = new System.Drawing.Point(298, 192);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 16);
             this.label7.TabIndex = 11;
@@ -369,7 +383,7 @@ namespace SoftwareDevelopmentProjects
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(433, 186);
+            this.label6.Location = new System.Drawing.Point(433, 218);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 16);
             this.label6.TabIndex = 10;
@@ -378,7 +392,7 @@ namespace SoftwareDevelopmentProjects
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(355, 186);
+            this.label5.Location = new System.Drawing.Point(355, 218);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(24, 16);
             this.label5.TabIndex = 9;
@@ -386,7 +400,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(385, 179);
+            this.numericUpDown2.Location = new System.Drawing.Point(385, 211);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             60,
             0,
@@ -398,7 +412,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(301, 179);
+            this.numericUpDown1.Location = new System.Drawing.Point(301, 211);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             24,
             0,
@@ -438,7 +452,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(157, 70);
+            this.button3.Location = new System.Drawing.Point(203, 71);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(23, 23);
             this.button3.TabIndex = 3;
@@ -448,7 +462,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(157, 41);
+            this.button1.Location = new System.Drawing.Point(203, 41);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(23, 23);
             this.button1.TabIndex = 2;
@@ -462,8 +476,9 @@ namespace SoftwareDevelopmentProjects
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(31, 41);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 148);
+            this.listBox1.Size = new System.Drawing.Size(166, 196);
             this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // labelName
             // 
@@ -541,6 +556,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label10;
     }
 }
 

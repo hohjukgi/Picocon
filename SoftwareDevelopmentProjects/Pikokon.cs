@@ -326,6 +326,21 @@ namespace SoftwareDevelopmentProjects
                 numericUpDown2.Text = "10";
             }
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label10.Text = listBox1.SelectedItem.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
 
