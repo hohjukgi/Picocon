@@ -25,6 +25,7 @@ namespace SoftwareDevelopmentProjects
             listStudentId.View = View.Details;
             listStudentId.GridLines = true;
 
+
             listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
             listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
 
@@ -287,7 +288,58 @@ namespace SoftwareDevelopmentProjects
         private void button1_Click_1(object sender, EventArgs e)
         {
             string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
-            listBox1.Items.Add(this.Text = s1);
+            listBox1.Items.Add(s1);
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+            {
+                numericUpDown1.Text = "9";
+                numericUpDown2.Text = "30";
+            }
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton4.Checked)
+            {
+                numericUpDown1.Text = "11";
+                numericUpDown2.Text = "10";
+            }
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton5.Checked)
+            {
+                numericUpDown1.Text = "13";
+                numericUpDown2.Text = "30";
+            }
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton6.Checked)
+            {
+                numericUpDown1.Text = "15";
+                numericUpDown2.Text = "10";
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label10.Text = listBox1.SelectedItem.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
