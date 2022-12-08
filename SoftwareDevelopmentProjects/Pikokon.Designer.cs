@@ -69,6 +69,8 @@ namespace SoftwareDevelopmentProjects
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.LectureSelectComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -168,6 +170,8 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.LectureSelectComboBox);
+            this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.checkBoxDetectFace);
             this.tabPage1.Controls.Add(this.radioButton2);
             this.tabPage1.Controls.Add(this.radioButton1);
@@ -504,6 +508,23 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(178, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 16);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "講義:";
+            // 
+            // LectureSelectComboBox
+            // 
+            this.LectureSelectComboBox.FormattingEnabled = true;
+            this.LectureSelectComboBox.Location = new System.Drawing.Point(224, 6);
+            this.LectureSelectComboBox.Name = "LectureSelectComboBox";
+            this.LectureSelectComboBox.Size = new System.Drawing.Size(256, 24);
+            this.LectureSelectComboBox.TabIndex = 17;
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -571,6 +592,8 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBoxDetectFace;
+        private System.Windows.Forms.ComboBox LectureSelectComboBox;
+        private System.Windows.Forms.Label label11;
     }
 }
 
