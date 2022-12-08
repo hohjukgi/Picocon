@@ -71,10 +71,10 @@ namespace SoftwareDevelopmentProjects
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.labelName = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -82,8 +82,8 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -520,17 +520,6 @@ namespace SoftwareDevelopmentProjects
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // labelName
-            // 
-            this.labelName.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
-            this.labelName.Location = new System.Drawing.Point(12, 12);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(200, 50);
-            this.labelName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.labelName.TabIndex = 12;
-            this.labelName.TabStop = false;
-            this.labelName.Click += new System.EventHandler(this.labelName_Click);
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.linkLabel1);
@@ -542,15 +531,6 @@ namespace SoftwareDevelopmentProjects
             this.tabPage3.Text = "クレジット";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(402, 176);
-            this.label12.TabIndex = 0;
-            this.label12.Text = resources.GetString("label12.Text");
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
@@ -561,6 +541,26 @@ namespace SoftwareDevelopmentProjects
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "大学ホームページ";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(470, 176);
+            this.label12.TabIndex = 0;
+            this.label12.Text = resources.GetString("label12.Text");
+            // 
+            // labelName
+            // 
+            this.labelName.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
+            this.labelName.Location = new System.Drawing.Point(12, 12);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(200, 50);
+            this.labelName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.labelName.TabIndex = 12;
+            this.labelName.TabStop = false;
+            this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
             // Pikokon
             // 
@@ -583,9 +583,9 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
