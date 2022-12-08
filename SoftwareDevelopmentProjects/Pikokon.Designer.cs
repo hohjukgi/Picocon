@@ -74,6 +74,7 @@ namespace SoftwareDevelopmentProjects
             this.labelName = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -532,6 +533,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.linkLabel1);
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
@@ -545,9 +547,20 @@ namespace SoftwareDevelopmentProjects
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 9);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(402, 160);
+            this.label12.Size = new System.Drawing.Size(402, 176);
             this.label12.TabIndex = 0;
             this.label12.Text = resources.GetString("label12.Text");
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(3, 185);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(118, 16);
+            this.linkLabel1.TabIndex = 1;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "大学ホームページ";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Pikokon
             // 
@@ -622,6 +635,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
