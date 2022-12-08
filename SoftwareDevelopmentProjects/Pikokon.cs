@@ -358,6 +358,11 @@ namespace SoftwareDevelopmentProjects
             if (!ready) return;
             cameraIndex.WriteData(upDownCamera.Value.ToString());
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.aut.ac.jp/");
+        }
     }
 }
 
