@@ -14,6 +14,10 @@ namespace SoftwareDevelopmentProjects
 {
     public partial class Pikokon : Form
     {
+
+        private const string CAMERA_FILE_NAME = "cameraSettings.pico";
+        private bool ready = false;
+
         public Pikokon()
         {
             InitializeComponent();
@@ -33,7 +37,30 @@ namespace SoftwareDevelopmentProjects
             imageListSmall.ImageSize = new Size(1, 30);
             listStudentId.SmallImageList = imageListSmall;
 
+            try
+            {
+                string str = string.Empty;
+                using (StreamReader sr = new StreamReader(CAMERA_FILE_NAME))
+                {
+                    str = sr.ReadLine();
+                    upDownCamera.Value = int.Parse(str);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                using(StreamWriter sw = new StreamWriter(CAMERA_FILE_NAME, false))
+                {
+                    sw.WriteLine("0");
+                }
+            }
+            catch(Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
+            }
+
             LogManager.LogOutput("初期化完了");
+
+            ready = true;
         }
 
         /// <summary>
@@ -183,17 +210,20 @@ namespace SoftwareDevelopmentProjects
                             }
                         }
 
-                        /*
-                        //画像処理用クラスを生成
-                        CameraClass camera = new CameraClass();
-                        //カメラから写真を撮る
-                        camera.TakePhoto((int)upDownCamera.Value);
-                        //顔が検知できなかったら
-                        if(camera.DetectFace() == false)
+                        //ズル防止にチェックが入っていたら
+                        if (checkBoxDetectFace.Checked)
                         {
-                            return;
+                            //画像処理用クラスを生成
+                            CameraClass camera = new CameraClass();
+                            //カメラから写真を撮る
+                            camera.TakePhoto((int)upDownCamera.Value);
+                            //顔が検知できなかったら
+                            if (camera.DetectFace() == false)
+                            {
+                                return;
+                            }
                         }
-                        */
+                        
 
                         //オーディオ再生処理
                         Task task = Task.Run(() =>
@@ -340,6 +370,23 @@ namespace SoftwareDevelopmentProjects
         private void label10_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void upDownCamera_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ready) return;
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(CAMERA_FILE_NAME, false))
+                {
+                    sw.WriteLine(upDownCamera.Value.ToString());
+                }
+                LogManager.LogOutput("カメラ設定の保存");
+            }
+            catch(Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
+            }
         }
     }
 }
