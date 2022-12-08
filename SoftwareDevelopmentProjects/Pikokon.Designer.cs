@@ -41,6 +41,7 @@ namespace SoftwareDevelopmentProjects
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBoxDetectFace = new System.Windows.Forms.CheckBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@ namespace SoftwareDevelopmentProjects
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.PictureBox();
-            this.checkBoxDetectFace = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -185,6 +185,16 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.Text = "出席登録";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // checkBoxDetectFace
+            // 
+            this.checkBoxDetectFace.AutoSize = true;
+            this.checkBoxDetectFace.Location = new System.Drawing.Point(32, 169);
+            this.checkBoxDetectFace.Name = "checkBoxDetectFace";
+            this.checkBoxDetectFace.Size = new System.Drawing.Size(85, 20);
+            this.checkBoxDetectFace.TabIndex = 15;
+            this.checkBoxDetectFace.Text = "ズル防止";
+            this.checkBoxDetectFace.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -342,6 +352,7 @@ namespace SoftwareDevelopmentProjects
             this.upDownCamera.Name = "upDownCamera";
             this.upDownCamera.Size = new System.Drawing.Size(42, 23);
             this.upDownCamera.TabIndex = 15;
+            this.upDownCamera.ValueChanged += new System.EventHandler(this.upDownCamera_ValueChanged);
             // 
             // takePhotoPictureBox
             // 
@@ -492,16 +503,6 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabIndex = 12;
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
-            // 
-            // checkBoxDetectFace
-            // 
-            this.checkBoxDetectFace.AutoSize = true;
-            this.checkBoxDetectFace.Location = new System.Drawing.Point(32, 169);
-            this.checkBoxDetectFace.Name = "checkBoxDetectFace";
-            this.checkBoxDetectFace.Size = new System.Drawing.Size(85, 20);
-            this.checkBoxDetectFace.TabIndex = 15;
-            this.checkBoxDetectFace.Text = "ズル防止";
-            this.checkBoxDetectFace.UseVisualStyleBackColor = true;
             // 
             // Pikokon
             // 
