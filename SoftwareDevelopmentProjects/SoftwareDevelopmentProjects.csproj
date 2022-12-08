@@ -117,8 +117,8 @@
     <Compile Include="CameraClass.cs" />
     <Compile Include="FelicaFunc.cs" />
     <Compile Include="FelicaLib.cs" />
-    <Compile Include="LectureManager.cs" />
     <Compile Include="LogManager.cs" />
+    <Compile Include="MiniFileManager.cs" />
     <Compile Include="Pikokon.cs">
       <SubType>Form</SubType>
     </Compile>
