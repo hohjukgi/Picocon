@@ -41,8 +41,6 @@ namespace SoftwareDevelopmentProjects
 
             upDownCamera.Value = int.Parse(cameraIndex.ReadData("0"));
 
-            LogManager.LogOutput("初期化完了");
-
             ready = true;
         }
 
