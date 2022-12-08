@@ -15,8 +15,8 @@ namespace SoftwareDevelopmentProjects
     public partial class Pikokon : Form
     {
 
-        private const string CAMERA_FILE_NAME = "cameraSettings.pico";
         private bool ready = false;
+        private MiniFileManager cameraIndex;
 
         public Pikokon()
         {
@@ -37,28 +37,9 @@ namespace SoftwareDevelopmentProjects
             imageListSmall.ImageSize = new Size(1, 30);
             listStudentId.SmallImageList = imageListSmall;
 
-            try
-            {
-                string str = string.Empty;
-                using (StreamReader sr = new StreamReader(CAMERA_FILE_NAME))
-                {
-                    str = sr.ReadLine();
-                    upDownCamera.Value = int.Parse(str);
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                using(StreamWriter sw = new StreamWriter(CAMERA_FILE_NAME, false))
-                {
-                    sw.WriteLine("0");
-                }
-            }
-            catch(Exception ex)
-            {
-                LogManager.LogOutput(ex.Message);
-            }
+            cameraIndex = new MiniFileManager("cameraSettings.pico");
 
-            LogManager.LogOutput("初期化完了");
+            upDownCamera.Value = int.Parse(cameraIndex.ReadData("0"));
 
             ready = true;
         }
@@ -375,18 +356,7 @@ namespace SoftwareDevelopmentProjects
         private void upDownCamera_ValueChanged(object sender, EventArgs e)
         {
             if (!ready) return;
-            try
-            {
-                using (StreamWriter sw = new StreamWriter(CAMERA_FILE_NAME, false))
-                {
-                    sw.WriteLine(upDownCamera.Value.ToString());
-                }
-                LogManager.LogOutput("カメラ設定の保存");
-            }
-            catch(Exception ex)
-            {
-                LogManager.LogOutput(ex.Message);
-            }
+            cameraIndex.WriteData(upDownCamera.Value.ToString());
         }
     }
 }
