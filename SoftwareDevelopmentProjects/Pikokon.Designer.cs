@@ -68,6 +68,7 @@ namespace SoftwareDevelopmentProjects
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.PictureBox();
+            this.checkBoxDetectFace = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -167,6 +168,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBoxDetectFace);
             this.tabPage1.Controls.Add(this.radioButton2);
             this.tabPage1.Controls.Add(this.radioButton1);
             this.tabPage1.Controls.Add(this.label1);
@@ -187,7 +189,7 @@ namespace SoftwareDevelopmentProjects
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(82, 149);
+            this.radioButton2.Location = new System.Drawing.Point(32, 143);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(58, 20);
             this.radioButton2.TabIndex = 14;
@@ -198,7 +200,7 @@ namespace SoftwareDevelopmentProjects
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(82, 123);
+            this.radioButton1.Location = new System.Drawing.Point(32, 117);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(58, 20);
             this.radioButton1.TabIndex = 13;
@@ -491,6 +493,16 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
+            // checkBoxDetectFace
+            // 
+            this.checkBoxDetectFace.AutoSize = true;
+            this.checkBoxDetectFace.Location = new System.Drawing.Point(32, 169);
+            this.checkBoxDetectFace.Name = "checkBoxDetectFace";
+            this.checkBoxDetectFace.Size = new System.Drawing.Size(85, 20);
+            this.checkBoxDetectFace.TabIndex = 15;
+            this.checkBoxDetectFace.Text = "ズル防止";
+            this.checkBoxDetectFace.UseVisualStyleBackColor = true;
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -557,6 +569,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox checkBoxDetectFace;
     }
 }
 
