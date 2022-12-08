@@ -39,9 +39,7 @@ namespace SoftwareDevelopmentProjects
 
             cameraIndex = new MiniFileManager("cameraSettings.pico");
 
-            string cameraInd = cameraIndex.ReadData("0");
-
-            upDownCamera.Value = int.Parse(cameraInd);
+            upDownCamera.Value = int.Parse(cameraIndex.ReadData("0"));
 
             LogManager.LogOutput("初期化完了");
 
