@@ -28,21 +28,28 @@ namespace SoftwareDevelopmentProjects
             //ログ出力に使用するテキストボックスを指定
             LogManager.logTextBox = logText;
             
+            //表示用リスト初期化
             listStudentId.View = View.Details;
             listStudentId.GridLines = true;
 
-
+            //系列追加
             listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
             listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
 
+            /*
+            //リストに画像を表示するための設定
             ImageList imageListSmall = new ImageList();
             imageListSmall.ImageSize = new Size(1, 30);
             listStudentId.SmallImageList = imageListSmall;
+            */
 
+            //カメラ番号を保存するクラスの初期化
             cameraIndex = new MiniFileManager("cameraSettings.pico");
 
+            //カメラ番号を保存するクラスから読み取った数値をカメラ番号に設定
             upDownCamera.Value = int.Parse(cameraIndex.ReadData("0"));
 
+            //初期化終了
             ready = true;
         }
 
@@ -51,7 +58,10 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         private void ToggleFelica()
         {
+            //学生証読み取り開始
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
+
+            //ボタンText変更
             if (buttonRead.Text == "開始")
             {
                 //例外発生防止のため、ボタン操作を停止する
@@ -67,6 +77,11 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /// <summary>
+        /// 学生証読み取りの切り替え
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             ToggleFelica();
@@ -84,6 +99,12 @@ namespace SoftwareDevelopmentProjects
             */
 
         }
+
+        /// <summary>
+        /// 日時更新用タイマー
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             DateTime datetime = DateTime.Now;
@@ -92,53 +113,33 @@ namespace SoftwareDevelopmentProjects
             labelTime.Text = datetime.ToString("MM月dd日\nHH:mm:ss");
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
 
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
-
+        /// <summary>
+        /// 削除ボタンの有効化設定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            //項目数が0より多いなら
             if(listStudentId.SelectedItems.Count > 0)
             {
+                //削除ボタンを有効化
                 buttonDelete.Enabled = true;
             }
             else
             {
+                //削除ボタンの無効化
                 buttonDelete.Enabled = false;
             }
         }
 
+        //リスト項目の削除
         private void button3_Click(object sender, EventArgs e)
         {
             if (listStudentId.SelectedItems.Count > 0)
@@ -147,10 +148,6 @@ namespace SoftwareDevelopmentProjects
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 LogManager.LogOutput("選択した項目を削除");
             }
-            else
-            {
-                
-            }
         }
 
         private void Pikokon_Load(object sender, EventArgs e)
@@ -158,15 +155,11 @@ namespace SoftwareDevelopmentProjects
 
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-        }
-
+        /// <summary>
+        /// 学生証読み取りタイマー処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fericaLoadTimer_Tick(object sender, EventArgs e)
         {
             try
@@ -220,9 +213,13 @@ namespace SoftwareDevelopmentProjects
                         player.Dispose();
                         });
 
+                        //時間を取得
                         DateTime dateTime = DateTime.Now;
+
+                        //リスト項目に追加
                         string[] row = { str, dateTime.ToString("t") };
                         listStudentId.Items.Add(new ListViewItem(row));
+
                         LogManager.LogOutput("学籍番号を取得: " + str);
                     }
                     catch (Exception)//学生証を読み取れなかった場合など
@@ -247,9 +244,16 @@ namespace SoftwareDevelopmentProjects
 
         }
 
+        /// <summary>
+        /// 保存ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
+            //データを保存しやすいように変換
             SaveClass.ConvertToSaveData(listStudentId.Items);
+            //保存
             SaveClass.ExportCsv();
         }
 
@@ -258,18 +262,27 @@ namespace SoftwareDevelopmentProjects
 
         }
 
+        /// <summary>
+        /// カメラテストボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
             try
             {
+                //カメラを初期化
                 CameraClass camera = new CameraClass();
+                //設定された番号のカメラから写真を撮る
                 camera.TakePhoto((int)upDownCamera.Value);
+                //撮った写真をPictureBoxに出力
                 takePhotoPictureBox.Image = camera.bitmap;
+                //顔検出した結果をPictureBoxに出力
                 takePhotoPictureBox.Image = camera.GetDetectedFace();
             }
             catch (Exception ex)
             {
-                LogManager.LogOutput(ex.Message + "\r\n");
+                LogManager.LogOutput(ex.Message);
              }
         }
         
@@ -278,19 +291,28 @@ namespace SoftwareDevelopmentProjects
 
         }
 
+        /// <summary>
+        /// 講義削除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click_1(object sender, EventArgs e)
         {
+            //講義が選択されていない
             if(listBox1.SelectedIndex < 0)
             {
                 LogManager.LogOutput("削除できる講義がありません");
             }
             else
             {
+                //ダイアログを出す
                 DialogResult dialogResult = 
                     MessageBox.Show("講義を削除します\r\nいいですか?", "講義削除", MessageBoxButtons.YesNo);
 
+                //Yesなら
                 if(dialogResult == DialogResult.Yes)
                 {
+                    //削除処理
                     MessageBox.Show(listBox1.SelectedIndex.ToString());
                     LogManager.LogOutput("講義を削除: " + listBox1.SelectedItem.ToString());
                     MessageBox.Show("講義を削除しました");
@@ -298,9 +320,16 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /// <summary>
+        /// 講義追加設定
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click_1(object sender, EventArgs e)
         {
+            //講義名入力InputBox
             string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
+            //講義の追加
             listBox1.Items.Add(s1);
         }
 
@@ -340,6 +369,11 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /// <summary>
+        /// 選択した時限の設定を呼び出す
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             label10.Text = listBox1.SelectedItem.ToString();
@@ -355,14 +389,27 @@ namespace SoftwareDevelopmentProjects
             
         }
 
+        /// <summary>
+        /// カメラ番号が変更された時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void upDownCamera_ValueChanged(object sender, EventArgs e)
         {
+            //準備が出来ていなかったら終了
             if (!ready) return;
+            //番号を保存
             cameraIndex.WriteData(upDownCamera.Value.ToString());
         }
 
+        /// <summary>
+        /// リンククリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            //URLに飛ばす
             System.Diagnostics.Process.Start("https://www.aut.ac.jp/");
         }
     }
