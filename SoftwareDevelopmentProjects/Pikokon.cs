@@ -431,6 +431,8 @@ namespace SoftwareDevelopmentProjects
         private void button4_Click(object sender, EventArgs e)
         {
             lectureTimeMan.WriteData(lectureTime);
+            LogManager.LogOutput("講義時間を保存");
+            MessageBox.Show("講義時間を保存しました");
         }
 
         private void label10_Click(object sender, EventArgs e)
