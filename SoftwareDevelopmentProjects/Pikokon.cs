@@ -339,6 +339,7 @@ namespace SoftwareDevelopmentProjects
             string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
             //講義の追加
             listBox1.Items.Add(s1);
+            LogManager.LogOutput("講義を追加: " + s1);
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
