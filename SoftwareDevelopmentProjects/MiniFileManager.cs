@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SoftwareDevelopmentProjects
@@ -73,6 +74,163 @@ namespace SoftwareDevelopmentProjects
                 throw new Exception(ex.ToString());
             }
             return data;
+        }
+
+        /// <summary>
+        /// 指定したファイルからデータを読む
+        /// ファイルが見つからなかった場合はinitializeStringで上書き
+        /// </summary>
+        /// <param name="initializeString">ファイルが見つからなかった際に書き込む値(配列)</param>
+        /// <returns></returns>
+        public string ReadData(string[] initializeString)
+        {
+            string data = string.Empty;
+            try
+            {
+                using (StreamReader sr = new StreamReader(fileName))
+                {
+                    data = sr.ReadToEnd();
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(fileName, false))
+                    {
+                        foreach(string str in initializeString)
+                        {
+                            sw.WriteLine(str);
+                        }
+                    }
+                    using (StreamReader sr = new StreamReader(fileName))
+                    {
+                        data = sr.ReadToEnd();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogManager.LogOutput(ex.Message);
+                    throw new Exception(ex.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
+                throw new Exception(ex.ToString());
+            }
+            return data;
+        }
+
+        /// <summary>
+        /// ファイルから文章を配列で読み取る
+        /// ファイルが存在しない場合はinitializeStringで上書きされる
+        /// </summary>
+        /// <param name="initializeString">上書きする値</param>
+        /// <returns></returns>
+        public string[] ReadDataArray(string initializeString)
+        {
+            string data = string.Empty;
+            List<string> listData = new List<string>();
+            try
+            {
+                using (StreamReader sr = new StreamReader(fileName))
+                {
+                    data = sr.ReadLine();
+                    while (data != null)
+                    {
+                        listData.Add(data);
+                        data = sr.ReadLine();
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(fileName, false))
+                    {
+                        sw.WriteLine(initializeString);
+                    }
+                    using (StreamReader sr = new StreamReader(fileName))
+                    {
+                        data = sr.ReadLine();
+                        while (data != null)
+                        {
+                            listData.Add(data);
+                            data = sr.ReadLine();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogManager.LogOutput(ex.Message);
+                    throw new Exception(ex.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
+                throw new Exception(ex.ToString());
+            }
+            return listData.ToArray();
+        }
+
+        /// <summary>
+        /// ファイルから文章を配列で読み取る
+        /// ファイルが存在しない場合はinitializeStringで上書きされる
+        /// </summary>
+        /// <param name="initializeString">上書きする値(配列)</param>
+        /// <returns></returns>
+        public string[] ReadDataArray(string[] initializeString)
+        {
+            string data = string.Empty;
+            List<string> listData = new List<string>();
+            try
+            {
+                using (StreamReader sr = new StreamReader(fileName))
+                {
+                    data = sr.ReadLine();
+                    while(data != null)
+                    {
+                        listData.Add(data);
+                        data = sr.ReadLine();
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(fileName, false))
+                    {
+                        foreach (string str in initializeString)
+                        {
+                            sw.WriteLine(str);
+                        }
+                    }
+                    using (StreamReader sr = new StreamReader(fileName))
+                    {
+                        data = sr.ReadLine();
+                        while (data != null)
+                        {
+                            listData.Add(data);
+                            data = sr.ReadLine();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogManager.LogOutput(ex.Message);
+                    throw new Exception(ex.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
+                throw new Exception(ex.ToString());
+            }
+            return listData.ToArray();
         }
 
         /// <summary>
