@@ -21,7 +21,10 @@ namespace SoftwareDevelopmentProjects
             {
                 sw.WriteLine("[" + DateTime.Now.ToString("G") + "] " + msg);
             }
-            logTextBox.Text = msg + "(" + DateTime.Now.ToString("T") + ")";
+            if (logTextBox != null)
+            {
+                logTextBox.Text = msg + "(" + DateTime.Now.ToString("T") + ")";
+            }
         }
     }
 }
