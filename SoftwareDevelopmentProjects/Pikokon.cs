@@ -313,9 +313,17 @@ namespace SoftwareDevelopmentProjects
                 if(dialogResult == DialogResult.Yes)
                 {
                     //削除処理
-                    MessageBox.Show(listBox1.SelectedIndex.ToString());
-                    LogManager.LogOutput("講義を削除: " + listBox1.SelectedItem.ToString());
-                    MessageBox.Show("講義を削除しました");
+                    try
+                    {
+                        LogManager.LogOutput("講義を削除: " + listBox1.SelectedItem.ToString());
+                        MessageBox.Show("講義を削除しました");
+                        listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+                        listBox1.SelectedIndex = -1;
+                    }
+                    catch (NullReferenceException)
+                    {
+                        
+                    }
                 }
             }
         }
@@ -376,7 +384,16 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label10.Text = listBox1.SelectedItem.ToString();
+            if (listBox1.SelectedIndex >= 0)
+            {
+                button3.Enabled = true;
+                label10.Text = listBox1.SelectedItem.ToString();
+            }
+            else
+            {
+                button3.Enabled = false;
+                label10.Text = string.Empty;
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
