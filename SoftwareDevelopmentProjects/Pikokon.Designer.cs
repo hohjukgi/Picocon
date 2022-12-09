@@ -449,6 +449,7 @@ namespace SoftwareDevelopmentProjects
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(43, 23);
             this.numericUpDown2.TabIndex = 8;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // numericUpDown1
             // 
@@ -471,6 +472,7 @@ namespace SoftwareDevelopmentProjects
             0,
             0,
             0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label4
             // 
