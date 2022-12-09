@@ -15,15 +15,17 @@ namespace SoftwareDevelopmentProjects
     public partial class Pikokon : Form
     {
 
-        private bool ready = false;
-        private MiniFileManager cameraIndex;
+        private bool ready = false;                 //初期化が完了したかどうか
+        private MiniFileManager cameraIndex;        //カメラ番号ファイルの操作クラス
 
         public Pikokon()
         {
             InitializeComponent();
 
+            //時間更新タイマーを起動
             dateTimer.Start();
 
+            //ログ出力に使用するテキストボックスを指定
             LogManager.logTextBox = logText;
             
             listStudentId.View = View.Details;
