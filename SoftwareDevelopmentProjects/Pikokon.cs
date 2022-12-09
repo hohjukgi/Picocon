@@ -16,7 +16,9 @@ namespace SoftwareDevelopmentProjects
     {
 
         private bool ready = false;                 //初期化が完了したかどうか
-        private MiniFileManager cameraIndex;        //カメラ番号ファイルの操作クラス
+        private MiniFileManager cameraIndexMan;     //カメラ番号ファイルの操作クラス
+        private MiniFileManager lectureTimeMan;     //講義時間ファイルの操作クラス
+        private string[] lectureTime;               //講義時間
 
         public Pikokon()
         {
@@ -44,10 +46,26 @@ namespace SoftwareDevelopmentProjects
             */
 
             //カメラ番号を保存するクラスの初期化
-            cameraIndex = new MiniFileManager("cameraSettings.pico");
+            cameraIndexMan = new MiniFileManager("cameraSettings.pico");
 
             //カメラ番号を保存するクラスから読み取った数値をカメラ番号に設定
-            upDownCamera.Value = int.Parse(cameraIndex.ReadData("0"));
+            upDownCamera.Value = int.Parse(cameraIndexMan.ReadData("0"));
+
+            //講義開始時間を保存するクラスの初期化
+            lectureTimeMan = new MiniFileManager("lectureSettings.pico");
+
+            //初期化用の講義開始時間
+            string[] defaultTime =
+            {
+                "9,30",
+                "11,10",
+                "13,30",
+                "15,00"
+            };
+
+            //講義開始時間保存クラスから読み取った数値をlectureTimeに読みだす
+            //ファイルがなかった場合は初期化用の講義開始時間で初期化
+            lectureTime = lectureTimeMan.ReadDataArray(defaultTime);
 
             //初期化終了
             ready = true;
@@ -346,8 +364,10 @@ namespace SoftwareDevelopmentProjects
         {
             if (radioButton3.Checked)
             {
-                numericUpDown1.Text = "9";
-                numericUpDown2.Text = "30";
+                //lectureTimeから指定した時限の講義開始時間を取得
+                string[] startTime = lectureTime[0].Split(',');
+                numericUpDown1.Text = startTime[0];
+                numericUpDown2.Text = startTime[1];
             }
         }
 
@@ -355,8 +375,10 @@ namespace SoftwareDevelopmentProjects
         {
             if (radioButton4.Checked)
             {
-                numericUpDown1.Text = "11";
-                numericUpDown2.Text = "10";
+                //lectureTimeから指定した時限の講義開始時間を取得
+                string[] startTime = lectureTime[1].Split(',');
+                numericUpDown1.Text = startTime[0];
+                numericUpDown2.Text = startTime[1];
             }
         }
 
@@ -364,8 +386,10 @@ namespace SoftwareDevelopmentProjects
         {
             if (radioButton5.Checked)
             {
-                numericUpDown1.Text = "13";
-                numericUpDown2.Text = "30";
+                //lectureTimeから指定した時限の講義開始時間を取得
+                string[] startTime = lectureTime[2].Split(',');
+                numericUpDown1.Text = startTime[0];
+                numericUpDown2.Text = startTime[1];
             }
         }
 
@@ -373,8 +397,10 @@ namespace SoftwareDevelopmentProjects
         {
             if (radioButton6.Checked)
             {
-                numericUpDown1.Text = "15";
-                numericUpDown2.Text = "10";
+                //lectureTimeから指定した時限の講義開始時間を取得
+                string[] startTime = lectureTime[3].Split(',');
+                numericUpDown1.Text = startTime[0];
+                numericUpDown2.Text = startTime[1];
             }
         }
 
@@ -397,9 +423,16 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /// <summary>
+        /// 講義時間保存処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
-
+            lectureTimeMan.WriteData(lectureTime);
+            LogManager.LogOutput("講義時間を保存");
+            MessageBox.Show("講義時間を保存しました");
         }
 
         private void label10_Click(object sender, EventArgs e)
@@ -417,7 +450,7 @@ namespace SoftwareDevelopmentProjects
             //準備が出来ていなかったら終了
             if (!ready) return;
             //番号を保存
-            cameraIndex.WriteData(upDownCamera.Value.ToString());
+            cameraIndexMan.WriteData(upDownCamera.Value.ToString());
         }
 
         /// <summary>
@@ -429,6 +462,54 @@ namespace SoftwareDevelopmentProjects
         {
             //URLに飛ばす
             System.Diagnostics.Process.Start("https://www.aut.ac.jp/");
+        }
+
+        /// <summary>
+        /// 講義開始時が変更されたとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            //時間情報をlectureTimeに保存
+            SaveLectureStartTime();
+        }
+
+        /// <summary>
+        /// 講義開始分が変更されたとき
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            //時間情報をlectureTimeに保存
+            SaveLectureStartTime();
+        }
+
+        /// <summary>
+        /// 時間情報をlectureTimeに格納
+        /// </summary>
+        private void SaveLectureStartTime()
+        {
+            //現在の開始時刻設定を保存しやすいように変更
+            string saveStr = numericUpDown1.Value + "," + numericUpDown2.Value;
+
+            if (radioButton3.Checked)//1限目なら
+            {
+                lectureTime[0] = saveStr;
+            }
+            else if (radioButton4.Checked)//2限目なら
+            {
+                lectureTime[1] = saveStr;
+            }
+            else if (radioButton5.Checked)//3限目なら
+            {
+                lectureTime[2] = saveStr;
+            }
+            else if (radioButton6.Checked)//4限目なら
+            {
+                lectureTime[3] = saveStr;
+            }
         }
     }
 }
