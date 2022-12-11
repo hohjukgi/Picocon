@@ -15,10 +15,12 @@ namespace SoftwareDevelopmentProjects
     public partial class Pikokon : Form
     {
 
-        private bool ready = false;                 //初期化が完了したかどうか
-        private MiniFileManager cameraIndexMan;     //カメラ番号ファイルの操作クラス
-        private MiniFileManager lectureTimeMan;     //講義時間ファイルの操作クラス
-        private string[] lectureTime;               //講義時間
+        private bool ready = false;                         //初期化が完了したかどうか
+        private MiniFileManager cameraIndexMan;             //カメラ番号ファイルの操作クラス
+        private MiniFileManager lectureTimeMan;             //講義時間ファイルの操作クラス
+        private string[] lectureTime;                       //講義時間
+        private CameraClass camera;                         //実装用のカメラクラス
+        private CameraClass testCamera;                     //テスト用のカメラクラス
 
         public Pikokon()
         {
@@ -66,6 +68,10 @@ namespace SoftwareDevelopmentProjects
             //講義開始時間保存クラスから読み取った数値をlectureTimeに読みだす
             //ファイルがなかった場合は初期化用の講義開始時間で初期化
             lectureTime = lectureTimeMan.ReadDataArray(defaultTime);
+
+            //カメラクラスの初期化
+            camera = new CameraClass();
+            testCamera = new CameraClass();
 
             //初期化終了
             ready = true;
@@ -207,8 +213,6 @@ namespace SoftwareDevelopmentProjects
                         //ズル防止にチェックが入っていたら
                         if (checkBoxDetectFace.Checked)
                         {
-                            //画像処理用クラスを生成
-                            CameraClass camera = new CameraClass();
                             //カメラから写真を撮る
                             camera.TakePhoto((int)upDownCamera.Value);
                             //顔が検知できなかったら
@@ -287,21 +291,20 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
-            try
+            //設定された番号のカメラから写真を撮る
+            testCamera.TakePhoto((int)upDownCamera.Value);
+            //撮った写真をPictureBoxに出力
+            takePhotoPictureBox.Image = testCamera.bitmap;
+            if (testCamera.DetectFace())
             {
-                //カメラを初期化
-                CameraClass camera = new CameraClass();
-                //設定された番号のカメラから写真を撮る
-                camera.TakePhoto((int)upDownCamera.Value);
-                //撮った写真をPictureBoxに出力
-                takePhotoPictureBox.Image = camera.bitmap;
                 //顔検出した結果をPictureBoxに出力
-                takePhotoPictureBox.Image = camera.GetDetectedFace();
+                takePhotoPictureBox.Image = testCamera.faceBitmap;
+                if (testCamera.dessCount > 1)
+                {
+                    float dist = testCamera.CompareFeature(testCamera.dessCount - 1, testCamera.dessCount - 2);
+                    MessageBox.Show((testCamera.dessCount - 1) + "番目と" + (testCamera.dessCount - 2) + "番目の画像の特徴量距離は " + dist.ToString() + " です");
+                }
             }
-            catch (Exception ex)
-            {
-                LogManager.LogOutput(ex.Message);
-             }
         }
         
         private void labelName_Click(object sender, EventArgs e)

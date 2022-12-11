@@ -10,10 +10,19 @@ namespace SoftwareDevelopmentProjects
 {
     internal class CameraClass
     {
+        //画像を格納する配列
         private Mat _flame;
+
+        //顔画像を格納する配列
+        private Mat _face;
+
+        //特徴量の配列
         private List<Mat> dess;
+
+        //特徴点の配列
         private List<KeyPoint[]> points;
 
+        //_flameをビットマップ画像に変換したもの
         public Bitmap bitmap
         {
             get { 
@@ -21,8 +30,26 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        public Bitmap faceBitmap
+        {
+            get
+            {
+                return BitmapConverter.ToBitmap(_face);
+            }
+        }
+
+        //dessの配列数
+        public int dessCount
+        {
+            get
+            {
+                return dess.Count;
+            }
+        }
+
         public CameraClass()
         {
+            _face = null;
             _flame = null;
             dess = new List<Mat>();
             points = new List<KeyPoint[]>();
@@ -84,18 +111,26 @@ namespace SoftwareDevelopmentProjects
         /// <returns>bool</returns>
         public bool DetectFace()
         {
+            //顔画像を削除
+            _face = null;
 
+            //画像が撮影されていないなら
             if (_flame == null)
             {
+                //顔は検出されなかった
                 LogManager.LogOutput("フレームがnullです");
                 return false;
             }
 
-            //publish時にフォルダが変わる
+            Mat matRetImage = new Mat();
+
+            //必須ファイル
             string classifierFilePath = @"haarcascade_frontalface_default.xml";
 
+            //カスケードファイルが見つからなかったら
             if (!File.Exists(classifierFilePath))
             {
+                //顔は検出されなかった
                 LogManager.LogOutput("顔認識用カスケードファイルがみつかりません");
                 return false;
             }
@@ -104,14 +139,11 @@ namespace SoftwareDevelopmentProjects
             using (var haarCascade = new CascadeClassifier(classifierFilePath))
 
             // 判定画像ファイルをロード
-            using (var matSrcImage = _flame)
             using (var matGrayscaleImage = new Mat())
             {
-                Mat matRetImage = matSrcImage.Clone();
-
                 // 入力画像をグレースケール化
                 Cv2.CvtColor(
-                    src: matSrcImage,
+                    src: _flame.Clone(),
                     dst: matGrayscaleImage,
                     code: ColorConversionCodes.BGR2GRAY);
 
@@ -122,87 +154,70 @@ namespace SoftwareDevelopmentProjects
                     minNeighbors: 3,
                     minSize: new OpenCvSharp.Size(100, 100));
 
+                //顔検出に失敗時か、顔が検出されなかったら
                 if(faces == null || faces.Length <= 0)
                 {
+                    //顔は検出されなかった
                     LogManager.LogOutput("顔の検出に失敗");
                     return false;
                 }
-            }
 
-            ExtractFeatureValue();
+                //一番大きい(近い)顔
+                Rect maxRect = new Rect();
 
-            LogManager.LogOutput("顔の検出に成功");
+                //一番大きい(近い)顔の座標
+                int rectMaxSize = 0;
 
-            return true;
-        }
-
-        public Bitmap GetDetectedFace()
-        {
-            // 結果画像
-            Mat matRetImage = null;
-
-            if (_flame == null)
-            {
-                throw new Exception("Image is null");
-            }
-
-            //publish時にフォルダが変わる
-            string classifierFilePath = @"haarcascade_frontalface_default.xml";
-
-            if (!File.Exists(classifierFilePath))
-            {
-                LogManager.LogOutput("顔認識用カスケードファイルがみつかりません");
-                return null;
-            }
-
-            // 顔認識用カスケード分類器を作成
-            using (var haarCascade = new CascadeClassifier(classifierFilePath))
-
-            // 判定画像ファイルをロード
-            using (var matSrcImage = _flame)
-            using (var matGrayscaleImage = new Mat())
-            {
-                matRetImage = matSrcImage.Clone();
-
-                // 入力画像をグレースケール化
-                Cv2.CvtColor(
-                    src: matSrcImage,
-                    dst: matGrayscaleImage,
-                    code: ColorConversionCodes.BGR2GRAY);
-
-                // 顔認識を実行
-                var faces = haarCascade.DetectMultiScale(
-                    image: matGrayscaleImage,
-                    scaleFactor: 1.1,
-                    minNeighbors: 3,
-                    minSize: new OpenCvSharp.Size(100, 100));
-
-                if (faces == null || faces.Length <= 0)
-                {
-                    throw new Exception("Can't detect faces");
-                }
-
-                // 認識した顔の周りを枠線で囲む
+                // 一番近い顔を判断
                 foreach (var face in faces)
                 {
+                    /*
                     Cv2.Rectangle(
                         img: matRetImage,
                         rect: new Rect(face.X, face.Y, face.Width, face.Height),
                         //color: new Scalar(0, 255, 255),
                         color: new Scalar(0, 0, 255),
                         thickness: 2);
+                    */
+
+                    //検出した顔の大きさ
+                    int rectSize = face.Width * face.Height;
+
+                    //現在の一番大きい顔の大きさよりも大きいなら
+                    if (rectSize > rectMaxSize)
+                    {
+                        //代入
+                        rectMaxSize = rectSize;
+                        maxRect = new Rect(face.X, face.Y, face.Width, face.Height);
+                    }
                 }
+
+                matRetImage = new Mat(maxRect.Height, maxRect.Width, MatType.CV_16SC1);
+
+                for (int y = 0; y < maxRect.Height; y++)
+                {
+                    for (int x = 0; x < maxRect.Width; x++)
+                    {
+                        matRetImage.At<int>(y,x) = _flame.At<int>(y + maxRect.Height,x + maxRect.Width);
+                    }
+                }
+
             }
 
-            // 結果画像を表示
-            Bitmap retBitmap = BitmapConverter.ToBitmap(matRetImage);
+            //顔を格納
+            _face = matRetImage;
 
             matRetImage.Dispose();
-            return retBitmap;
+
+            //ExtractFeatureValue();
+
+            LogManager.LogOutput("顔の検出に成功");
+
+            return true;
         }
 
         /// <summary>
-        /// 画像の特徴点を抽出する
+        /// 画像の特徴点、特徴量を抽出する
         /// </summary>
         private void ExtractFeatureValue()
         {
@@ -234,11 +249,41 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
-        private void CompareFeature(int arg1, int arg2)
+        /// <summary>
+        /// arg1とarg2の特徴量距離(類似度)を算出する
+        /// 値が小さいほど似ている
+        /// </summary>
+        /// <param name="arg1">特徴量1</param>
+        /// <param name="arg2">特徴量2</param>
+        /// <returns>特徴量距離</returns>
+        public float CompareFeature(int arg1, int arg2)
         {
+            //BFMatcherを生成
             BFMatcher bFMatcher = new BFMatcher(NormTypes.Hamming, true);
 
+            //マッチング
             DMatch[] dm = bFMatcher.Match(dess[arg1], dess[arg2]);
+
+            //特徴量距離を格納する変数
+            float[] dist = new float[dm.Length];
+
+            //sumを格納する変数
+            float sum = 0;
+
+            //sumと特徴量距離を計算する
+            for(int i = 0; i < dm.Length; i++)
+            {
+                //特徴量距離
+                dist[i] = dm[i].Distance;
+
+                //sum
+                sum += dist[i];
+            }
+
+            //特徴量距離の平均を求める
+            float ret = sum / dist.Length;
+            
+            return ret;
         }
     }
 }
