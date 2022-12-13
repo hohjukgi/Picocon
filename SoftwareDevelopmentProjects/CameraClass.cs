@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
@@ -30,6 +29,7 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        //_faceをビットマップ画像に変換したもの
         public Bitmap faceBitmap
         {
             get
@@ -47,6 +47,9 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public CameraClass()
         {
             _face = null;
@@ -219,6 +222,12 @@ namespace SoftwareDevelopmentProjects
         {
             try
             {
+                //抽出元の変数が存在しないなら
+                if (_flame == null)
+                {
+                    throw new Exception("フレームがnullです");
+                }
+
                 //グレースケール画像保存クラス
                 Mat gray = new Mat();
 
@@ -234,11 +243,13 @@ namespace SoftwareDevelopmentProjects
                 //各特徴点に対応する特徴記述子
                 Mat des = new Mat();
 
-                //特徴点を抽出する
+                //特徴量と特徴点を抽出する
                 aKAZE.DetectAndCompute(gray, null, out keyPoints, des);
 
+                //抽出した各要素をListに格納
                 dess.Add(des);
                 points.Add(keyPoints);
+
             }catch(Exception ex)
             {
                 LogManager.LogOutput(ex.Message);
@@ -254,6 +265,16 @@ namespace SoftwareDevelopmentProjects
         /// <returns>特徴量距離</returns>
         public float CompareFeature(int arg1, int arg2)
         {
+            if(arg1 < 0 || arg2 < 0)
+            {
+                throw new Exception("引数が0未満です");
+            }
+
+            if (arg1 > (dess.Count - 1) || arg2 > (dess.Count - 1))
+            {
+                throw new Exception("引数が配列の要素数を超えています");
+            }
+
             //BFMatcherを生成
             BFMatcher bFMatcher = new BFMatcher(NormTypes.Hamming, true);
 
@@ -276,10 +297,8 @@ namespace SoftwareDevelopmentProjects
                 sum += dist[i];
             }
 
-            //特徴量距離の平均を求める
-            float ret = sum / dist.Length;
-            
-            return ret;
+            //特徴量距離の平均を求め、返却
+            return (sum / dist.Length);
         }
     }
 }
