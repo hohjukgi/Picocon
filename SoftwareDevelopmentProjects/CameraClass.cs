@@ -257,7 +257,7 @@ namespace SoftwareDevelopmentProjects
         }
 
         /// <summary>
-        /// arg1とarg2の特徴量距離(類似度)を算出する
+        /// arg1とarg2の特徴量距離(相違度)を算出する
         /// 値が小さいほど似ている
         /// </summary>
         /// <param name="arg1">特徴量1</param>
