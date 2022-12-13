@@ -171,14 +171,6 @@ namespace SoftwareDevelopmentProjects
                 // 一番近い顔を判断
                 foreach (var face in faces)
                 {
-                    /*
-                    Cv2.Rectangle(
-                        img: matRetImage,
-                        rect: new Rect(face.X, face.Y, face.Width, face.Height),
-                        //color: new Scalar(0, 255, 255),
-                        color: new Scalar(0, 0, 255),
-                        thickness: 2);
-                    */
 
                     //検出した顔の大きさ
                     int rectSize = face.Width * face.Height;
@@ -192,8 +184,10 @@ namespace SoftwareDevelopmentProjects
                     }
                 }
 
+                //顔画像のみを格納するMatを作成
                 matRetImage = new Mat(maxRect.Height, maxRect.Width, MatType.CV_16SC1);
 
+                //顔画像を格納
                 for (int y = 0; y < maxRect.Height; y++)
                 {
                     for (int x = 0; x < maxRect.Width; x++)
@@ -207,9 +201,11 @@ namespace SoftwareDevelopmentProjects
             //顔を格納
             _face = matRetImage;
 
+            //計算用ファイルを破棄
             matRetImage.Dispose();
 
-            //ExtractFeatureValue();
+            //特徴点抽出
+            ExtractFeatureValue();
 
             LogManager.LogOutput("顔の検出に成功");
 
@@ -227,7 +223,7 @@ namespace SoftwareDevelopmentProjects
                 Mat gray = new Mat();
 
                 //グレースケールに変換
-                Cv2.CvtColor(_flame, gray, ColorConversionCodes.RGB2GRAY);
+                Cv2.CvtColor(_face, gray, ColorConversionCodes.RGB2GRAY);
 
                 //特徴量比較クラスを生成
                 AKAZE aKAZE = AKAZE.Create();
