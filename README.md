@@ -14,7 +14,8 @@ Felica学生証とPasoriを使用した出席管理を行います<br>
 - windows 10
 - PaSoRi RC-S300
 - [NFCポートソフトウェア](https://www.sony.co.jp/Products/felica/consumer/support/download/nfcportsoftware.html?j-short=fsc_dl)
-- 顔検出用: haarcascade_frontalface_default.xml[[Github]](https://github.com/opencv/opencv/tree/master/data/haarcascades)**[ズル防止機能用]**
+- 顔検出用: haarcascade_frontalface_default.xml[[Github]](https://github.com/opencv/opencv/tree/master/data/haarcascades)**[ズル防止機能用]**<br>
+↑[導入方法](https://github.com/hohjukgi/Picocon/wiki/%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99)
 
 ## プロジェクト動作
 > プロジェクトを動作させるためには上記に加え<br>
