@@ -188,7 +188,7 @@ namespace SoftwareDevelopmentProjects
                 }
 
                 //顔画像のみを格納するMatを作成
-                matRetImage = new Mat(maxRect.Height, maxRect.Width, MatType.CV_16SC1);
+                matRetImage = new Mat(maxRect.Height, maxRect.Width, MatType.CV_8U);
 
                 //顔画像を格納
                 for (int y = 0; y < maxRect.Height; y++)
@@ -204,8 +204,14 @@ namespace SoftwareDevelopmentProjects
             //顔を格納
             _face = matRetImage;
 
+            //画像を平坦化
+            Cv2.EqualizeHist(_face, _face);
+
+            //表示
+            Cv2.ImShow("Face", matRetImage);
+
             //計算用ファイルを破棄
-            matRetImage.Dispose();
+            //matRetImage.Dispose();
 
             //特徴点抽出
             ExtractFeatureValue();
