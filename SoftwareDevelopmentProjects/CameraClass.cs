@@ -174,6 +174,20 @@ namespace SoftwareDevelopmentProjects
                 // 一番近い顔を判断
                 foreach (var face in faces)
                 {
+                    Mat faceDetectedImage = matGrayscaleImage.Clone();
+
+                    // 認識した顔の周りを枠線で囲む
+                    Cv2.Rectangle(
+                        img: faceDetectedImage,
+                        rect: new Rect(face.X, face.Y, face.Width, face.Height),
+                        color: new Scalar(0, 0, 255),
+                        thickness: 2);
+
+                    //表示
+                    Cv2.ImShow("Detected faces", faceDetectedImage);
+
+                    //解放
+                    faceDetectedImage.Dispose();
 
                     //検出した顔の大きさ
                     int rectSize = face.Width * face.Height;
@@ -195,23 +209,20 @@ namespace SoftwareDevelopmentProjects
                 {
                     for (int x = 0; x < maxRect.Width; x++)
                     {
-                        matRetImage.At<int>(y,x) = _flame.At<int>(y + maxRect.Height,x + maxRect.Width);
+                        matRetImage.At<int>(y,x) = matGrayscaleImage.At<int>(y + maxRect.Height,x + maxRect.Width);
                     }
                 }
 
             }
 
             //顔を格納
-            _face = matRetImage;
-
-            //画像を平坦化
-            Cv2.EqualizeHist(_face, _face);
+            _face = matRetImage.Clone();
 
             //表示
             Cv2.ImShow("Face", matRetImage);
 
             //計算用ファイルを破棄
-            //matRetImage.Dispose();
+            matRetImage.Dispose();
 
             //特徴点抽出
             ExtractFeatureValue();
