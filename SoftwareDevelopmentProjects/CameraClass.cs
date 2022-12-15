@@ -223,7 +223,7 @@ namespace SoftwareDevelopmentProjects
             try
             {
                 //抽出元の変数が存在しないなら
-                if (_flame == null)
+                if (_face == null)
                 {
                     throw new Exception("フレームがnullです");
                 }
