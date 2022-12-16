@@ -26,6 +26,10 @@ namespace SoftwareDevelopmentProjects
         {
             InitializeComponent();
 
+            //サイズを初期化
+            this.Width = 617;
+            this.Height = 618;
+
             //時間更新タイマーを起動
             dateTimer.Start();
 
