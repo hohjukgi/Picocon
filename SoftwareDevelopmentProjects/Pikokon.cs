@@ -97,6 +97,9 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         private void ToggleFelica()
         {
+            //ボタンのロックを切り替え
+            checkBoxDetectFace.Enabled = !checkBoxDetectFace.Enabled;
+
             //学生証読み取り開始
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
 
@@ -183,6 +186,8 @@ namespace SoftwareDevelopmentProjects
         {
             if (listStudentId.SelectedItems.Count > 0)
             {
+                //指定した特徴量を削除
+                camera.RemoveDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
                 //指定した学籍番号をリストから削除
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 LogManager.LogOutput("選択した項目を削除");
@@ -212,7 +217,9 @@ namespace SoftwareDevelopmentProjects
                         if (str == "00000000")
                         {
                             //稀に発生する00000000の学籍番号
-                            LogManager.LogOutput("00000000の学籍番号を取得");
+                            fericaLoadTimer.Stop();
+                            MessageBox.Show("学生証をきちんとかざしてください", "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            fericaLoadTimer.Start();
                             return;
                         }
                         for (int i = 0; i < listStudentId.Items.Count; i++)
@@ -220,7 +227,6 @@ namespace SoftwareDevelopmentProjects
                             if (listStudentId.Items[i].SubItems[0].Text == str)
                             {
                                 //同名の学籍番号
-                                LogManager.LogOutput("重複する学籍番号を取得");
                                 return;
                             }
                         }
@@ -233,8 +239,10 @@ namespace SoftwareDevelopmentProjects
                             //顔が検知できなかったら
                             if (camera.DetectFace() == false)
                             {
-                                MessageBox.Show("カメラに顔が写るようにしてください");
+                                fericaLoadTimer.Stop();
+                                MessageBox.Show("カメラに顔が写るようにしてください", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 LogManager.LogOutput("顔の検出失敗");
+                                fericaLoadTimer.Start();
                                 return;
                             }
                             //識別するだけのデータが存在
@@ -245,8 +253,12 @@ namespace SoftwareDevelopmentProjects
                                 {
                                     if(camera.CompareFeature(i, camera.dessCount - 1))
                                     {
+                                        fericaLoadTimer.Stop();
                                         MessageBox.Show("カード利用の不正を確認しました", "不正確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         MessageBox.Show("相違度: " + camera.GetFeatureValue(i, camera.dessCount - 1));
+                                        //重複した顔を削除
+                                        camera.RemoveDess(camera.dessCount - 1);
+                                        fericaLoadTimer.Start();
                                         return;
                                     }
                                 }
