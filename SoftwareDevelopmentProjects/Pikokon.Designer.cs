@@ -577,6 +577,7 @@ namespace SoftwareDevelopmentProjects
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelTime);
             this.Name = "Pikokon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Picocon";
             this.Load += new System.EventHandler(this.Pikokon_Load);
             this.tabControl1.ResumeLayout(false);
