@@ -18,6 +18,7 @@ namespace SoftwareDevelopmentProjects
         private bool ready = false;                 //初期化が完了したかどうか
         private MiniFileManager cameraIndexMan;     //カメラ番号ファイルの操作クラス
         private MiniFileManager lectureTimeMan;     //講義時間ファイルの操作クラス
+        private MiniFileManager lectureName;        //講義名
         private string[] lectureTime;               //講義時間
 
         public Pikokon()
@@ -53,6 +54,21 @@ namespace SoftwareDevelopmentProjects
 
             //講義開始時間を保存するクラスの初期化
             lectureTimeMan = new MiniFileManager("lectureSettings.pico");
+
+            //講義名を保存するクラスの初期化
+            lectureName = new MiniFileManager("lectureList.pico");
+
+            //保存された講義名ファイルを配列に入れる
+            string[] lectureNames = lectureName.ReadDataArray("");
+
+            //講義名を呼び出す
+            for(int i = 0; i < lectureNames.Length; i++)
+            {
+                if(lectureNames[i] != "")
+                {
+                    listBox1.Items.Add(lectureNames[i]);
+                }
+            }
 
             //初期化用の講義開始時間
             string[] defaultTime =
@@ -357,6 +373,9 @@ namespace SoftwareDevelopmentProjects
             string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
             //講義の追加
             listBox1.Items.Add(s1);
+            string s2 = lectureName.ReadData("");
+            s2 += "\n" + s1;
+            lectureName.WriteData(s2);
             LogManager.LogOutput("講義を追加: " + s1);
         }
 
@@ -510,6 +529,11 @@ namespace SoftwareDevelopmentProjects
             {
                 lectureTime[3] = saveStr;
             }
+        }
+
+        private void LectureSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
