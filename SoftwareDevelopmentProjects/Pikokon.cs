@@ -302,6 +302,14 @@ namespace SoftwareDevelopmentProjects
                 if (testCamera.dessCount > 1)
                 {
                     float dist = testCamera.CompareFeature(testCamera.dessCount - 1, testCamera.dessCount - 2);
+                    if(dist < 120.0f)
+                    {
+                        MessageBox.Show("同じ人です");
+                    }
+                    else
+                    {
+                        MessageBox.Show("違う人です");
+                    }
                     MessageBox.Show((testCamera.dessCount - 1) + "番目と" + (testCamera.dessCount - 2) + "番目の画像の特徴量距離は " + dist.ToString() + " です");
                 }
             }

@@ -184,7 +184,7 @@ namespace SoftwareDevelopmentProjects
                         thickness: 2);
 
                     //表示
-                    Cv2.ImShow("Detected faces", faceDetectedImage);
+                    //Cv2.ImShow("Detected faces", faceDetectedImage);
 
                     //解放
                     faceDetectedImage.Dispose();
@@ -209,7 +209,7 @@ namespace SoftwareDevelopmentProjects
                 {
                     for (int x = 0; x < maxRect.Width; x++)
                     {
-                        matRetImage.At<int>(y,x) = matGrayscaleImage.At<int>(y + maxRect.Height,x + maxRect.Width);
+                        matRetImage.At<int>(y,x) = matGrayscaleImage.At<int>(maxRect.Y + y,maxRect.X + x);
                     }
                 }
 
@@ -219,7 +219,7 @@ namespace SoftwareDevelopmentProjects
             _face = matRetImage.Clone();
 
             //表示
-            Cv2.ImShow("Face", matRetImage);
+            //Cv2.ImShow("Face", matRetImage);
 
             //計算用ファイルを破棄
             matRetImage.Dispose();
@@ -245,12 +245,6 @@ namespace SoftwareDevelopmentProjects
                     throw new Exception("フレームがnullです");
                 }
 
-                //グレースケール画像保存クラス
-                Mat gray = new Mat();
-
-                //グレースケールに変換
-                Cv2.CvtColor(_face, gray, ColorConversionCodes.RGB2GRAY);
-
                 //特徴量比較クラスを生成
                 AKAZE aKAZE = AKAZE.Create();
 
@@ -261,11 +255,13 @@ namespace SoftwareDevelopmentProjects
                 Mat des = new Mat();
 
                 //特徴量と特徴点を抽出する
-                aKAZE.DetectAndCompute(gray, null, out keyPoints, des);
+                aKAZE.DetectAndCompute(_face, null, out keyPoints, des);
 
                 //抽出した各要素をListに格納
                 dess.Add(des);
                 points.Add(keyPoints);
+
+                LogManager.LogOutput("特徴量の抽出に成功");
 
             }catch(Exception ex)
             {
