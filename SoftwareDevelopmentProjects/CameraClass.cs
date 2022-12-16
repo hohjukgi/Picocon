@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
@@ -18,9 +17,6 @@ namespace SoftwareDevelopmentProjects
 
         //特徴量の配列
         private List<Mat> dess;
-
-        //特徴点の配列
-        private List<KeyPoint[]> points;
 
         //_flameをビットマップ画像に変換したもの
         public Bitmap bitmap
@@ -69,7 +65,6 @@ namespace SoftwareDevelopmentProjects
             _face = null;
             _flame = null;
             dess = new List<Mat>();
-            points = new List<KeyPoint[]>();
             _threshold = 120;
         }
 
@@ -273,7 +268,6 @@ namespace SoftwareDevelopmentProjects
 
                 //抽出した各要素をListに格納
                 dess.Add(des);
-                points.Add(keyPoints);
 
                 LogManager.LogOutput("特徴量の抽出に成功");
 
@@ -377,6 +371,15 @@ namespace SoftwareDevelopmentProjects
             float distance = sum / dist.Length;
 
             return distance;
+        }
+
+        /// <summary>
+        /// 指定した特徴量を削除
+        /// </summary>
+        /// <param name="index">要素</param>
+        public void RemoveDess(int index)
+        {
+            dess.RemoveAt(index);
         }
     }
 }
