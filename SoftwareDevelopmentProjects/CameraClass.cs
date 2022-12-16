@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
@@ -325,7 +326,7 @@ namespace SoftwareDevelopmentProjects
             //平均特徴量距離
             float distance = sum / dist.Length;
             
-            if(distance > threshold)
+            if(distance < threshold)
             {
                 return true;
             }

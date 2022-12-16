@@ -332,7 +332,7 @@ namespace SoftwareDevelopmentProjects
                 takePhotoPictureBox.Image = testCamera.faceBitmap;
                 if (testCamera.dessCount > 1)
                 {
-                    if(camera.CompareFeature(testCamera.dessCount - 1, testCamera.dessCount - 2))
+                    if(testCamera.CompareFeature(testCamera.dessCount - 1, testCamera.dessCount - 2))
                     {
                         MessageBox.Show("同じ人です");
                     }
@@ -341,7 +341,7 @@ namespace SoftwareDevelopmentProjects
                         MessageBox.Show("違う人です");
                     }
                     MessageBox.Show((testCamera.dessCount - 1) + "番目と" + (testCamera.dessCount - 2) + "番目の画像の特徴量距離は " + 
-                        camera.GetFeatureValue(testCamera.dessCount - 1, testCamera.dessCount - 2) + " です");
+                        testCamera.GetFeatureValue(testCamera.dessCount - 1, testCamera.dessCount - 2) + " です");
                 }
             }
         }
