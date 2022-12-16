@@ -353,6 +353,17 @@ namespace SoftwareDevelopmentProjects
                         MessageBox.Show("講義を削除しました");
                         listBox1.Items.RemoveAt(listBox1.SelectedIndex);
                         listBox1.SelectedIndex = -1;
+                        //講義名ファイルの更新
+                        string saveLecture = "";
+                        foreach(string lectureItems in listBox1.Items)
+                        {
+                            if(lectureItems != "")
+                            {
+                                saveLecture += "\n" + lectureItems;
+                            }
+                        }
+                        lectureName.WriteData(saveLecture);
+
                     }
                     catch (NullReferenceException)
                     {
@@ -370,13 +381,13 @@ namespace SoftwareDevelopmentProjects
         private void button1_Click_1(object sender, EventArgs e)
         {
             //講義名入力InputBox
-            string s1 = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
+            string lecture = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
             //講義の追加
-            listBox1.Items.Add(s1);
-            string s2 = lectureName.ReadData("");
-            s2 += "\n" + s1;
-            lectureName.WriteData(s2);
-            LogManager.LogOutput("講義を追加: " + s1);
+            listBox1.Items.Add(lecture);
+            string saveLecture = lectureName.ReadData("");
+            saveLecture += "\n" + lecture;
+            lectureName.WriteData(saveLecture);
+            LogManager.LogOutput("講義を追加: " + lecture);
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
