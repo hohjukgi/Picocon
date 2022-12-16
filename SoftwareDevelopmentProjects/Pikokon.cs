@@ -20,6 +20,7 @@ namespace SoftwareDevelopmentProjects
         private MiniFileManager cameraIndexMan;             //カメラ番号ファイルの操作クラス
         private MiniFileManager lectureTimeMan;             //講義時間ファイルの操作クラス
         private MiniFileManager lectureName;                //講義名
+        private string[] lectureTime;                       //講義時間保存
 
         public Pikokon()
         {
