@@ -233,7 +233,23 @@ namespace SoftwareDevelopmentProjects
                             //顔が検知できなかったら
                             if (camera.DetectFace() == false)
                             {
+                                MessageBox.Show("カメラに顔が写るようにしてください");
+                                LogManager.LogOutput("顔の検出失敗");
                                 return;
+                            }
+                            //識別するだけのデータが存在
+                            if (camera.dessCount > 1)
+                            {
+                                //総当たりで比較
+                                for (int i = 0; i < camera.dessCount - 1; i++)
+                                {
+                                    if(camera.CompareFeature(i, camera.dessCount - 1))
+                                    {
+                                        MessageBox.Show("カード利用の不正を確認しました", "不正確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("相違度: " + camera.GetFeatureValue(i, camera.dessCount - 1));
+                                        return;
+                                    }
+                                }
                             }
                         }
                         
@@ -316,8 +332,7 @@ namespace SoftwareDevelopmentProjects
                 takePhotoPictureBox.Image = testCamera.faceBitmap;
                 if (testCamera.dessCount > 1)
                 {
-                    float dist = testCamera.CompareFeature(testCamera.dessCount - 1, testCamera.dessCount - 2);
-                    if(dist < 120.0f)
+                    if(camera.CompareFeature(testCamera.dessCount - 1, testCamera.dessCount - 2))
                     {
                         MessageBox.Show("同じ人です");
                     }
@@ -325,7 +340,8 @@ namespace SoftwareDevelopmentProjects
                     {
                         MessageBox.Show("違う人です");
                     }
-                    MessageBox.Show((testCamera.dessCount - 1) + "番目と" + (testCamera.dessCount - 2) + "番目の画像の特徴量距離は " + dist.ToString() + " です");
+                    MessageBox.Show((testCamera.dessCount - 1) + "番目と" + (testCamera.dessCount - 2) + "番目の画像の特徴量距離は " + 
+                        camera.GetFeatureValue(testCamera.dessCount - 1, testCamera.dessCount - 2) + " です");
                 }
             }
         }

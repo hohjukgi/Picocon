@@ -48,6 +48,19 @@ namespace SoftwareDevelopmentProjects
         }
 
         /// <summary>
+        /// 顔認証閾値
+        /// </summary>
+        private int _threshold;
+
+        public int threshold
+        {
+            get
+            {
+                return _threshold;
+            }
+        }
+
+        /// <summary>
         /// コンストラクタ
         /// </summary>
         public CameraClass()
@@ -56,8 +69,8 @@ namespace SoftwareDevelopmentProjects
             _flame = null;
             dess = new List<Mat>();
             points = new List<KeyPoint[]>();
+            _threshold = 120;
         }
-
 
         /// <summary>
         /// カメラから写真を撮る
@@ -270,13 +283,12 @@ namespace SoftwareDevelopmentProjects
         }
 
         /// <summary>
-        /// arg1とarg2の特徴量距離(相違度)を算出する
-        /// 値が小さいほど似ている
+        /// 顔特徴量が似ているかを取得
         /// </summary>
         /// <param name="arg1">特徴量1</param>
         /// <param name="arg2">特徴量2</param>
-        /// <returns>特徴量距離</returns>
-        public float CompareFeature(int arg1, int arg2)
+        /// <returns>似ているか</returns>
+        public bool CompareFeature(int arg1, int arg2)
         {
             if(arg1 < 0 || arg2 < 0)
             {
@@ -310,8 +322,60 @@ namespace SoftwareDevelopmentProjects
                 sum += dist[i];
             }
 
-            //特徴量距離の平均を求め、返却
-            return (sum / dist.Length);
+            //平均特徴量距離
+            float distance = sum / dist.Length;
+            
+            if(distance > threshold)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 特徴の相違度を返す
+        /// </summary>
+        /// <param name="arg1">特徴1</param>
+        /// <param name="arg2">特徴2</param>
+        /// <returns>特徴の相違度</returns>
+        public float GetFeatureValue(int arg1, int arg2)
+        {
+            if (arg1 < 0 || arg2 < 0)
+            {
+                throw new Exception("引数が0未満です");
+            }
+
+            if (arg1 > (dess.Count - 1) || arg2 > (dess.Count - 1))
+            {
+                throw new Exception("引数が配列の要素数を超えています");
+            }
+
+            //BFMatcherを生成
+            BFMatcher bFMatcher = new BFMatcher(NormTypes.Hamming, true);
+
+            //マッチング
+            DMatch[] dm = bFMatcher.Match(dess[arg1], dess[arg2]);
+
+            //特徴量距離を格納する変数
+            float[] dist = new float[dm.Length];
+
+            //sumを格納する変数
+            float sum = 0;
+
+            //sumと特徴量距離を計算する
+            for (int i = 0; i < dm.Length; i++)
+            {
+                //特徴量距離
+                dist[i] = dm[i].Distance;
+
+                //sum
+                sum += dist[i];
+            }
+
+            //平均特徴量距離
+            float distance = sum / dist.Length;
+
+            return distance;
         }
     }
 }
