@@ -71,6 +71,15 @@ namespace SoftwareDevelopmentProjects
                 }
             }
 
+            //コンボボックスの中身の初期化
+            for(int i = 0; i < lectureNames.Length; i++)
+            {
+                if(lectureNames[i] != "")
+                {
+                    LectureSelectComboBox.Items.Add(lectureNames[i]);
+                }
+            }
+
             //初期化用の講義開始時間
             string[] defaultTime =
             {
@@ -401,6 +410,12 @@ namespace SoftwareDevelopmentProjects
                             }
                         }
                         lectureName.WriteData(saveLecture);
+                        //コンボボックスの更新
+                        LectureSelectComboBox.Items.Clear();
+                        foreach(string lectureItems in listBox1.Items)
+                        {
+                            LectureSelectComboBox.Items.Add(lectureItems);
+                        }
 
                     }
                     catch (NullReferenceException)
@@ -425,6 +440,12 @@ namespace SoftwareDevelopmentProjects
             string saveLecture = lectureName.ReadData("");
             saveLecture += "\n" + lecture;
             lectureName.WriteData(saveLecture);
+            //コンボボックスの更新
+            LectureSelectComboBox.Items.Clear();
+            foreach (string lectureItems in listBox1.Items)
+            {
+                LectureSelectComboBox.Items.Add(lectureItems);
+            }
             LogManager.LogOutput("講義を追加: " + lecture);
         }
 
