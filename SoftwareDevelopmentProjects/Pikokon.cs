@@ -659,6 +659,19 @@ namespace SoftwareDevelopmentProjects
         {
 
         }
+
+        //listBox1選択時にescを押すと選択解除
+        private void listBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyData == Keys.Escape)
+            {
+                try
+                {
+                    listBox1.SelectedIndex = -1;
+                }
+                catch (Exception) { }
+            }
+        }
     }
 }
 
