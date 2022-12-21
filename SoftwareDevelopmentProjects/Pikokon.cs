@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using FelicaLib;
 
 namespace SoftwareDevelopmentProjects
@@ -75,8 +69,13 @@ namespace SoftwareDevelopmentProjects
             {
                 if(lectureNames[i] != "")
                 {
+                    //講義名と講義時間データに分ける
                     string[] lectureData = lectureNames[i].Split(',');
+
+                    //講義名を追加
                     listBox1.Items.Add(lectureData[0]);
+
+                    //講義開始時間を追加
                     lectureStartTime.Add(int.Parse(lectureData[1]));
                 }
             }
@@ -202,11 +201,6 @@ namespace SoftwareDevelopmentProjects
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 LogManager.LogOutput("選択した項目を削除");
             }
-        }
-
-        private void Pikokon_Load(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -439,9 +433,13 @@ namespace SoftwareDevelopmentProjects
             string lecture = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
             //講義の追加
             listBox1.Items.Add(lecture);
+            //データの読み取り
             string saveLecture = lectureName.ReadData("");
+            //新しいデータの追加
             saveLecture += "\n" + lecture + ",0";
+            //データの保存
             lectureName.WriteData(saveLecture);
+            //講義開始時間の設定
             lectureStartTime.Add(0);
             //コンボボックスの更新
             LectureSelectComboBox.Items.Clear();
@@ -460,6 +458,7 @@ namespace SoftwareDevelopmentProjects
         {
             if(listBox1.SelectedIndex >= 0)
             {
+                //選択されている講義の開始時刻を変更する
                 lectureStartTime[listBox1.SelectedIndex] = time;
             }
         }
@@ -472,6 +471,7 @@ namespace SoftwareDevelopmentProjects
                 string[] startTime = lectureTime[0].Split(',');
                 numericUpDown1.Text = startTime[0];
                 numericUpDown2.Text = startTime[1];
+                //選択されている講義の講義開始時間を0に設定
                 ChangeLectureStartTime(0);
             }
         }
@@ -484,6 +484,7 @@ namespace SoftwareDevelopmentProjects
                 string[] startTime = lectureTime[1].Split(',');
                 numericUpDown1.Text = startTime[0];
                 numericUpDown2.Text = startTime[1];
+                //選択されている講義の講義開始時間を1に設定
                 ChangeLectureStartTime(1);
             }
         }
@@ -496,6 +497,7 @@ namespace SoftwareDevelopmentProjects
                 string[] startTime = lectureTime[2].Split(',');
                 numericUpDown1.Text = startTime[0];
                 numericUpDown2.Text = startTime[1];
+                //選択されている講義の講義開始時間を2に設定
                 ChangeLectureStartTime(2);
             }
         }
@@ -508,6 +510,7 @@ namespace SoftwareDevelopmentProjects
                 string[] startTime = lectureTime[3].Split(',');
                 numericUpDown1.Text = startTime[0];
                 numericUpDown2.Text = startTime[1];
+                //選択されている講義の講義開始時間を3に設定
                 ChangeLectureStartTime(3);
             }
         }
@@ -524,7 +527,7 @@ namespace SoftwareDevelopmentProjects
                 button3.Enabled = true;
                 label10.Text = listBox1.SelectedItem.ToString();
 
-                //設定されている講義時間を選択
+                //設定されている講義時間のチェックボックスを選択
                 switch (lectureStartTime[listBox1.SelectedIndex])
                 {
                     case 0:
@@ -558,13 +561,19 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
+            //保存用変数
             string lectureData = "";
+            //保存用変数にデータをまとめる
             for(int i = 0; i < listBox1.Items.Count; i++)
             {
                 lectureData += listBox1.Items[i] + "," + lectureStartTime[i] + "\r\n";
             }
+            //講義名、開始時間を保存
             lectureName.WriteData(lectureData);
+            //限目の講義開始時間を設定
             lectureTimeMan.WriteData(lectureTime);
+
+            //ログ
             LogManager.LogOutput("講義時間を保存");
             MessageBox.Show("講義時間を保存しました");
         }
