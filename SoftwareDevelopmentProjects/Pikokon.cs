@@ -21,6 +21,7 @@ namespace SoftwareDevelopmentProjects
         private MiniFileManager lectureTimeMan;             //講義時間ファイルの操作クラス
         private MiniFileManager lectureName;                //講義名
         private string[] lectureTime;                       //講義時間保存
+        private List<int> lectureStartTime;                 //講義開始時刻保存
 
         public Pikokon()
         {
@@ -63,24 +64,20 @@ namespace SoftwareDevelopmentProjects
             //講義名を保存するクラスの初期化
             lectureName = new MiniFileManager("lectureList.pico");
 
+            //講義別の開始時刻を保存するリストの初期化
+            lectureStartTime = new List<int>();
+
             //保存された講義名ファイルを配列に入れる
             string[] lectureNames = lectureName.ReadDataArray("");
 
-            //講義名を呼び出す
+            //講義のデータを初期化
             for(int i = 0; i < lectureNames.Length; i++)
             {
                 if(lectureNames[i] != "")
                 {
-                    listBox1.Items.Add(lectureNames[i]);
-                }
-            }
-
-            //コンボボックスの中身の初期化
-            for(int i = 0; i < lectureNames.Length; i++)
-            {
-                if(lectureNames[i] != "")
-                {
-                    LectureSelectComboBox.Items.Add(lectureNames[i]);
+                    string[] lectureData = lectureNames[i].Split(',');
+                    listBox1.Items.Add(lectureData[0]);
+                    lectureStartTime.Add(int.Parse(lectureData[1]));
                 }
             }
 
@@ -402,15 +399,16 @@ namespace SoftwareDevelopmentProjects
                     {
                         LogManager.LogOutput("講義を削除: " + listBox1.SelectedItem.ToString());
                         MessageBox.Show("講義を削除しました");
+                        lectureStartTime.RemoveAt(listBox1.SelectedIndex);
                         listBox1.Items.RemoveAt(listBox1.SelectedIndex);
                         listBox1.SelectedIndex = -1;
                         //講義名ファイルの更新
                         string saveLecture = "";
-                        foreach(string lectureItems in listBox1.Items)
+                        for (int i = 0; i < listBox1.Items.Count; i++)
                         {
-                            if(lectureItems != "")
+                            if(listBox1.Items[i].ToString() != "")
                             {
-                                saveLecture += "\n" + lectureItems;
+                                saveLecture += "\n" + listBox1.Items[i] + "," + lectureStartTime[i];
                             }
                         }
                         lectureName.WriteData(saveLecture);
@@ -442,8 +440,9 @@ namespace SoftwareDevelopmentProjects
             //講義の追加
             listBox1.Items.Add(lecture);
             string saveLecture = lectureName.ReadData("");
-            saveLecture += "\n" + lecture;
+            saveLecture += "\n" + lecture + ",0";
             lectureName.WriteData(saveLecture);
+            lectureStartTime.Add(0);
             //コンボボックスの更新
             LectureSelectComboBox.Items.Clear();
             foreach (string lectureItems in listBox1.Items)
@@ -451,6 +450,18 @@ namespace SoftwareDevelopmentProjects
                 LectureSelectComboBox.Items.Add(lectureItems);
             }
             LogManager.LogOutput("講義を追加: " + lecture);
+        }
+
+        /// <summary>
+        /// 講義の開始時刻を変更
+        /// </summary>
+        /// <param name="time">開始時刻タグ</param>
+        private void ChangeLectureStartTime(int time)
+        {
+            if(listBox1.SelectedIndex >= 0)
+            {
+                lectureStartTime[listBox1.SelectedIndex] = time;
+            }
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -461,6 +472,7 @@ namespace SoftwareDevelopmentProjects
                 string[] startTime = lectureTime[0].Split(',');
                 numericUpDown1.Text = startTime[0];
                 numericUpDown2.Text = startTime[1];
+                ChangeLectureStartTime(0);
             }
         }
 
@@ -472,6 +484,7 @@ namespace SoftwareDevelopmentProjects
                 string[] startTime = lectureTime[1].Split(',');
                 numericUpDown1.Text = startTime[0];
                 numericUpDown2.Text = startTime[1];
+                ChangeLectureStartTime(1);
             }
         }
 
@@ -483,6 +496,7 @@ namespace SoftwareDevelopmentProjects
                 string[] startTime = lectureTime[2].Split(',');
                 numericUpDown1.Text = startTime[0];
                 numericUpDown2.Text = startTime[1];
+                ChangeLectureStartTime(2);
             }
         }
 
@@ -494,6 +508,7 @@ namespace SoftwareDevelopmentProjects
                 string[] startTime = lectureTime[3].Split(',');
                 numericUpDown1.Text = startTime[0];
                 numericUpDown2.Text = startTime[1];
+                ChangeLectureStartTime(3);
             }
         }
 
@@ -508,6 +523,26 @@ namespace SoftwareDevelopmentProjects
             {
                 button3.Enabled = true;
                 label10.Text = listBox1.SelectedItem.ToString();
+
+                //設定されている講義時間を選択
+                switch (lectureStartTime[listBox1.SelectedIndex])
+                {
+                    case 0:
+                        radioButton3.Checked = true;
+                        break;
+
+                    case 1:
+                        radioButton4.Checked = true;
+                        break;
+
+                    case 2:
+                        radioButton5.Checked = true;
+                        break;
+
+                    case 3:
+                        radioButton6.Checked = true;
+                        break;
+                }
             }
             else
             {
@@ -523,6 +558,12 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
+            string lectureData = "";
+            for(int i = 0; i < listBox1.Items.Count; i++)
+            {
+                lectureData += listBox1.Items[i] + "," + lectureStartTime[i] + "\r\n";
+            }
+            lectureName.WriteData(lectureData);
             lectureTimeMan.WriteData(lectureTime);
             LogManager.LogOutput("講義時間を保存");
             MessageBox.Show("講義時間を保存しました");
