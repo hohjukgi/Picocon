@@ -33,7 +33,7 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         public static void ExportCsv(string fileName)
         {
-            StreamWriter sw = new StreamWriter(fileName + ".csv");
+            StreamWriter sw = new StreamWriter("出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv");
             sw.WriteLine(exportText);
             sw.Close();
             LogManager.LogOutput("CSVに出力");
