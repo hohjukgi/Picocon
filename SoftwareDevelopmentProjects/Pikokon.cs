@@ -81,6 +81,9 @@ namespace SoftwareDevelopmentProjects
                 }
             }
 
+            //テストカメラの認識項目を0に
+            domainUpDown1.SelectedIndex = 0;
+
             //初期化用の講義開始時間
             string[] defaultTime =
             {

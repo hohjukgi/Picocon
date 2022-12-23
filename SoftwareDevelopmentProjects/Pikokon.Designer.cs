@@ -50,6 +50,7 @@ namespace SoftwareDevelopmentProjects
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -75,6 +76,7 @@ namespace SoftwareDevelopmentProjects
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label12 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -268,6 +270,8 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.domainUpDown1);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.radioButton6);
             this.tabPage2.Controls.Add(this.radioButton5);
@@ -296,6 +300,18 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // domainUpDown1
+            // 
+            this.domainUpDown1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.domainUpDown1.Items.Add("顔認識");
+            this.domainUpDown1.Items.Add("目認識");
+            this.domainUpDown1.Location = new System.Drawing.Point(327, 357);
+            this.domainUpDown1.Name = "domainUpDown1";
+            this.domainUpDown1.ReadOnly = true;
+            this.domainUpDown1.Size = new System.Drawing.Size(78, 23);
+            this.domainUpDown1.TabIndex = 23;
+            this.domainUpDown1.Text = "domainUpDown1";
             // 
             // label10
             // 
@@ -368,7 +384,7 @@ namespace SoftwareDevelopmentProjects
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(233, 358);
+            this.label8.Location = new System.Drawing.Point(261, 338);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 16);
             this.label8.TabIndex = 16;
@@ -376,10 +392,18 @@ namespace SoftwareDevelopmentProjects
             // 
             // upDownCamera
             // 
-            this.upDownCamera.Location = new System.Drawing.Point(238, 385);
+            this.upDownCamera.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.upDownCamera.Location = new System.Drawing.Point(264, 357);
+            this.upDownCamera.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.upDownCamera.Name = "upDownCamera";
-            this.upDownCamera.Size = new System.Drawing.Size(42, 23);
+            this.upDownCamera.ReadOnly = true;
+            this.upDownCamera.Size = new System.Drawing.Size(37, 23);
             this.upDownCamera.TabIndex = 15;
+            this.upDownCamera.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.upDownCamera.ValueChanged += new System.EventHandler(this.upDownCamera_ValueChanged);
             // 
             // takePhotoPictureBox
@@ -394,7 +418,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // ImageProcessingTestButton
             // 
-            this.ImageProcessingTestButton.Location = new System.Drawing.Point(232, 414);
+            this.ImageProcessingTestButton.Location = new System.Drawing.Point(258, 386);
             this.ImageProcessingTestButton.Name = "ImageProcessingTestButton";
             this.ImageProcessingTestButton.Size = new System.Drawing.Size(91, 23);
             this.ImageProcessingTestButton.TabIndex = 13;
@@ -448,8 +472,9 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(43, 23);
+            this.numericUpDown2.Size = new System.Drawing.Size(37, 23);
             this.numericUpDown2.TabIndex = 8;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // numericUpDown1
@@ -466,8 +491,9 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 23);
+            this.numericUpDown1.Size = new System.Drawing.Size(37, 23);
             this.numericUpDown1.TabIndex = 7;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown1.Value = new decimal(new int[] {
             13,
             0,
@@ -567,6 +593,15 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(324, 338);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 16);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "認識方法";
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -641,6 +676,8 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.DomainUpDown domainUpDown1;
+        private System.Windows.Forms.Label label13;
     }
 }
 
