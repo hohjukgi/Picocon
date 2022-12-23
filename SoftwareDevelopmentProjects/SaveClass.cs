@@ -31,9 +31,9 @@ namespace SoftwareDevelopmentProjects
         /// <summary>
         /// exportTextをCSV形式に出力
         /// </summary>
-        public static void ExportCsv()
+        public static void ExportCsv(string fileName)
         {
-            StreamWriter sw = new StreamWriter("test.csv");
+            StreamWriter sw = new StreamWriter(fileName + ".csv");
             sw.WriteLine(exportText);
             sw.Close();
             LogManager.LogOutput("CSVに出力");
