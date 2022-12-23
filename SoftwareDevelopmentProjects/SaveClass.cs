@@ -35,6 +35,21 @@ namespace SoftwareDevelopmentProjects
         {
             const string name = "Picocon出席表フォルダ";
             Directory.CreateDirectory(name);
+            string[] files = Directory.GetFiles(name);
+            foreach(string file in files)
+            {
+                string cutFileName = file.Replace(name + "\\", "");
+                if (cutFileName == "出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx")
+                {
+                    DialogResult dialogResult =
+                        MessageBox.Show("ファイルが上書きされます\r\nいいですか?", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                    if(dialogResult == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                }
+            }
             StreamWriter sw = new StreamWriter(name + "/出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx");
             sw.WriteLine(exportText);
             sw.Close();
