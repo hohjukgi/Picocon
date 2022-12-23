@@ -82,7 +82,7 @@ namespace SoftwareDevelopmentProjects
             }
 
             //テストカメラの認識項目を0に
-            domainUpDown1.SelectedIndex = 0;
+            upDownDetectType.SelectedIndex = 0;
 
             //初期化用の講義開始時間
             string[] defaultTime =
@@ -346,23 +346,65 @@ namespace SoftwareDevelopmentProjects
             testCamera.TakePhoto((int)upDownCamera.Value);
             //撮った写真をPictureBoxに出力
             takePhotoPictureBox.Image = testCamera.bitmap;
-            if (testCamera.DetectFace())
+
+            //選択されている検出設定に応じて処理を変える
+            switch (upDownDetectType.SelectedIndex)
             {
-                //顔検出した結果をPictureBoxに出力
-                takePhotoPictureBox.Image = testCamera.faceBitmap;
-                if (testCamera.faceDessCount > 1)
-                {
-                    if(testCamera.CompareFeature(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2))
+                case 0:
+                    if (testCamera.DetectFace())
                     {
-                        MessageBox.Show("同じ人です");
+                        //顔検出した結果をPictureBoxに出力
+                        takePhotoPictureBox.Image = testCamera.faceBitmap;
+                        //特徴量画像を出力
+                        featurePictureBox.Image = testCamera.GetFeaturePicture(DessType.TypeFace, testCamera.faceDessCount - 1);
+
+                        if (testCamera.faceDessCount > 1)
+                        {
+                            if (testCamera.CompareFeature(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2))
+                            {
+                                MessageBox.Show("同じ人です");
+                            }
+                            else
+                            {
+                                MessageBox.Show("違う人です");
+                            }
+                            //出力
+                            featureCompareLabel.Text = "比較: " + (testCamera.faceDessCount - 1) + ", " + (testCamera.faceDessCount - 2);
+                            float featureValue = testCamera.GetFeatureValue(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2);
+                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F2");
+                        }
                     }
-                    else
+                    break;
+
+                case 1:
+                    if (testCamera.DetectEyes())
                     {
-                        MessageBox.Show("違う人です");
+                        //目検出した結果をPictureBoxに出力
+                        takePhotoPictureBox.Image = testCamera.eyesBitmap;
+                        //特徴量画像を出力
+                        featurePictureBox.Image = testCamera.GetFeaturePicture(DessType.TypeEyes, testCamera.eyesDessCount - 1);
+
+                        if (testCamera.eyesDessCount > 1)
+                        {
+                            if (testCamera.CompareFeature(DessType.TypeEyes, testCamera.eyesDessCount - 1, testCamera.eyesDessCount - 2))
+                            {
+                                MessageBox.Show("同じ人です");
+                            }
+                            else
+                            {
+                                MessageBox.Show("違う人です");
+                            }
+                            //出力
+                            featureCompareLabel.Text = "比較: " + (testCamera.eyesDessCount - 1) + ", " + (testCamera.eyesDessCount - 2);
+                            float featureValue = testCamera.GetFeatureValue(DessType.TypeEyes, testCamera.eyesDessCount - 1, testCamera.eyesDessCount - 2);
+                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F2");
+                        }
                     }
-                    MessageBox.Show((testCamera.faceDessCount - 1) + "番目と" + (testCamera.faceDessCount - 2) + "番目の画像の特徴量距離は " + 
-                    testCamera.GetFeatureValue(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2) + " です");
-                }
+                    break;
+
+                default:
+                    break;
+
             }
         }
         
@@ -675,6 +717,16 @@ namespace SoftwareDevelopmentProjects
                 }
                 catch (Exception) { }
             }
+        }
+
+        /// <summary>
+        /// クリア
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void faceFeatureResetButton_Click(object sender, EventArgs e)
+        {
+            testCamera.Clear();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
@@ -91,6 +92,15 @@ namespace SoftwareDevelopmentProjects
             _faceDess = new List<Mat>();
             _eyesDess = new List<Mat>();
             _threshold = 120;
+        }
+
+        /// <summary>
+        /// 閾値を設定する
+        /// </summary>
+        /// <param name="threshold">閾値</param>
+        public void SetThreshold(int threshold)
+        {
+            _threshold = threshold;
         }
 
         /// <summary>
@@ -294,7 +304,17 @@ namespace SoftwareDevelopmentProjects
                 //特徴量と特徴点を抽出する
                 aKAZE.DetectAndCompute(_mat, null, out keyPoints, des);
 
-                LogManager.LogOutput("特徴量の抽出に成功");
+                if(des != null)
+                {
+                    LogManager.LogOutput("特徴量の抽出に成功");
+                }
+                else
+                {
+                    LogManager.LogOutput("特徴量の抽出に失敗");
+                    throw new Exception("特徴量の抽出に失敗");
+                }
+
+                //Cv2.ImShow("feature", des);
 
                 return des.Clone();
 
@@ -303,6 +323,31 @@ namespace SoftwareDevelopmentProjects
                 LogManager.LogOutput(ex.Message);
                 throw new Exception(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// 特徴量の画像を返す
+        /// </summary>
+        /// <param name="dessType">特徴量の種類</param>
+        /// <param name="arg">配列の引数</param>
+        /// <returns>画像</returns>
+        public Bitmap GetFeaturePicture(DessTypeNum dessType, int arg)
+        {
+            Mat mat;
+            if(dessType.type == DessType.TypeFace.type)
+            {
+                mat = _faceDess[arg];
+            }
+            else if(dessType.type == DessType.TypeEyes.type)
+            {
+                mat = _eyesDess[arg];
+            }
+            else
+            {
+                LogManager.LogOutput("不明な特徴量識別子");
+                throw new Exception("不明な特徴量識別子");
+            }
+            return BitmapConverter.ToBitmap(mat);
         }
 
         /// <summary>
@@ -472,7 +517,7 @@ namespace SoftwareDevelopmentProjects
             Mat matRetImage = new Mat();
 
             //必須ファイル
-            string classifierFilePath = @"haarcascade_eye.xmll";
+            string classifierFilePath = @"haarcascade_eye.xml";
 
             //カスケードファイルが見つからなかったら
             if (!File.Exists(classifierFilePath))
@@ -505,7 +550,7 @@ namespace SoftwareDevelopmentProjects
                 if (eyes == null || eyes.Length <= 0)
                 {
                     //顔は検出されなかった
-                    LogManager.LogOutput("顔の検出に失敗");
+                    LogManager.LogOutput("目の検出に失敗");
                     return false;
                 }
 
@@ -565,7 +610,7 @@ namespace SoftwareDevelopmentProjects
             _eyes = matRetImage.Clone();
 
             //表示
-            //Cv2.ImShow("Eyes", matRetImage);
+            Cv2.ImShow("Eyes", matRetImage);
 
             //計算用ファイルを破棄
             matRetImage.Dispose();
@@ -576,6 +621,19 @@ namespace SoftwareDevelopmentProjects
             LogManager.LogOutput("目の検出に成功");
 
             return true;
+        }
+
+        /// <summary>
+        /// クリア
+        /// </summary>
+        public void Clear()
+        {
+            if(_flame != null)_flame.Dispose();
+            if(_face != null)_face.Dispose();
+            if(_eyes != null)_eyes.Dispose();
+            _faceDess.Clear();
+            _eyesDess.Clear();
+            SetThreshold(120);
         }
     }
 
