@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FelicaLib;
+using OpenCvSharp;
 
 namespace SoftwareDevelopmentProjects
 {
@@ -196,7 +197,7 @@ namespace SoftwareDevelopmentProjects
             if (listStudentId.SelectedItems.Count > 0)
             {
                 //指定した特徴量を削除
-                camera.RemoveDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
+                camera.RemoveFaceDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
                 //指定した学籍番号をリストから削除
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 LogManager.LogOutput("選択した項目を削除");
@@ -250,18 +251,18 @@ namespace SoftwareDevelopmentProjects
                                 return;
                             }
                             //識別するだけのデータが存在
-                            if (camera.dessCount > 1)
+                            if (camera.faceDessCount > 1)
                             {
                                 //総当たりで比較
-                                for (int i = 0; i < camera.dessCount - 1; i++)
+                                for (int i = 0; i < camera.faceDessCount - 1; i++)
                                 {
-                                    if(camera.CompareFeature(i, camera.dessCount - 1))
+                                    if(camera.CompareFeature(DessType.TypeFace, i, camera.faceDessCount - 1))
                                     {
                                         fericaLoadTimer.Stop();
                                         MessageBox.Show("カード利用の不正を確認しました", "不正確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        MessageBox.Show("相違度: " + camera.GetFeatureValue(i, camera.dessCount - 1));
+                                        MessageBox.Show("相違度: " + camera.GetFeatureValue(DessType.TypeFace, i, camera.faceDessCount - 1));
                                         //重複した顔を削除
-                                        camera.RemoveDess(camera.dessCount - 1);
+                                        camera.RemoveFaceDess(camera.faceDessCount - 1);
                                         fericaLoadTimer.Start();
                                         return;
                                     }
@@ -346,9 +347,9 @@ namespace SoftwareDevelopmentProjects
             {
                 //顔検出した結果をPictureBoxに出力
                 takePhotoPictureBox.Image = testCamera.faceBitmap;
-                if (testCamera.dessCount > 1)
+                if (testCamera.faceDessCount > 1)
                 {
-                    if(testCamera.CompareFeature(testCamera.dessCount - 1, testCamera.dessCount - 2))
+                    if(testCamera.CompareFeature(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2))
                     {
                         MessageBox.Show("同じ人です");
                     }
@@ -356,8 +357,8 @@ namespace SoftwareDevelopmentProjects
                     {
                         MessageBox.Show("違う人です");
                     }
-                    MessageBox.Show((testCamera.dessCount - 1) + "番目と" + (testCamera.dessCount - 2) + "番目の画像の特徴量距離は " + 
-                        testCamera.GetFeatureValue(testCamera.dessCount - 1, testCamera.dessCount - 2) + " です");
+                    MessageBox.Show((testCamera.faceDessCount - 1) + "番目と" + (testCamera.faceDessCount - 2) + "番目の画像の特徴量距離は " + 
+                    testCamera.GetFeatureValue(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2) + " です");
                 }
             }
         }
