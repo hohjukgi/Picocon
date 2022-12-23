@@ -37,8 +37,8 @@ namespace SoftwareDevelopmentProjects
             listStudentId.GridLines = true;
 
             //系列追加
-            listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
-            listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
+            listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Right);
+            listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Right);
 
             /*
             //リストに画像を表示するための設定
