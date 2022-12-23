@@ -323,6 +323,7 @@ namespace SoftwareDevelopmentProjects
             this.upDownDetectType.Size = new System.Drawing.Size(78, 23);
             this.upDownDetectType.TabIndex = 23;
             this.upDownDetectType.Text = "domainUpDown1";
+            this.upDownDetectType.SelectedItemChanged += new System.EventHandler(this.upDownDetectType_SelectedItemChanged);
             // 
             // label10
             // 

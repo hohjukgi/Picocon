@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FelicaLib;
-using OpenCvSharp;
 
 namespace SoftwareDevelopmentProjects
 {
@@ -12,9 +11,12 @@ namespace SoftwareDevelopmentProjects
         private CameraClass camera;                         //実装用のカメラクラス
         private CameraClass testCamera;                     //テスト用のカメラクラス
         private bool ready = false;                         //初期化が完了したかどうか
+
         private MiniFileManager cameraIndexMan;             //カメラ番号ファイルの操作クラス
         private MiniFileManager lectureTimeMan;             //講義時間ファイルの操作クラス
         private MiniFileManager lectureName;                //講義名
+        private MiniFileManager detectType;                 //検出場所
+
         private string[] lectureTime;                       //講義時間保存
         private List<int> lectureStartTime;                 //講義開始時刻保存
 
@@ -59,6 +61,9 @@ namespace SoftwareDevelopmentProjects
             //講義名を保存するクラスの初期化
             lectureName = new MiniFileManager("lectureList.pico");
 
+            //検出場所を保存するクラスの初期化
+            detectType = new MiniFileManager("detectType.pico");
+
             //講義別の開始時刻を保存するリストの初期化
             lectureStartTime = new List<int>();
 
@@ -81,8 +86,8 @@ namespace SoftwareDevelopmentProjects
                 }
             }
 
-            //テストカメラの認識項目を0に
-            upDownDetectType.SelectedIndex = 0;
+            //テストカメラの認識項目初期化
+            upDownDetectType.SelectedIndex = int.Parse(detectType.ReadData("0"));
 
             //初期化用の講義開始時間
             string[] defaultTime =
@@ -727,6 +732,16 @@ namespace SoftwareDevelopmentProjects
         private void faceFeatureResetButton_Click(object sender, EventArgs e)
         {
             testCamera.Clear();
+        }
+
+        /// <summary>
+        /// 検出場所を保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void upDownDetectType_SelectedItemChanged(object sender, EventArgs e)
+        {
+            detectType.WriteData(upDownDetectType.SelectedIndex.ToString());
         }
     }
 }
