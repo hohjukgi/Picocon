@@ -50,6 +50,7 @@ namespace SoftwareDevelopmentProjects
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.upDownDetectType = new System.Windows.Forms.DomainUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -75,6 +76,12 @@ namespace SoftwareDevelopmentProjects
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label12 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.faceFeatureResetButton = new System.Windows.Forms.Button();
+            this.featurePictureBox = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.featureCompareLabel = new System.Windows.Forms.Label();
+            this.featureValueLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -84,6 +91,7 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -268,6 +276,13 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.featureValueLabel);
+            this.tabPage2.Controls.Add(this.featureCompareLabel);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.featurePictureBox);
+            this.tabPage2.Controls.Add(this.faceFeatureResetButton);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.upDownDetectType);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.radioButton6);
             this.tabPage2.Controls.Add(this.radioButton5);
@@ -296,6 +311,19 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // upDownDetectType
+            // 
+            this.upDownDetectType.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.upDownDetectType.Items.Add("顔認識");
+            this.upDownDetectType.Items.Add("目認識");
+            this.upDownDetectType.Location = new System.Drawing.Point(316, 325);
+            this.upDownDetectType.Name = "upDownDetectType";
+            this.upDownDetectType.ReadOnly = true;
+            this.upDownDetectType.Size = new System.Drawing.Size(78, 23);
+            this.upDownDetectType.TabIndex = 23;
+            this.upDownDetectType.Text = "domainUpDown1";
+            this.upDownDetectType.SelectedItemChanged += new System.EventHandler(this.upDownDetectType_SelectedItemChanged);
             // 
             // label10
             // 
@@ -368,7 +396,7 @@ namespace SoftwareDevelopmentProjects
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(233, 358);
+            this.label8.Location = new System.Drawing.Point(248, 306);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 16);
             this.label8.TabIndex = 16;
@@ -376,15 +404,24 @@ namespace SoftwareDevelopmentProjects
             // 
             // upDownCamera
             // 
-            this.upDownCamera.Location = new System.Drawing.Point(238, 385);
+            this.upDownCamera.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.upDownCamera.Location = new System.Drawing.Point(251, 325);
+            this.upDownCamera.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.upDownCamera.Name = "upDownCamera";
-            this.upDownCamera.Size = new System.Drawing.Size(42, 23);
+            this.upDownCamera.ReadOnly = true;
+            this.upDownCamera.Size = new System.Drawing.Size(37, 23);
             this.upDownCamera.TabIndex = 15;
+            this.upDownCamera.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.upDownCamera.ValueChanged += new System.EventHandler(this.upDownCamera_ValueChanged);
             // 
             // takePhotoPictureBox
             // 
-            this.takePhotoPictureBox.BackColor = System.Drawing.Color.Gainsboro;
+            this.takePhotoPictureBox.BackColor = System.Drawing.SystemColors.Desktop;
+            this.takePhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.takePhotoPictureBox.Location = new System.Drawing.Point(6, 307);
             this.takePhotoPictureBox.Name = "takePhotoPictureBox";
             this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 130);
@@ -394,11 +431,12 @@ namespace SoftwareDevelopmentProjects
             // 
             // ImageProcessingTestButton
             // 
-            this.ImageProcessingTestButton.Location = new System.Drawing.Point(232, 414);
+            this.ImageProcessingTestButton.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ImageProcessingTestButton.Location = new System.Drawing.Point(411, 367);
             this.ImageProcessingTestButton.Name = "ImageProcessingTestButton";
-            this.ImageProcessingTestButton.Size = new System.Drawing.Size(91, 23);
+            this.ImageProcessingTestButton.Size = new System.Drawing.Size(91, 32);
             this.ImageProcessingTestButton.TabIndex = 13;
-            this.ImageProcessingTestButton.Text = "カメラテスト";
+            this.ImageProcessingTestButton.Text = "検出テスト";
             this.ImageProcessingTestButton.UseVisualStyleBackColor = true;
             this.ImageProcessingTestButton.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -448,8 +486,9 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(43, 23);
+            this.numericUpDown2.Size = new System.Drawing.Size(37, 23);
             this.numericUpDown2.TabIndex = 8;
+            this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // numericUpDown1
@@ -466,8 +505,9 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 23);
+            this.numericUpDown1.Size = new System.Drawing.Size(37, 23);
             this.numericUpDown1.TabIndex = 7;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown1.Value = new decimal(new int[] {
             13,
             0,
@@ -567,6 +607,62 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(313, 306);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 16);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "認識方法";
+            // 
+            // faceFeatureResetButton
+            // 
+            this.faceFeatureResetButton.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.faceFeatureResetButton.Location = new System.Drawing.Point(411, 405);
+            this.faceFeatureResetButton.Name = "faceFeatureResetButton";
+            this.faceFeatureResetButton.Size = new System.Drawing.Size(91, 32);
+            this.faceFeatureResetButton.TabIndex = 25;
+            this.faceFeatureResetButton.Text = "リセット";
+            this.faceFeatureResetButton.UseVisualStyleBackColor = true;
+            this.faceFeatureResetButton.Click += new System.EventHandler(this.faceFeatureResetButton_Click);
+            // 
+            // featurePictureBox
+            // 
+            this.featurePictureBox.Location = new System.Drawing.Point(251, 382);
+            this.featurePictureBox.Name = "featurePictureBox";
+            this.featurePictureBox.Size = new System.Drawing.Size(83, 55);
+            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.featurePictureBox.TabIndex = 26;
+            this.featurePictureBox.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(248, 361);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(88, 16);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "特徴量画像";
+            // 
+            // featureCompareLabel
+            // 
+            this.featureCompareLabel.AutoSize = true;
+            this.featureCompareLabel.Location = new System.Drawing.Point(355, 396);
+            this.featureCompareLabel.Name = "featureCompareLabel";
+            this.featureCompareLabel.Size = new System.Drawing.Size(56, 16);
+            this.featureCompareLabel.TabIndex = 28;
+            this.featureCompareLabel.Text = "相違度";
+            // 
+            // featureValueLabel
+            // 
+            this.featureValueLabel.AutoSize = true;
+            this.featureValueLabel.Location = new System.Drawing.Point(365, 418);
+            this.featureValueLabel.Name = "featureValueLabel";
+            this.featureValueLabel.Size = new System.Drawing.Size(27, 16);
+            this.featureValueLabel.TabIndex = 29;
+            this.featureValueLabel.Text = "0.0";
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -591,6 +687,7 @@ namespace SoftwareDevelopmentProjects
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -641,6 +738,13 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.DomainUpDown upDownDetectType;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button faceFeatureResetButton;
+        private System.Windows.Forms.PictureBox featurePictureBox;
+        private System.Windows.Forms.Label featureValueLabel;
+        private System.Windows.Forms.Label featureCompareLabel;
+        private System.Windows.Forms.Label label14;
     }
 }
 

@@ -11,9 +11,12 @@ namespace SoftwareDevelopmentProjects
         private CameraClass camera;                         //実装用のカメラクラス
         private CameraClass testCamera;                     //テスト用のカメラクラス
         private bool ready = false;                         //初期化が完了したかどうか
+
         private MiniFileManager cameraIndexMan;             //カメラ番号ファイルの操作クラス
         private MiniFileManager lectureTimeMan;             //講義時間ファイルの操作クラス
         private MiniFileManager lectureName;                //講義名
+        private MiniFileManager detectType;                 //検出場所
+
         private string[] lectureTime;                       //講義時間保存
         private List<int> lectureStartTime;                 //講義開始時刻保存
 
@@ -36,8 +39,8 @@ namespace SoftwareDevelopmentProjects
             listStudentId.GridLines = true;
 
             //系列追加
-            listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Left);
-            listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Left);
+            listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Right);
+            listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Right);
 
             /*
             //リストに画像を表示するための設定
@@ -57,6 +60,9 @@ namespace SoftwareDevelopmentProjects
 
             //講義名を保存するクラスの初期化
             lectureName = new MiniFileManager("lectureList.pico");
+
+            //検出場所を保存するクラスの初期化
+            detectType = new MiniFileManager("detectType.pico");
 
             //講義別の開始時刻を保存するリストの初期化
             lectureStartTime = new List<int>();
@@ -79,6 +85,9 @@ namespace SoftwareDevelopmentProjects
                     lectureStartTime.Add(int.Parse(lectureData[1]));
                 }
             }
+
+            //テストカメラの認識項目初期化
+            upDownDetectType.SelectedIndex = int.Parse(detectType.ReadData("0"));
 
             //初期化用の講義開始時間
             string[] defaultTime =
@@ -196,7 +205,7 @@ namespace SoftwareDevelopmentProjects
             if (listStudentId.SelectedItems.Count > 0)
             {
                 //指定した特徴量を削除
-                camera.RemoveDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
+                camera.RemoveFaceDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
                 //指定した学籍番号をリストから削除
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 LogManager.LogOutput("選択した項目を削除");
@@ -250,18 +259,18 @@ namespace SoftwareDevelopmentProjects
                                 return;
                             }
                             //識別するだけのデータが存在
-                            if (camera.dessCount > 1)
+                            if (camera.faceDessCount > 1)
                             {
                                 //総当たりで比較
-                                for (int i = 0; i < camera.dessCount - 1; i++)
+                                for (int i = 0; i < camera.faceDessCount - 1; i++)
                                 {
-                                    if(camera.CompareFeature(i, camera.dessCount - 1))
+                                    if(camera.CompareFeature(DessType.TypeFace, i, camera.faceDessCount - 1))
                                     {
                                         fericaLoadTimer.Stop();
                                         MessageBox.Show("カード利用の不正を確認しました", "不正確認", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        MessageBox.Show("相違度: " + camera.GetFeatureValue(i, camera.dessCount - 1));
+                                        MessageBox.Show("相違度: " + camera.GetFeatureValue(DessType.TypeFace, i, camera.faceDessCount - 1));
                                         //重複した顔を削除
-                                        camera.RemoveDess(camera.dessCount - 1);
+                                        camera.RemoveFaceDess(camera.faceDessCount - 1);
                                         fericaLoadTimer.Start();
                                         return;
                                     }
@@ -342,23 +351,65 @@ namespace SoftwareDevelopmentProjects
             testCamera.TakePhoto((int)upDownCamera.Value);
             //撮った写真をPictureBoxに出力
             takePhotoPictureBox.Image = testCamera.bitmap;
-            if (testCamera.DetectFace())
+
+            //選択されている検出設定に応じて処理を変える
+            switch (upDownDetectType.SelectedIndex)
             {
-                //顔検出した結果をPictureBoxに出力
-                takePhotoPictureBox.Image = testCamera.faceBitmap;
-                if (testCamera.dessCount > 1)
-                {
-                    if(testCamera.CompareFeature(testCamera.dessCount - 1, testCamera.dessCount - 2))
+                case 0:
+                    if (testCamera.DetectFace())
                     {
-                        MessageBox.Show("同じ人です");
+                        //顔検出した結果をPictureBoxに出力
+                        takePhotoPictureBox.Image = testCamera.faceBitmap;
+                        //特徴量画像を出力
+                        featurePictureBox.Image = testCamera.GetFeaturePicture(DessType.TypeFace, testCamera.faceDessCount - 1);
+
+                        if (testCamera.faceDessCount > 1)
+                        {
+                            if (testCamera.CompareFeature(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2))
+                            {
+                                MessageBox.Show("同じ人です");
+                            }
+                            else
+                            {
+                                MessageBox.Show("違う人です");
+                            }
+                            //出力
+                            featureCompareLabel.Text = "比較: " + (testCamera.faceDessCount - 1) + ", " + (testCamera.faceDessCount - 2);
+                            float featureValue = testCamera.GetFeatureValue(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2);
+                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F2");
+                        }
                     }
-                    else
+                    break;
+
+                case 1:
+                    if (testCamera.DetectEyes())
                     {
-                        MessageBox.Show("違う人です");
+                        //目検出した結果をPictureBoxに出力
+                        takePhotoPictureBox.Image = testCamera.eyesBitmap;
+                        //特徴量画像を出力
+                        featurePictureBox.Image = testCamera.GetFeaturePicture(DessType.TypeEyes, testCamera.eyesDessCount - 1);
+
+                        if (testCamera.eyesDessCount > 1)
+                        {
+                            if (testCamera.CompareFeature(DessType.TypeEyes, testCamera.eyesDessCount - 1, testCamera.eyesDessCount - 2))
+                            {
+                                MessageBox.Show("同じ人です");
+                            }
+                            else
+                            {
+                                MessageBox.Show("違う人です");
+                            }
+                            //出力
+                            featureCompareLabel.Text = "比較: " + (testCamera.eyesDessCount - 1) + ", " + (testCamera.eyesDessCount - 2);
+                            float featureValue = testCamera.GetFeatureValue(DessType.TypeEyes, testCamera.eyesDessCount - 1, testCamera.eyesDessCount - 2);
+                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F2");
+                        }
                     }
-                    MessageBox.Show((testCamera.dessCount - 1) + "番目と" + (testCamera.dessCount - 2) + "番目の画像の特徴量距離は " + 
-                        testCamera.GetFeatureValue(testCamera.dessCount - 1, testCamera.dessCount - 2) + " です");
-                }
+                    break;
+
+                default:
+                    break;
+
             }
         }
         
@@ -671,6 +722,26 @@ namespace SoftwareDevelopmentProjects
                 }
                 catch (Exception) { }
             }
+        }
+
+        /// <summary>
+        /// クリア
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void faceFeatureResetButton_Click(object sender, EventArgs e)
+        {
+            testCamera.Clear();
+        }
+
+        /// <summary>
+        /// 検出場所を保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void upDownDetectType_SelectedItemChanged(object sender, EventArgs e)
+        {
+            detectType.WriteData(upDownDetectType.SelectedIndex.ToString());
         }
     }
 }
