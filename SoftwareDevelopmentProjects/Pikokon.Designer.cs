@@ -317,7 +317,7 @@ namespace SoftwareDevelopmentProjects
             this.upDownDetectType.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.upDownDetectType.Items.Add("顔認識");
             this.upDownDetectType.Items.Add("目認識");
-            this.upDownDetectType.Location = new System.Drawing.Point(316, 320);
+            this.upDownDetectType.Location = new System.Drawing.Point(316, 325);
             this.upDownDetectType.Name = "upDownDetectType";
             this.upDownDetectType.ReadOnly = true;
             this.upDownDetectType.Size = new System.Drawing.Size(78, 23);
@@ -395,7 +395,7 @@ namespace SoftwareDevelopmentProjects
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(248, 301);
+            this.label8.Location = new System.Drawing.Point(248, 306);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 16);
             this.label8.TabIndex = 16;
@@ -404,7 +404,7 @@ namespace SoftwareDevelopmentProjects
             // upDownCamera
             // 
             this.upDownCamera.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.upDownCamera.Location = new System.Drawing.Point(251, 320);
+            this.upDownCamera.Location = new System.Drawing.Point(251, 325);
             this.upDownCamera.Maximum = new decimal(new int[] {
             10,
             0,
@@ -431,7 +431,7 @@ namespace SoftwareDevelopmentProjects
             // ImageProcessingTestButton
             // 
             this.ImageProcessingTestButton.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ImageProcessingTestButton.Location = new System.Drawing.Point(411, 307);
+            this.ImageProcessingTestButton.Location = new System.Drawing.Point(411, 367);
             this.ImageProcessingTestButton.Name = "ImageProcessingTestButton";
             this.ImageProcessingTestButton.Size = new System.Drawing.Size(91, 32);
             this.ImageProcessingTestButton.TabIndex = 13;
@@ -609,7 +609,7 @@ namespace SoftwareDevelopmentProjects
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(313, 301);
+            this.label13.Location = new System.Drawing.Point(313, 306);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(72, 16);
             this.label13.TabIndex = 24;
@@ -618,7 +618,7 @@ namespace SoftwareDevelopmentProjects
             // faceFeatureResetButton
             // 
             this.faceFeatureResetButton.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.faceFeatureResetButton.Location = new System.Drawing.Point(411, 345);
+            this.faceFeatureResetButton.Location = new System.Drawing.Point(411, 405);
             this.faceFeatureResetButton.Name = "faceFeatureResetButton";
             this.faceFeatureResetButton.Size = new System.Drawing.Size(91, 32);
             this.faceFeatureResetButton.TabIndex = 25;
