@@ -365,18 +365,10 @@ namespace SoftwareDevelopmentProjects
 
                         if (testCamera.faceDessCount > 1)
                         {
-                            if (testCamera.CompareFeature(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2))
-                            {
-                                MessageBox.Show("同じ人です");
-                            }
-                            else
-                            {
-                                MessageBox.Show("違う人です");
-                            }
                             //出力
                             featureCompareLabel.Text = "比較: " + (testCamera.faceDessCount - 1) + ", " + (testCamera.faceDessCount - 2);
                             float featureValue = testCamera.GetFeatureValue(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2);
-                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F2");
+                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F0");
                         }
                     }
                     break;
@@ -391,18 +383,10 @@ namespace SoftwareDevelopmentProjects
 
                         if (testCamera.eyesDessCount > 1)
                         {
-                            if (testCamera.CompareFeature(DessType.TypeEyes, testCamera.eyesDessCount - 1, testCamera.eyesDessCount - 2))
-                            {
-                                MessageBox.Show("同じ人です");
-                            }
-                            else
-                            {
-                                MessageBox.Show("違う人です");
-                            }
                             //出力
                             featureCompareLabel.Text = "比較: " + (testCamera.eyesDessCount - 1) + ", " + (testCamera.eyesDessCount - 2);
                             float featureValue = testCamera.GetFeatureValue(DessType.TypeEyes, testCamera.eyesDessCount - 1, testCamera.eyesDessCount - 2);
-                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F2");
+                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F0");
                         }
                     }
                     break;
@@ -742,6 +726,14 @@ namespace SoftwareDevelopmentProjects
         private void upDownDetectType_SelectedItemChanged(object sender, EventArgs e)
         {
             detectType.WriteData(upDownDetectType.SelectedIndex.ToString());
+            if (upDownDetectType.SelectedIndex == 1)
+            {
+                testProvider.SetError(upDownDetectType, "テスト段階の機能です\r\n意図しない動作が起こる可能性があります");
+            }
+            else
+            {
+                testProvider.Clear();
+            }
         }
     }
 }
