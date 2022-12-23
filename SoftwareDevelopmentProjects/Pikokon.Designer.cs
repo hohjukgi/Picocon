@@ -50,6 +50,12 @@ namespace SoftwareDevelopmentProjects
             this.label1 = new System.Windows.Forms.Label();
             this.logText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.featureValueLabel = new System.Windows.Forms.Label();
+            this.featureCompareLabel = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.featurePictureBox = new System.Windows.Forms.PictureBox();
+            this.faceFeatureResetButton = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.upDownDetectType = new System.Windows.Forms.DomainUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
@@ -76,22 +82,16 @@ namespace SoftwareDevelopmentProjects
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label12 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.PictureBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.faceFeatureResetButton = new System.Windows.Forms.Button();
-            this.featurePictureBox = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.featureCompareLabel = new System.Windows.Forms.Label();
-            this.featureValueLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -311,6 +311,62 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "設定";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // featureValueLabel
+            // 
+            this.featureValueLabel.AutoSize = true;
+            this.featureValueLabel.Location = new System.Drawing.Point(365, 418);
+            this.featureValueLabel.Name = "featureValueLabel";
+            this.featureValueLabel.Size = new System.Drawing.Size(27, 16);
+            this.featureValueLabel.TabIndex = 29;
+            this.featureValueLabel.Text = "0.0";
+            // 
+            // featureCompareLabel
+            // 
+            this.featureCompareLabel.AutoSize = true;
+            this.featureCompareLabel.Location = new System.Drawing.Point(355, 396);
+            this.featureCompareLabel.Name = "featureCompareLabel";
+            this.featureCompareLabel.Size = new System.Drawing.Size(56, 16);
+            this.featureCompareLabel.TabIndex = 28;
+            this.featureCompareLabel.Text = "相違度";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(248, 361);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(88, 16);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "特徴量画像";
+            // 
+            // featurePictureBox
+            // 
+            this.featurePictureBox.Location = new System.Drawing.Point(251, 382);
+            this.featurePictureBox.Name = "featurePictureBox";
+            this.featurePictureBox.Size = new System.Drawing.Size(83, 55);
+            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.featurePictureBox.TabIndex = 26;
+            this.featurePictureBox.TabStop = false;
+            // 
+            // faceFeatureResetButton
+            // 
+            this.faceFeatureResetButton.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.faceFeatureResetButton.Location = new System.Drawing.Point(411, 405);
+            this.faceFeatureResetButton.Name = "faceFeatureResetButton";
+            this.faceFeatureResetButton.Size = new System.Drawing.Size(91, 32);
+            this.faceFeatureResetButton.TabIndex = 25;
+            this.faceFeatureResetButton.Text = "リセット";
+            this.faceFeatureResetButton.UseVisualStyleBackColor = true;
+            this.faceFeatureResetButton.Click += new System.EventHandler(this.faceFeatureResetButton_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(313, 306);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(72, 16);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "認識方法";
             // 
             // upDownDetectType
             // 
@@ -607,62 +663,6 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(313, 306);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(72, 16);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "認識方法";
-            // 
-            // faceFeatureResetButton
-            // 
-            this.faceFeatureResetButton.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.faceFeatureResetButton.Location = new System.Drawing.Point(411, 405);
-            this.faceFeatureResetButton.Name = "faceFeatureResetButton";
-            this.faceFeatureResetButton.Size = new System.Drawing.Size(91, 32);
-            this.faceFeatureResetButton.TabIndex = 25;
-            this.faceFeatureResetButton.Text = "リセット";
-            this.faceFeatureResetButton.UseVisualStyleBackColor = true;
-            this.faceFeatureResetButton.Click += new System.EventHandler(this.faceFeatureResetButton_Click);
-            // 
-            // featurePictureBox
-            // 
-            this.featurePictureBox.Location = new System.Drawing.Point(251, 382);
-            this.featurePictureBox.Name = "featurePictureBox";
-            this.featurePictureBox.Size = new System.Drawing.Size(83, 55);
-            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.featurePictureBox.TabIndex = 26;
-            this.featurePictureBox.TabStop = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(248, 361);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(88, 16);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "特徴量画像";
-            // 
-            // featureCompareLabel
-            // 
-            this.featureCompareLabel.AutoSize = true;
-            this.featureCompareLabel.Location = new System.Drawing.Point(355, 396);
-            this.featureCompareLabel.Name = "featureCompareLabel";
-            this.featureCompareLabel.Size = new System.Drawing.Size(56, 16);
-            this.featureCompareLabel.TabIndex = 28;
-            this.featureCompareLabel.Text = "相違度";
-            // 
-            // featureValueLabel
-            // 
-            this.featureValueLabel.AutoSize = true;
-            this.featureValueLabel.Location = new System.Drawing.Point(365, 418);
-            this.featureValueLabel.Name = "featureValueLabel";
-            this.featureValueLabel.Size = new System.Drawing.Size(27, 16);
-            this.featureValueLabel.TabIndex = 29;
-            this.featureValueLabel.Text = "0.0";
-            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -672,6 +672,7 @@ namespace SoftwareDevelopmentProjects
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelTime);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pikokon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Picocon";
@@ -680,6 +681,7 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -687,7 +689,6 @@ namespace SoftwareDevelopmentProjects
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

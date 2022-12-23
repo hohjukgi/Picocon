@@ -75,6 +75,9 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>44c1826a8f9edab446761ffae476df87_ol.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenCvSharp4.4.6.0.20220608\lib\netstandard2.0\OpenCvSharp.dll</HintPath>
@@ -163,6 +166,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chikoku_sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="21bb743143a3afa2b815fd6d4260668a_ol.ico" />
+    <Content Include="44c1826a8f9edab446761ffae476df87_ol.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
