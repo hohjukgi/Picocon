@@ -329,10 +329,15 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
+            if(LectureSelectComboBox.SelectedIndex < 0)
+            {
+                LogManager.LogOutput("講義を選択してください");
+                return;
+            }
             //データを保存しやすいように変換
             SaveClass.ConvertToSaveData(listStudentId.Items);
             //保存
-            SaveClass.ExportCsv();
+            SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString());
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
