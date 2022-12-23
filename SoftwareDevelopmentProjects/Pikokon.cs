@@ -89,6 +89,16 @@ namespace SoftwareDevelopmentProjects
             //テストカメラの認識項目初期化
             upDownDetectType.SelectedIndex = int.Parse(detectType.ReadData("0"));
 
+            //コンボボックスの中身の初期化
+            for(int i = 0; i < lectureNames.Length; i++)
+            {
+                if(lectureNames[i] != "")
+                {
+                    string[] lectureNamesArray = lectureNames[i].Split(',');
+                    LectureSelectComboBox.Items.Add(lectureNamesArray[0]);
+                }
+            }
+
             //初期化用の講義開始時間
             string[] defaultTime =
             {
@@ -470,7 +480,31 @@ namespace SoftwareDevelopmentProjects
         private void button1_Click_1(object sender, EventArgs e)
         {
             //講義名入力InputBox
-            string lecture = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力していください。", "講義名設定", "", -1, -1);
+            string lecture = Microsoft.VisualBasic.Interaction.InputBox("講義名を入力してください。", "講義名設定", "", -1, -1);
+            if(!string.IsNullOrWhiteSpace(lecture))
+            {
+                //講義の追加
+                listBox1.Items.Add(lecture);
+                //データの読み取り
+                string saveLecture = lectureName.ReadData("");
+                //新しいデータの追加
+                saveLecture += "\n" + lecture + ",0";
+                //データの保存
+                lectureName.WriteData(saveLecture);
+                //講義開始時間の設定
+                lectureStartTime.Add(0);
+                //コンボボックスの更新
+                LectureSelectComboBox.Items.Clear();
+                foreach (string lectureItems in listBox1.Items)
+                {
+                    LectureSelectComboBox.Items.Add(lectureItems);
+                }
+                LogManager.LogOutput("講義を追加: " + lecture);
+            } else
+            {
+                LogManager.LogOutput("講義追加失敗");
+            }
+            /*
             //講義の追加
             listBox1.Items.Add(lecture);
             //データの読み取り
@@ -487,7 +521,7 @@ namespace SoftwareDevelopmentProjects
             {
                 LectureSelectComboBox.Items.Add(lectureItems);
             }
-            LogManager.LogOutput("講義を追加: " + lecture);
+            LogManager.LogOutput("講義を追加: " + lecture); */
         }
 
         /// <summary>
