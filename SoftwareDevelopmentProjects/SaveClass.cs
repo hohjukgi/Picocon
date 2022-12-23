@@ -33,7 +33,9 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         public static void ExportCsv(string fileName)
         {
-            StreamWriter sw = new StreamWriter(fileName + ".csv");
+            const string name = "Picocon出席表フォルダ";
+            Directory.CreateDirectory(name);
+            StreamWriter sw = new StreamWriter(name + "/出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx");
             sw.WriteLine(exportText);
             sw.Close();
             LogManager.LogOutput("CSVに出力");
