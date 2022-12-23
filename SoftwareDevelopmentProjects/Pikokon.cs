@@ -306,7 +306,14 @@ namespace SoftwareDevelopmentProjects
                         //時間を取得
                         DateTime dateTime = DateTime.Now;
 
-                        MessageBox.Show(lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]]);
+                       string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
+
+                        string[] strs = ac.Split(',');
+
+
+                        DateTime DateTimelecture = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, int.Parse(strs[0]), int.Parse(strs[1]),0,0);
+
+                        MessageBox.Show((dateTime - DateTimelecture)+"");
 
                         //リスト項目に追加
                         string[] row = { str, dateTime.ToString("t") };
