@@ -301,8 +301,12 @@ namespace SoftwareDevelopmentProjects
                         player.Dispose();
                         });
 
+
+
                         //時間を取得
                         DateTime dateTime = DateTime.Now;
+
+                        MessageBox.Show(lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]]);
 
                         //リスト項目に追加
                         string[] row = { str, dateTime.ToString("t") };
@@ -773,6 +777,11 @@ namespace SoftwareDevelopmentProjects
             {
                 testProvider.Clear();
             }
+        }
+
+        private void Pikokon_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
