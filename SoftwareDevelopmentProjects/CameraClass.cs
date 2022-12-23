@@ -308,6 +308,7 @@ namespace SoftwareDevelopmentProjects
         /// <summary>
         /// 特徴量が似ているかを取得
         /// </summary>
+        /// <param name="typeNum">特徴量の種類</param>
         /// <param name="arg1">特徴量1</param>
         /// <param name="arg2">特徴量2</param>
         /// <returns>似ているか</returns>
@@ -373,6 +374,7 @@ namespace SoftwareDevelopmentProjects
         /// <summary>
         /// 特徴の相違度を返す
         /// </summary>
+        /// <param name="typeNum">特徴量の種類</param>
         /// <param name="arg1">特徴1</param>
         /// <param name="arg2">特徴2</param>
         /// <returns>特徴の相違度</returns>
@@ -577,6 +579,9 @@ namespace SoftwareDevelopmentProjects
         }
     }
 
+    /// <summary>
+    /// 特徴量の種類の識別子を保存するクラス
+    /// </summary>
     public class DessTypeNum
     {
         private int _type;
@@ -595,6 +600,9 @@ namespace SoftwareDevelopmentProjects
         }
     }
 
+    /// <summary>
+    /// 特徴量の種類
+    /// </summary>
     public static class DessType
     {
         public static readonly DessTypeNum TypeFace = new DessTypeNum(0);
