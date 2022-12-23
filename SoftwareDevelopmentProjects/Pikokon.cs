@@ -95,7 +95,7 @@ namespace SoftwareDevelopmentProjects
                 "9,30",
                 "11,10",
                 "13,30",
-                "15,00"
+                "15,10"
             };
 
             //講義開始時間保存クラスから読み取った数値をlectureTimeに読みだす
