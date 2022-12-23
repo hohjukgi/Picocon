@@ -123,19 +123,6 @@
   <metadata name="fericaLoadTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>124, 17</value>
   </metadata>
-  <data name="label12.Text" xml:space="preserve">
-    <value>・このソフトウェアはオープンソースであり、
-潜在的な不具合が存在している可能性があることを理解している方にのみ
-個人利用のみの利用が可能です。
-
-・このソフトウェアの使用中に、いかなる問題が発生しても
-制作チームは一切の責任も負いません。
-
-・制作チーム
-愛知工科大学ソフトウェア開発プロジェクト-チームすみっコぐらし
-
-Copyright @Aichi University of Technology</value>
-  </data>
   <metadata name="testProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>263, 17</value>
   </metadata>

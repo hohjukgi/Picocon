@@ -381,9 +381,9 @@ namespace SoftwareDevelopmentProjects
                         if (testCamera.faceDessCount > 1)
                         {
                             //出力
-                            featureCompareLabel.Text = "比較: " + (testCamera.faceDessCount - 1) + ", " + (testCamera.faceDessCount - 2);
+                            featureCompareLabel.Text = "比較: (" + (testCamera.faceDessCount - 1) + ", " + (testCamera.faceDessCount - 2) + ")";
                             float featureValue = testCamera.GetFeatureValue(DessType.TypeFace, testCamera.faceDessCount - 1, testCamera.faceDessCount - 2);
-                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F0");
+                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F2");
                         }
                     }
                     break;
@@ -399,9 +399,9 @@ namespace SoftwareDevelopmentProjects
                         if (testCamera.eyesDessCount > 1)
                         {
                             //出力
-                            featureCompareLabel.Text = "比較: " + (testCamera.eyesDessCount - 1) + ", " + (testCamera.eyesDessCount - 2);
+                            featureCompareLabel.Text = "比較: (" + (testCamera.eyesDessCount - 1) + ", " + (testCamera.eyesDessCount - 2) + ")";
                             float featureValue = testCamera.GetFeatureValue(DessType.TypeEyes, testCamera.eyesDessCount - 1, testCamera.eyesDessCount - 2);
-                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F0");
+                            featureValueLabel.Text = "相違度: " + featureValue.ToString("F2");
                         }
                     }
                     break;
