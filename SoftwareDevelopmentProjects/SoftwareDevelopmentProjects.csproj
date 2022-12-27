@@ -164,6 +164,15 @@
   <ItemGroup>
     <None Include="Resources\chikoku_sound.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lucky_sound.wav" />
+    <Content Include="Resources\lucky_sound3.wav" />
+    <Content Include="Resources\lucky_sound2.wav" />
+    <Content Include="Resources\lucky_sound4.wav" />
+    <Content Include="Resources\lucky_sound5.wav" />
+    <Content Include="Resources\lucky_sound7.wav" />
+    <Content Include="Resources\lucky_sound6.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

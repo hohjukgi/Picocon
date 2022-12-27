@@ -10,8 +10,9 @@
 
 namespace SoftwareDevelopmentProjects.Properties {
     using System;
-    
-    
+    using System.IO;
+
+
     /// <summary>
     ///   ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
     /// </summary>
@@ -23,7 +24,6 @@ namespace SoftwareDevelopmentProjects.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
-        
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
@@ -85,6 +85,50 @@ namespace SoftwareDevelopmentProjects.Properties {
         internal static System.IO.UnmanagedMemoryStream Motion_Pop02_1__online_audio_converter_com_ {
             get {
                 return ResourceManager.GetStream("Motion_Pop02_1__online_audio_converter_com_", resourceCulture);
+            }
+        }
+
+        internal static System.IO.UnmanagedMemoryStream lucky_sound {
+            get
+            {
+                return ResourceManager.GetStream("lucky_sound", resourceCulture);
+            }
+        }
+        internal static System.IO.UnmanagedMemoryStream lucky_sound2 {
+            get
+            {
+                return ResourceManager.GetStream("lucky_sound2", resourceCulture);
+            }
+        }
+        internal static System.IO.UnmanagedMemoryStream lucky_sound3 {
+            get
+            {
+                return ResourceManager.GetStream("lucky_sound3", resourceCulture);
+            }
+        }
+        internal static System.IO.UnmanagedMemoryStream lucky_sound4 {
+            get
+            {
+                return ResourceManager.GetStream("lucky_sound4", resourceCulture);
+            }
+        }
+        internal static System.IO.UnmanagedMemoryStream lucky_sound5
+        {
+            get
+            {
+                return ResourceManager.GetStream("lucky_sound5", resourceCulture);
+            }
+        }
+        internal static System.IO.UnmanagedMemoryStream lucky_sound6 {
+            get
+            {
+                return ResourceManager.GetStream("lucky_sound6", resourceCulture);
+            }
+        }
+        internal static System.IO.UnmanagedMemoryStream lucky_sound7 {
+            get
+            {
+                return ResourceManager.GetStream("lucky_sound7", resourceCulture);
             }
         }
     }
