@@ -681,7 +681,6 @@ namespace SoftwareDevelopmentProjects
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelTime);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pikokon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Picocon";
