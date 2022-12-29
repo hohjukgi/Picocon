@@ -133,6 +133,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SaveClass.cs" />
+    <Compile Include="SoundManager.cs" />
     <EmbeddedResource Include="Pikokon.resx">
       <DependentUpon>Pikokon.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +166,7 @@
     <None Include="Resources\chikoku_sound.wav" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\playButton.png" />
     <None Include="Resources\lucky_sound.wav" />
     <Content Include="Resources\lucky_sound3.wav" />
     <Content Include="Resources\lucky_sound2.wav" />
