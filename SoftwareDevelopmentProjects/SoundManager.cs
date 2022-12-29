@@ -27,8 +27,15 @@ namespace SoftwareDevelopmentProjects
 
             set
             {
-                _randMax = value;
-                soundFile.WriteData(value.ToString());
+                if(value < 0)
+                {
+                    _randMax = 0;
+                }
+                else
+                {
+                    _randMax = value;
+                }
+                soundFile.WriteData(_randMax.ToString());
             }
         }
 
