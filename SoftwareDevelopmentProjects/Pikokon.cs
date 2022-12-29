@@ -17,6 +17,8 @@ namespace SoftwareDevelopmentProjects
         private MiniFileManager lectureName;                //講義名
         private MiniFileManager detectType;                 //検出場所
 
+        private SoundManager soundManager;                  //音声管理クラス
+
         private string[] lectureTime;                       //講義時間保存
         private List<int> lectureStartTime;                 //講義開始時刻保存
 
@@ -115,6 +117,12 @@ namespace SoftwareDevelopmentProjects
             //カメラクラスの初期化
             camera = new CameraClass();
             testCamera = new CameraClass();
+
+            //音声管理クラスの初期化
+            soundManager = new SoundManager();
+
+            //乱数最大値の初期化
+            soundPerUpDown.Value = soundManager.randMax;
 
             //初期化終了
             ready = true;
@@ -288,7 +296,7 @@ namespace SoftwareDevelopmentProjects
                             }
                         }
 
-                        SoundManager.PlaySound();
+                        soundManager.PlaySound();
 
                         //時間を取得
                         DateTime dateTime = DateTime.Now;
@@ -771,7 +779,13 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void playPictureBox_Click(object sender, EventArgs e)
         {
-            soundNameLabel.Text = SoundManager.PlaySound().ToString();
+            soundNameLabel.Text = soundManager.PlaySound().ToString();
+        }
+
+        private void soundPerUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (!ready) return;
+            soundManager.randMax = (int)soundPerUpDown.Value;
         }
     }
 }

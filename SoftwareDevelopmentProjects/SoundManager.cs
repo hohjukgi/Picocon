@@ -11,11 +11,15 @@ namespace SoftwareDevelopmentProjects
     /// <summary>
     /// 音声再生用クラス
     /// </summary>
-    public static class SoundManager
+    public class SoundManager
     {
-        //乱数用
-        private static Random r = new Random();
+        //ファイル管理用
+        private MiniFileManager soundFile;
 
+        //乱数用
+        private Random r = new Random();
+
+        //音声ファイル
         private static readonly Stream[] defaultSounds = {
             Properties.Resources.lucky_sound,
             Properties.Resources.lucky_sound2,
@@ -26,14 +30,38 @@ namespace SoftwareDevelopmentProjects
             Properties.Resources.lucky_sound7
         };
 
+        //乱数の最大値
+        private int _randMax = 100;
+
+        //乱数の最大値
+        public int randMax
+        {
+            get
+            {
+                return _randMax;
+            }
+
+            set
+            {
+                _randMax = value;
+                soundFile.WriteData(value.ToString());
+            }
+        }
+
+        public SoundManager()
+        {
+            soundFile = new MiniFileManager("sound.pico");
+            _randMax = int.Parse(soundFile.ReadData(100.ToString()));
+        }
+
         /// <summary>
         /// 音声を再生する
         /// </summary>
         /// <returns>乱数値</returns>
-        public static int PlaySound()
+        public int PlaySound()
         {
             //オーディオ再生処理
-            int randomValue = r.Next(100);
+            int randomValue = r.Next(_randMax);
 
             //音声ストリーム
             Stream strm;

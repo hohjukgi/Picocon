@@ -86,6 +86,7 @@ namespace SoftwareDevelopmentProjects
             this.labelName = new System.Windows.Forms.PictureBox();
             this.soundNameLabel = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.soundPerUpDown = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -99,6 +100,7 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundPerUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -451,6 +453,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.BackColor = System.Drawing.SystemColors.Window;
             this.numericUpDown2.Location = new System.Drawing.Point(394, 291);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             60,
@@ -458,6 +461,7 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.ReadOnly = true;
             this.numericUpDown2.Size = new System.Drawing.Size(47, 28);
             this.numericUpDown2.TabIndex = 8;
             this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -491,6 +495,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.BackColor = System.Drawing.SystemColors.Window;
             this.numericUpDown1.Location = new System.Drawing.Point(301, 291);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             24,
@@ -503,6 +508,7 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = true;
             this.numericUpDown1.Size = new System.Drawing.Size(47, 28);
             this.numericUpDown1.TabIndex = 7;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -566,7 +572,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // upDownDetectType
             // 
-            this.upDownDetectType.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.upDownDetectType.BackColor = System.Drawing.SystemColors.Window;
             this.upDownDetectType.Items.Add("顔認識");
             this.upDownDetectType.Items.Add("目認識");
             this.upDownDetectType.Location = new System.Drawing.Point(382, 65);
@@ -621,7 +627,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // upDownCamera
             // 
-            this.upDownCamera.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.upDownCamera.BackColor = System.Drawing.SystemColors.Window;
             this.upDownCamera.Location = new System.Drawing.Point(271, 65);
             this.upDownCamera.Maximum = new decimal(new int[] {
             10,
@@ -668,6 +674,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.soundPerUpDown);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.soundNameLabel);
             this.tabPage4.Controls.Add(this.playPictureBox);
@@ -731,9 +738,35 @@ namespace SoftwareDevelopmentProjects
             this.label15.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label15.Location = new System.Drawing.Point(14, 196);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(58, 24);
+            this.label15.Size = new System.Drawing.Size(150, 24);
             this.label15.TabIndex = 3;
-            this.label15.Text = "乱数";
+            this.label15.Text = "乱数の最大値";
+            // 
+            // soundPerUpDown
+            // 
+            this.soundPerUpDown.BackColor = System.Drawing.SystemColors.Window;
+            this.soundPerUpDown.Location = new System.Drawing.Point(46, 236);
+            this.soundPerUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.soundPerUpDown.Minimum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.soundPerUpDown.Name = "soundPerUpDown";
+            this.soundPerUpDown.ReadOnly = true;
+            this.soundPerUpDown.Size = new System.Drawing.Size(91, 28);
+            this.soundPerUpDown.TabIndex = 4;
+            this.soundPerUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.soundPerUpDown.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.soundPerUpDown.ValueChanged += new System.EventHandler(this.soundPerUpDown_ValueChanged);
             // 
             // Pikokon
             // 
@@ -765,6 +798,7 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundPerUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -826,6 +860,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label soundNameLabel;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown soundPerUpDown;
     }
 }
 
