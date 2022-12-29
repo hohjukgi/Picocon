@@ -163,7 +163,7 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            if (LectureSelectComboBox == null)
+            if (LectureSelectComboBox.SelectedIndex < 0)
             {
                 LogManager.LogOutput("講義を選択してください");
                 return;
