@@ -762,7 +762,9 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void upDownDetectType_SelectedItemChanged(object sender, EventArgs e)
         {
+            //保存
             detectType.WriteData(upDownDetectType.SelectedIndex.ToString());
+            //目検出なら
             if (upDownDetectType.SelectedIndex == 1)
             {
                 testProvider.SetError(upDownDetectType, "テスト段階の機能です\r\n意図しない動作が起こる可能性があります");
@@ -780,6 +782,7 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void playPictureBox_Click(object sender, EventArgs e)
         {
+            //出席音声を再生,乱数を表示
             soundNameLabel.Text = soundManager.PlaySound().ToString();
         }
 
@@ -788,6 +791,7 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         private void SetReaSoundPer()
         {
+            //計算
             reaPerCalcLabel.Text = "= " + (7.0 / (double)soundManager.randMax * 100.0).ToString("F2") + "%";
         }
 
@@ -796,11 +800,15 @@ namespace SoftwareDevelopmentProjects
             if (!ready) return;
             try
             {
+                //乱数の最大値を設定
                 soundManager.randMax = int.Parse(reaPerTextBox.Text);
+                //レア音声再生確率を設定
                 SetReaSoundPer();
             }
+            //数字以外が入力された
             catch (System.FormatException)
             {
+                //数字に上書き
                 reaPerTextBox.Text = soundManager.randMax.ToString();
             }
         }

@@ -1,11 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Threading;
 
 namespace SoftwareDevelopmentProjects
 {
@@ -98,7 +92,6 @@ namespace SoftwareDevelopmentProjects
             player.Play();
             //後始末
             player.Dispose();
-
             strm.Dispose();
             
             return randomValue;
