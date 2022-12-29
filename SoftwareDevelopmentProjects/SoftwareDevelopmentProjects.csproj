@@ -168,6 +168,7 @@
   <ItemGroup>
     <None Include="Resources\playButton.png" />
     <None Include="Resources\lucky_sound.wav" />
+    <None Include="Resources\ei-folder.png" />
     <Content Include="Resources\lucky_sound3.wav" />
     <Content Include="Resources\lucky_sound2.wav" />
     <Content Include="Resources\lucky_sound4.wav" />
