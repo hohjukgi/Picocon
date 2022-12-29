@@ -163,6 +163,11 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            if (LectureSelectComboBox == null)
+            {
+                LogManager.LogOutput("講義を選択してください");
+                return;
+            }
             ToggleFelica();
             /*
 
