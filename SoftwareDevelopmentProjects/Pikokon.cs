@@ -764,9 +764,14 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /// <summary>
+        /// サウンドテストボタン用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void playPictureBox_Click(object sender, EventArgs e)
         {
-            SoundManager.PlaySound();
+            soundNameLabel.Text = SoundManager.PlaySound().ToString();
         }
     }
 }
