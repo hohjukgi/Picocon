@@ -21,7 +21,7 @@ namespace SoftwareDevelopmentProjects
         private Random r = new Random();
 
         //乱数の最大値
-        private int _randMax = 100;
+        private int _randMax = 700;
 
         //乱数の最大値
         public int randMax
@@ -41,7 +41,7 @@ namespace SoftwareDevelopmentProjects
         public SoundManager()
         {
             soundFile = new MiniFileManager("sound.pico");
-            _randMax = int.Parse(soundFile.ReadData(100.ToString()));
+            _randMax = int.Parse(soundFile.ReadData(700.ToString()));
         }
 
         /// <summary>

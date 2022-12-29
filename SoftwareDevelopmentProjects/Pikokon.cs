@@ -122,7 +122,8 @@ namespace SoftwareDevelopmentProjects
             soundManager = new SoundManager();
 
             //乱数最大値の初期化
-            soundPerUpDown.Value = soundManager.randMax;
+            reaPerTextBox.Text = soundManager.randMax.ToString();
+            SetReaSoundPer();
 
             //初期化終了
             ready = true;
@@ -782,10 +783,26 @@ namespace SoftwareDevelopmentProjects
             soundNameLabel.Text = soundManager.PlaySound().ToString();
         }
 
-        private void soundPerUpDown_ValueChanged(object sender, EventArgs e)
+        /// <summary>
+        /// レア音声再生確率を計算する
+        /// </summary>
+        private void SetReaSoundPer()
+        {
+            reaPerCalcLabel.Text = "= " + (7.0 / (double)soundManager.randMax * 100.0).ToString("F2") + "%";
+        }
+
+        private void reaPerTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!ready) return;
-            soundManager.randMax = (int)soundPerUpDown.Value;
+            try
+            {
+                soundManager.randMax = int.Parse(reaPerTextBox.Text);
+                SetReaSoundPer();
+            }
+            catch (System.FormatException)
+            {
+                reaPerTextBox.Text = soundManager.randMax.ToString();
+            }
         }
     }
 }
