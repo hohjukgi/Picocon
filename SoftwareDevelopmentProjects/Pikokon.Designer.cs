@@ -80,15 +80,16 @@ namespace SoftwareDevelopmentProjects
             this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.reaPerTextBox = new System.Windows.Forms.TextBox();
+            this.reaPerCalcLabel = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.soundNameLabel = new System.Windows.Forms.Label();
             this.playPictureBox = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.testProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelName = new System.Windows.Forms.PictureBox();
-            this.soundNameLabel = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.reaPerCalcLabel = new System.Windows.Forms.Label();
-            this.reaPerTextBox = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -185,6 +186,7 @@ namespace SoftwareDevelopmentProjects
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -208,6 +210,7 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.Controls.Add(this.buttonRead);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.listStudentId);
+            this.tabPage1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -316,7 +319,7 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(508, 443);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "講義設定";
+            this.tabPage2.Text = "講義";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -538,7 +541,7 @@ namespace SoftwareDevelopmentProjects
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(508, 443);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "カメラ設定";
+            this.tabPage3.Text = "ズル防止";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // featureValueLabel
@@ -686,8 +689,57 @@ namespace SoftwareDevelopmentProjects
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(508, 443);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "音声設定";
+            this.tabPage4.Text = "音声";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // reaPerTextBox
+            // 
+            this.reaPerTextBox.Location = new System.Drawing.Point(142, 242);
+            this.reaPerTextBox.Name = "reaPerTextBox";
+            this.reaPerTextBox.Size = new System.Drawing.Size(100, 28);
+            this.reaPerTextBox.TabIndex = 8;
+            this.reaPerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.reaPerTextBox.TextChanged += new System.EventHandler(this.reaPerTextBox_TextChanged);
+            // 
+            // reaPerCalcLabel
+            // 
+            this.reaPerCalcLabel.AutoSize = true;
+            this.reaPerCalcLabel.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.reaPerCalcLabel.Location = new System.Drawing.Point(264, 242);
+            this.reaPerCalcLabel.Name = "reaPerCalcLabel";
+            this.reaPerCalcLabel.Size = new System.Drawing.Size(53, 24);
+            this.reaPerCalcLabel.TabIndex = 6;
+            this.reaPerCalcLabel.Text = "= 1%";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label16.Location = new System.Drawing.Point(94, 242);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 24);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "7 /";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label15.Location = new System.Drawing.Point(14, 196);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(214, 24);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "レア出席音再生確率";
+            // 
+            // soundNameLabel
+            // 
+            this.soundNameLabel.AutoSize = true;
+            this.soundNameLabel.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.soundNameLabel.Location = new System.Drawing.Point(137, 63);
+            this.soundNameLabel.Name = "soundNameLabel";
+            this.soundNameLabel.Size = new System.Drawing.Size(59, 29);
+            this.soundNameLabel.TabIndex = 2;
+            this.soundNameLabel.Text = "なし";
             // 
             // playPictureBox
             // 
@@ -725,54 +777,14 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
-            // soundNameLabel
+            // tabPage5
             // 
-            this.soundNameLabel.AutoSize = true;
-            this.soundNameLabel.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.soundNameLabel.Location = new System.Drawing.Point(137, 63);
-            this.soundNameLabel.Name = "soundNameLabel";
-            this.soundNameLabel.Size = new System.Drawing.Size(59, 29);
-            this.soundNameLabel.TabIndex = 2;
-            this.soundNameLabel.Text = "なし";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label15.Location = new System.Drawing.Point(14, 196);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(214, 24);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "レア出席音再生確率";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label16.Location = new System.Drawing.Point(94, 242);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 24);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "7 /";
-            // 
-            // reaPerCalcLabel
-            // 
-            this.reaPerCalcLabel.AutoSize = true;
-            this.reaPerCalcLabel.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.reaPerCalcLabel.Location = new System.Drawing.Point(264, 242);
-            this.reaPerCalcLabel.Name = "reaPerCalcLabel";
-            this.reaPerCalcLabel.Size = new System.Drawing.Size(53, 24);
-            this.reaPerCalcLabel.TabIndex = 6;
-            this.reaPerCalcLabel.Text = "= 1%";
-            // 
-            // reaPerTextBox
-            // 
-            this.reaPerTextBox.Location = new System.Drawing.Point(142, 242);
-            this.reaPerTextBox.Name = "reaPerTextBox";
-            this.reaPerTextBox.Size = new System.Drawing.Size(100, 28);
-            this.reaPerTextBox.TabIndex = 8;
-            this.reaPerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.reaPerTextBox.TextChanged += new System.EventHandler(this.reaPerTextBox_TextChanged);
+            this.tabPage5.Location = new System.Drawing.Point(4, 34);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(508, 443);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "名簿";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // Pikokon
             // 
@@ -868,6 +880,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label reaPerCalcLabel;
         private System.Windows.Forms.TextBox reaPerTextBox;
+        private System.Windows.Forms.TabPage tabPage5;
     }
 }
 
