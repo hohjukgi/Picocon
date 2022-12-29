@@ -66,6 +66,8 @@ namespace SoftwareDevelopmentProjects
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.featureValueLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -85,9 +87,8 @@ namespace SoftwareDevelopmentProjects
             this.soundNameLabel = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.testProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label17 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.folderPictureBox = new System.Windows.Forms.PictureBox();
             this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.featurePictureBox = new System.Windows.Forms.PictureBox();
@@ -97,12 +98,13 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).BeginInit();
-            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
@@ -527,6 +529,28 @@ namespace SoftwareDevelopmentProjects
             0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.pictureBox1);
+            this.tabPage5.Controls.Add(this.folderPictureBox);
+            this.tabPage5.Controls.Add(this.label17);
+            this.tabPage5.Location = new System.Drawing.Point(4, 34);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(508, 443);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "名簿";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label17.Location = new System.Drawing.Point(3, 10);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(106, 24);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "作成手順";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.featureValueLabel);
@@ -738,27 +762,6 @@ namespace SoftwareDevelopmentProjects
             // 
             this.testProvider.ContainerControl = this;
             // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.folderPictureBox);
-            this.tabPage5.Controls.Add(this.label17);
-            this.tabPage5.Location = new System.Drawing.Point(4, 34);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(508, 443);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "名簿";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 10);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(507, 273);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "名簿ファイルとは?\r\n\r\n生徒の学籍番号と名前を記入したファイルを読み取ることで、\r\n見やすいcsvファイルを出力できます\r\n\r\n講義名と同じファイルを作成するこ" +
-    "とで\r\n自動的に適用されます\r\n\r\n名簿ファイル例\r\n講義名.csv\r\n\r\n20201111,愛知名太郎\r\n20222222,三重津市子";
-            // 
             // labelName
             // 
             this.labelName.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
@@ -770,13 +773,23 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SoftwareDevelopmentProjects.Properties.Resources.explain;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(396, 370);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
             // folderPictureBox
             // 
             this.folderPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.folderPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.ei_folder;
-            this.folderPictureBox.Location = new System.Drawing.Point(7, 296);
+            this.folderPictureBox.Location = new System.Drawing.Point(409, 37);
             this.folderPictureBox.Name = "folderPictureBox";
-            this.folderPictureBox.Size = new System.Drawing.Size(30, 30);
+            this.folderPictureBox.Size = new System.Drawing.Size(45, 45);
             this.folderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.folderPictureBox.TabIndex = 1;
             this.folderPictureBox.TabStop = false;
@@ -834,15 +847,16 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).EndInit();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
@@ -914,6 +928,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.PictureBox folderPictureBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
