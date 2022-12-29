@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace SoftwareDevelopmentProjects
 {
@@ -18,17 +19,6 @@ namespace SoftwareDevelopmentProjects
 
         //乱数用
         private Random r = new Random();
-
-        //音声ファイル
-        private static readonly Stream[] defaultSounds = {
-            Properties.Resources.lucky_sound,
-            Properties.Resources.lucky_sound2,
-            Properties.Resources.lucky_sound3,
-            Properties.Resources.lucky_sound4,
-            Properties.Resources.lucky_sound5,
-            Properties.Resources.lucky_sound6,
-            Properties.Resources.lucky_sound7
-        };
 
         //乱数の最大値
         private int _randMax = 100;
@@ -60,7 +50,7 @@ namespace SoftwareDevelopmentProjects
         /// <returns>乱数値</returns>
         public int PlaySound()
         {
-            //オーディオ再生処理
+            //乱数
             int randomValue = r.Next(_randMax);
 
             //音声ストリーム
@@ -69,31 +59,31 @@ namespace SoftwareDevelopmentProjects
             switch (randomValue)
             {
                 case 0:
-                    strm = defaultSounds[0];
+                    strm = Properties.Resources.lucky_sound;
                     break;
 
                 case 1:
-                    strm = defaultSounds[1];
+                    strm = Properties.Resources.lucky_sound2;
                     break;
 
                 case 2:
-                    strm = defaultSounds[2];
+                    strm = Properties.Resources.lucky_sound3;
                     break;
 
                 case 3:
-                    strm = defaultSounds[3];
+                    strm = Properties.Resources.lucky_sound4;
                     break;
 
                 case 4:
-                    strm = defaultSounds[4];
+                    strm = Properties.Resources.lucky_sound5;
                     break;
 
                 case 5:
-                    strm = defaultSounds[5];
+                    strm = Properties.Resources.lucky_sound6;
                     break;
 
                 case 6:
-                    strm = defaultSounds[6];
+                    strm = Properties.Resources.lucky_sound7;
                     break;
 
                 default:
@@ -108,6 +98,8 @@ namespace SoftwareDevelopmentProjects
             player.Play();
             //後始末
             player.Dispose();
+
+            strm.Dispose();
             
             return randomValue;
         }
