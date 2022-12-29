@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FelicaLib;
@@ -29,6 +30,9 @@ namespace SoftwareDevelopmentProjects
             //サイズを初期化
             this.Width = 617;
             this.Height = 618;
+
+            //名簿フォルダを作成
+            Directory.CreateDirectory("名簿フォルダ");
 
             //時間更新タイマーを起動
             dateTimer.Start();
@@ -163,6 +167,11 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            if (LectureSelectComboBox.SelectedIndex < 0)
+            {
+                LogManager.LogOutput("講義を選択してください");
+                return;
+            }
             ToggleFelica();
             /*
 
@@ -811,6 +820,12 @@ namespace SoftwareDevelopmentProjects
                 //数字に上書き
                 reaPerTextBox.Text = soundManager.randMax.ToString();
             }
+        }
+
+        private void folderPictureBox_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(
+    "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\名簿フォルダ");
         }
     }
 }
