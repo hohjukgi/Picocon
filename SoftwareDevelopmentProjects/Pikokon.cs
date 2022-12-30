@@ -855,6 +855,11 @@ namespace SoftwareDevelopmentProjects
                 "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\名簿フォルダ");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void plusStudentIdButton_Click(object sender, EventArgs e)
         {
             string selfId = Microsoft.VisualBasic.Interaction.InputBox("学籍番号を入力してください。", "手動出席", "", -1, -1);
