@@ -41,7 +41,15 @@ namespace SoftwareDevelopmentProjects
         /// <param name="rosterPath">名簿ファイル</param>
         public static void ConvertToSaveData(ListView.ListViewItemCollection Idlist, string rosterPath)
         {
+            string initStr = "";
+            MiniFileManager rosterFile = new MiniFileManager(rosterPath);
+            string[] rosterString = rosterFile.ReadDataArray(initStr);
 
+            foreach(string roster in rosterString)
+            {
+                exportText += roster + ",";
+                //TODO
+            }
         }
 
         /// <summary>
