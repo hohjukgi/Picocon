@@ -857,7 +857,27 @@ namespace SoftwareDevelopmentProjects
 
         private void plusStudentIdButton_Click(object sender, EventArgs e)
         {
+            string selfId = Microsoft.VisualBasic.Interaction.InputBox("学籍番号を入力してください。", "手動出席", "", -1, -1);
+            if (selfId == "") return;
+            string selfTime = Microsoft.VisualBasic.Interaction.InputBox("時刻をコンマ(,)区切りで入力してください。\r\n年～秒まで", "手動出席", "", -1, -1);
+            if (selfTime == "") return;
+            try
+            {
+                string[] selfSplitTime = selfTime.Split(',');
+                DateTime selfDateTime = new DateTime(int.Parse(selfSplitTime[0]), int.Parse(selfSplitTime[1]), int.Parse(selfSplitTime[2]),
+                    int.Parse(selfSplitTime[3]), int.Parse(selfSplitTime[4]), int.Parse(selfSplitTime[5]));
 
+                string[] row =
+                {
+                    selfId, selfDateTime.ToString("t")
+                };
+
+                listStudentId.Items.Add(new ListViewItem(row));
+            }
+            catch(Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
+            }
         }
     }
 }
