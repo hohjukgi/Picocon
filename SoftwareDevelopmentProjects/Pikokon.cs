@@ -852,7 +852,12 @@ namespace SoftwareDevelopmentProjects
         private void folderPictureBox_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(
-    "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\名簿フォルダ");
+                "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\名簿フォルダ");
+        }
+
+        private void plusStudentIdButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -93,6 +93,7 @@ namespace SoftwareDevelopmentProjects
             this.playPictureBox = new System.Windows.Forms.PictureBox();
             this.testProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelName = new System.Windows.Forms.PictureBox();
+            this.plusStudentIdButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -205,6 +206,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.plusStudentIdButton);
             this.tabPage1.Controls.Add(this.LectureSelectComboBox);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.checkBoxDetectFace);
@@ -827,6 +829,17 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
+            // plusStudentIdButton
+            // 
+            this.plusStudentIdButton.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.plusStudentIdButton.Location = new System.Drawing.Point(451, 377);
+            this.plusStudentIdButton.Name = "plusStudentIdButton";
+            this.plusStudentIdButton.Size = new System.Drawing.Size(29, 29);
+            this.plusStudentIdButton.TabIndex = 18;
+            this.plusStudentIdButton.Text = "+";
+            this.plusStudentIdButton.UseVisualStyleBackColor = true;
+            this.plusStudentIdButton.Click += new System.EventHandler(this.plusStudentIdButton_Click);
+            // 
             // Pikokon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -930,6 +943,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.PictureBox folderPictureBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button plusStudentIdButton;
     }
 }
 
