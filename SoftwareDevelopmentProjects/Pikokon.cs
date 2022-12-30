@@ -172,6 +172,13 @@ namespace SoftwareDevelopmentProjects
                 LogManager.LogOutput("講義を選択してください");
                 return;
             }
+
+            string[] files = Directory.GetFiles("./名簿フォルダ", ".csv");
+            foreach(string file in files)
+            {
+                MessageBox.Show(file);
+            }
+
             ToggleFelica();
             /*
 
