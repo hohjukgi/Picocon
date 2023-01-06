@@ -82,8 +82,6 @@ namespace SoftwareDevelopmentProjects
             this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.PictureBox();
-            this.upDownCamera = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.reaPerTextBox = new System.Windows.Forms.TextBox();
             this.reaPerCalcLabel = new System.Windows.Forms.Label();
@@ -92,11 +90,8 @@ namespace SoftwareDevelopmentProjects
             this.soundNameLabel = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.testProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.labelName = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.folderPictureBox = new System.Windows.Forms.PictureBox();
-            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.playPictureBox = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -112,11 +107,9 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -737,9 +730,6 @@ namespace SoftwareDevelopmentProjects
             // upDownCamera
             // 
             this.upDownCamera.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            // upDownCamera
-            // 
-            this.upDownCamera.BackColor = System.Drawing.SystemColors.Window;
             this.upDownCamera.Location = new System.Drawing.Point(271, 65);
             this.upDownCamera.Maximum = new decimal(new int[] {
             10,
@@ -946,15 +936,11 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
