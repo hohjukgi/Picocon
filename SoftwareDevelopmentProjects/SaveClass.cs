@@ -74,7 +74,8 @@ namespace SoftwareDevelopmentProjects
                     }
                 }
             }
-            StreamWriter sw = new StreamWriter(name + "/出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv");
+            StreamWriter sw = new StreamWriter(name + "/出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv"
+                ,false, System.Text.Encoding.GetEncoding("shift_jis"));
             sw.WriteLine(exportText);
             sw.Close();
             LogManager.LogOutput("CSVに出力");
