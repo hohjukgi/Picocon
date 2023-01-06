@@ -326,12 +326,16 @@ namespace SoftwareDevelopmentProjects
 
                         string tikoku = "正常"; 
 
-                        if (int.Parse((dateTime - DateTimelecture).ToString()) > 15.0){
+                        if (TimeSpan.Parse("0:15:0") < dateTime - DateTimelecture){
+                            tikoku = "無効";
+                        }
+                        else if (TimeSpan.Parse("0:0:0") < dateTime - DateTimelecture)
+                        {
                             tikoku = "遅刻";
-                                }
+                        }
 
-                        //リスト項目に追加
-                        string[] row = { str, dateTime.ToString("t"),tikoku };
+                            //リスト項目に追加
+                            string[] row = { str, dateTime.ToString("t"),tikoku };
                         listStudentId.Items.Add(new ListViewItem(row));
 
 
@@ -849,7 +853,7 @@ namespace SoftwareDevelopmentProjects
         private void folderPictureBox_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(
-            "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\
+            "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\");
         }
     }
 }
