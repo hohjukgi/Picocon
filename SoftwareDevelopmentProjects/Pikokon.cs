@@ -374,10 +374,18 @@ namespace SoftwareDevelopmentProjects
 
                         LogManager.LogOutput("学籍番号を取得: " + str);
                     }
-                    catch (Exception)//学生証を読み取れなかった場合など
+                    catch (Exception ex)//学生証を読み取れなかった場合など
                     {
-                        //ボタンの追操作を許可
-                        buttonRead.Enabled = true;
+                        if(ex.Message == "カード読み取り失敗")
+                        {
+                            //ボタンの追操作を許可
+                            buttonRead.Enabled = true;
+                        }
+                        else
+                        {
+                            //エラー
+                            throw ex;
+                        }
                     }
                 }
             } 
