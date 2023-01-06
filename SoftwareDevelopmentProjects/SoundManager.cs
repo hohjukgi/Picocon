@@ -103,5 +103,17 @@ namespace SoftwareDevelopmentProjects
             
             return randomValue;
         }
+
+        public void PlaySound(UnmanagedMemoryStream strm)
+        {
+            //サウンドプレイヤの初期化
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
+
+            //再生
+            player.Play();
+            //後始末
+            player.Dispose();
+            strm.Dispose();
+        }
     }
 }
