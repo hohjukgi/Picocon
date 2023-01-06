@@ -19,7 +19,7 @@ namespace SoftwareDevelopmentProjects.Properties {
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
     // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -72,6 +72,26 @@ namespace SoftwareDevelopmentProjects.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap ei_folder {
+            get {
+                object obj = ResourceManager.GetObject("ei-folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap explain {
+            get {
+                object obj = ResourceManager.GetObject("explain", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap icon {
             get {
                 object obj = ResourceManager.GetObject("icon", resourceCulture);
@@ -82,9 +102,82 @@ namespace SoftwareDevelopmentProjects.Properties {
         /// <summary>
         ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream lucky_sound {
+            get {
+                return ResourceManager.GetStream("lucky_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream lucky_sound2 {
+            get {
+                return ResourceManager.GetStream("lucky_sound2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream lucky_sound3 {
+            get {
+                return ResourceManager.GetStream("lucky_sound3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream lucky_sound4 {
+            get {
+                return ResourceManager.GetStream("lucky_sound4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream lucky_sound5 {
+            get {
+                return ResourceManager.GetStream("lucky_sound5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream lucky_sound6 {
+            get {
+                return ResourceManager.GetStream("lucky_sound6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream lucky_sound7 {
+            get {
+                return ResourceManager.GetStream("lucky_sound7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   System.IO.MemoryStream に類似した型 System.IO.UnmanagedMemoryStream のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Motion_Pop02_1__online_audio_converter_com_ {
             get {
                 return ResourceManager.GetStream("Motion_Pop02_1__online_audio_converter_com_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap playButton {
+            get {
+                object obj = ResourceManager.GetObject("playButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -31,6 +31,7 @@ namespace SoftwareDevelopmentProjects
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pikokon));
             this.buttonRead = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.labelTime = new System.Windows.Forms.Label();
@@ -65,6 +66,8 @@ namespace SoftwareDevelopmentProjects
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.featureValueLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,18 +82,42 @@ namespace SoftwareDevelopmentProjects
             this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.PictureBox();
+            this.upDownCamera = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.reaPerTextBox = new System.Windows.Forms.TextBox();
+            this.reaPerCalcLabel = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.soundNameLabel = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.testProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelName = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.folderPictureBox = new System.Windows.Forms.PictureBox();
+            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.featurePictureBox = new System.Windows.Forms.PictureBox();
+            this.playPictureBox = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -174,7 +201,9 @@ namespace SoftwareDevelopmentProjects
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tabControl1.ItemSize = new System.Drawing.Size(120, 30);
             this.tabControl1.Location = new System.Drawing.Point(32, 91);
@@ -196,6 +225,7 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.Controls.Add(this.buttonRead);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.listStudentId);
+            this.tabPage1.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -440,8 +470,65 @@ namespace SoftwareDevelopmentProjects
             this.label4.TabIndex = 6;
             this.label4.Text = "時限";
             // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.radioButton5.Location = new System.Drawing.Point(328, 124);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(60, 25);
+            this.radioButton5.TabIndex = 20;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "3限";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button3.Location = new System.Drawing.Point(220, 99);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(40, 40);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "-";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label10.Location = new System.Drawing.Point(84, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 19);
+            this.label10.TabIndex = 22;
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label7.Location = new System.Drawing.Point(285, 246);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 24);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "開始時刻";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label4.Location = new System.Drawing.Point(285, 15);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 24);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "時限";
+            // 
             // numericUpDown2
             // 
+            this.numericUpDown2.BackColor = System.Drawing.SystemColors.Window;
             this.numericUpDown2.Location = new System.Drawing.Point(394, 291);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             60,
@@ -449,6 +536,7 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.ReadOnly = true;
             this.numericUpDown2.Size = new System.Drawing.Size(47, 28);
             this.numericUpDown2.TabIndex = 8;
             this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -482,6 +570,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.BackColor = System.Drawing.SystemColors.Window;
             this.numericUpDown1.Location = new System.Drawing.Point(301, 291);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             24,
@@ -494,6 +583,7 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = true;
             this.numericUpDown1.Size = new System.Drawing.Size(47, 28);
             this.numericUpDown1.TabIndex = 7;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -503,6 +593,28 @@ namespace SoftwareDevelopmentProjects
             0,
             0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.pictureBox1);
+            this.tabPage5.Controls.Add(this.folderPictureBox);
+            this.tabPage5.Controls.Add(this.label17);
+            this.tabPage5.Location = new System.Drawing.Point(4, 34);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(508, 443);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "名簿";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label17.Location = new System.Drawing.Point(3, 10);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(106, 24);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "作成手順";
             // 
             // tabPage3
             // 
@@ -514,15 +626,15 @@ namespace SoftwareDevelopmentProjects
             this.tabPage3.Controls.Add(this.faceFeatureResetButton);
             this.tabPage3.Controls.Add(this.ImageProcessingTestButton);
             this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.takePhotoPictureBox);
             this.tabPage3.Controls.Add(this.upDownCamera);
-            this.tabPage3.Controls.Add(this.featurePictureBox);
             this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.takePhotoPictureBox);
+            this.tabPage3.Controls.Add(this.featurePictureBox);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(508, 443);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "カメラ設定";
+            this.tabPage3.Text = "ズル防止";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // featureValueLabel
@@ -558,6 +670,7 @@ namespace SoftwareDevelopmentProjects
             // upDownDetectType
             // 
             this.upDownDetectType.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.upDownDetectType.BackColor = System.Drawing.SystemColors.Window;
             this.upDownDetectType.Items.Add("顔認識");
             this.upDownDetectType.Items.Add("目認識");
             this.upDownDetectType.Location = new System.Drawing.Point(382, 65);
@@ -624,6 +737,9 @@ namespace SoftwareDevelopmentProjects
             // upDownCamera
             // 
             this.upDownCamera.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            // upDownCamera
+            // 
+            this.upDownCamera.BackColor = System.Drawing.SystemColors.Window;
             this.upDownCamera.Location = new System.Drawing.Point(271, 65);
             this.upDownCamera.Maximum = new decimal(new int[] {
             10,
@@ -657,6 +773,85 @@ namespace SoftwareDevelopmentProjects
             this.label8.TabIndex = 16;
             this.label8.Text = "カメラ";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.reaPerTextBox);
+            this.tabPage4.Controls.Add(this.reaPerCalcLabel);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.label15);
+            this.tabPage4.Controls.Add(this.soundNameLabel);
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.playPictureBox);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(508, 443);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "音声";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // reaPerTextBox
+            // 
+            this.reaPerTextBox.Location = new System.Drawing.Point(142, 242);
+            this.reaPerTextBox.Name = "reaPerTextBox";
+            this.reaPerTextBox.Size = new System.Drawing.Size(100, 28);
+            this.reaPerTextBox.TabIndex = 8;
+            this.reaPerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.reaPerTextBox.TextChanged += new System.EventHandler(this.reaPerTextBox_TextChanged);
+            // 
+            // reaPerCalcLabel
+            // 
+            this.reaPerCalcLabel.AutoSize = true;
+            this.reaPerCalcLabel.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.reaPerCalcLabel.Location = new System.Drawing.Point(264, 242);
+            this.reaPerCalcLabel.Name = "reaPerCalcLabel";
+            this.reaPerCalcLabel.Size = new System.Drawing.Size(53, 24);
+            this.reaPerCalcLabel.TabIndex = 6;
+            this.reaPerCalcLabel.Text = "= 1%";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label16.Location = new System.Drawing.Point(94, 242);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 24);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "7 /";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label15.Location = new System.Drawing.Point(14, 196);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(214, 24);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "レア出席音再生確率";
+            // 
+            // soundNameLabel
+            // 
+            this.soundNameLabel.AutoSize = true;
+            this.soundNameLabel.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.soundNameLabel.Location = new System.Drawing.Point(137, 63);
+            this.soundNameLabel.Name = "soundNameLabel";
+            this.soundNameLabel.Size = new System.Drawing.Size(59, 29);
+            this.soundNameLabel.TabIndex = 2;
+            this.soundNameLabel.Text = "なし";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label12.Location = new System.Drawing.Point(14, 14);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(136, 24);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "サウンドテスト";
+            // 
+            // testProvider
+            // 
+            this.testProvider.ContainerControl = this;
+            // 
             // labelName
             // 
             this.labelName.Image = global::SoftwareDevelopmentProjects.Properties.Resources.icon;
@@ -668,9 +863,59 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
-            // testProvider
+            // pictureBox1
             // 
-            this.testProvider.ContainerControl = this;
+            this.pictureBox1.Image = global::SoftwareDevelopmentProjects.Properties.Resources.explain;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(396, 370);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // folderPictureBox
+            // 
+            this.folderPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.folderPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.ei_folder;
+            this.folderPictureBox.Location = new System.Drawing.Point(409, 37);
+            this.folderPictureBox.Name = "folderPictureBox";
+            this.folderPictureBox.Size = new System.Drawing.Size(45, 45);
+            this.folderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.folderPictureBox.TabIndex = 1;
+            this.folderPictureBox.TabStop = false;
+            this.folderPictureBox.Click += new System.EventHandler(this.folderPictureBox_Click);
+            // 
+            // takePhotoPictureBox
+            // 
+            this.takePhotoPictureBox.BackColor = System.Drawing.SystemColors.Desktop;
+            this.takePhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.takePhotoPictureBox.Location = new System.Drawing.Point(16, 38);
+            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
+            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 180);
+            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.takePhotoPictureBox.TabIndex = 14;
+            this.takePhotoPictureBox.TabStop = false;
+            // 
+            // featurePictureBox
+            // 
+            this.featurePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.featurePictureBox.Location = new System.Drawing.Point(271, 168);
+            this.featurePictureBox.Name = "featurePictureBox";
+            this.featurePictureBox.Size = new System.Drawing.Size(70, 50);
+            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.featurePictureBox.TabIndex = 26;
+            this.featurePictureBox.TabStop = false;
+            // 
+            // playPictureBox
+            // 
+            this.playPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.playButton;
+            this.playPictureBox.Location = new System.Drawing.Point(46, 53);
+            this.playPictureBox.Name = "playPictureBox";
+            this.playPictureBox.Size = new System.Drawing.Size(50, 50);
+            this.playPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.playPictureBox.TabIndex = 1;
+            this.playPictureBox.TabStop = false;
+            this.playPictureBox.Click += new System.EventHandler(this.playPictureBox_Click);
             // 
             // Pikokon
             // 
@@ -681,6 +926,7 @@ namespace SoftwareDevelopmentProjects
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelTime);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pikokon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Picocon";
@@ -692,13 +938,24 @@ namespace SoftwareDevelopmentProjects
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -755,6 +1012,18 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Label featureCompareLabel;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ErrorProvider testProvider;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.PictureBox playPictureBox;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label soundNameLabel;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label reaPerCalcLabel;
+        private System.Windows.Forms.TextBox reaPerTextBox;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.PictureBox folderPictureBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

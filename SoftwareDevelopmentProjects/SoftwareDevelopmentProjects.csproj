@@ -133,6 +133,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SaveClass.cs" />
+    <Compile Include="SoundManager.cs" />
     <EmbeddedResource Include="Pikokon.resx">
       <DependentUpon>Pikokon.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +164,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chikoku_sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playButton.png" />
+    <None Include="Resources\lucky_sound.wav" />
+    <None Include="Resources\ei-folder.png" />
+    <None Include="Resources\explain.png" />
+    <Content Include="Resources\lucky_sound3.wav" />
+    <Content Include="Resources\lucky_sound2.wav" />
+    <Content Include="Resources\lucky_sound4.wav" />
+    <Content Include="Resources\lucky_sound5.wav" />
+    <Content Include="Resources\lucky_sound7.wav" />
+    <Content Include="Resources\lucky_sound6.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

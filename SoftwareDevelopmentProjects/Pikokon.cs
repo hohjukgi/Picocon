@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FelicaLib;
@@ -17,6 +18,8 @@ namespace SoftwareDevelopmentProjects
         private MiniFileManager lectureName;                //講義名
         private MiniFileManager detectType;                 //検出場所
 
+        private SoundManager soundManager;                  //音声管理クラス
+
         private string[] lectureTime;                       //講義時間保存
         private List<int> lectureStartTime;                 //講義開始時刻保存
 
@@ -27,6 +30,9 @@ namespace SoftwareDevelopmentProjects
             //サイズを初期化
             this.Width = 617;
             this.Height = 618;
+
+            //名簿フォルダを作成
+            Directory.CreateDirectory("名簿フォルダ");
 
             //時間更新タイマーを起動
             dateTimer.Start();
@@ -118,6 +124,13 @@ namespace SoftwareDevelopmentProjects
             camera = new CameraClass();
             testCamera = new CameraClass();
 
+            //音声管理クラスの初期化
+            soundManager = new SoundManager();
+
+            //乱数最大値の初期化
+            reaPerTextBox.Text = soundManager.randMax.ToString();
+            SetReaSoundPer();
+
             //初期化終了
             ready = true;
         }
@@ -156,6 +169,11 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            if (LectureSelectComboBox.SelectedIndex < 0)
+            {
+                LogManager.LogOutput("講義を選択してください");
+                return;
+            }
             ToggleFelica();
             /*
 
@@ -289,19 +307,8 @@ namespace SoftwareDevelopmentProjects
                                 }
                             }
                         }
-                        
 
-                        //オーディオ再生処理
-                        Task task = Task.Run(() =>
-                        {
-                        //オーディオリソースを取り出す
-                        System.IO.Stream strm = Properties.Resources.Motion_Pop02_1__online_audio_converter_com_;
-                        //同期再生する
-                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(strm);
-                            player.PlaySync();
-                        //後始末
-                        player.Dispose();
-                        });
+                        soundManager.PlaySound();
 
 
 
@@ -784,7 +791,9 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void upDownDetectType_SelectedItemChanged(object sender, EventArgs e)
         {
+            //保存
             detectType.WriteData(upDownDetectType.SelectedIndex.ToString());
+            //目検出なら
             if (upDownDetectType.SelectedIndex == 1)
             {
                 testProvider.SetError(upDownDetectType, "テスト段階の機能です\r\n意図しない動作が起こる可能性があります");
@@ -797,7 +806,50 @@ namespace SoftwareDevelopmentProjects
 
         private void Pikokon_Load(object sender, EventArgs e)
         {
+        }
+        
+        /// <summary>
+        /// サウンドテストボタン用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void playPictureBox_Click(object sender, EventArgs e)
+        {
+            //出席音声を再生,乱数を表示
+            soundNameLabel.Text = soundManager.PlaySound().ToString();
+        }
 
+        /// <summary>
+        /// レア音声再生確率を計算する
+        /// </summary>
+        private void SetReaSoundPer()
+        {
+            //計算
+            reaPerCalcLabel.Text = "= " + (7.0 / (double)soundManager.randMax * 100.0).ToString("F2") + "%";
+        }
+
+        private void reaPerTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!ready) return;
+            try
+            {
+                //乱数の最大値を設定
+                soundManager.randMax = int.Parse(reaPerTextBox.Text);
+                //レア音声再生確率を設定
+                SetReaSoundPer();
+            }
+            //数字以外が入力された
+            catch (System.FormatException)
+            {
+                //数字に上書き
+                reaPerTextBox.Text = soundManager.randMax.ToString();
+            }
+        }
+
+        private void folderPictureBox_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(
+            "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\
         }
     }
 }
