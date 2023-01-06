@@ -235,7 +235,7 @@ namespace SoftwareDevelopmentProjects
             if (listStudentId.SelectedItems.Count > 0)
             {
                 //指定した特徴量を削除
-                camera.RemoveFaceDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
+                if(checkBoxDetectFace.Checked)camera.RemoveFaceDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
                 //指定した学籍番号をリストから削除
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 LogManager.LogOutput("選択した項目を削除");
