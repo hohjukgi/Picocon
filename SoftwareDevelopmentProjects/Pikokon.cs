@@ -849,7 +849,7 @@ namespace SoftwareDevelopmentProjects
         private void folderPictureBox_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(
-            "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\
+            "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\");
         }
     }
 }
