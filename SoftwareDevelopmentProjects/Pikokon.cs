@@ -340,7 +340,7 @@ namespace SoftwareDevelopmentProjects
                             }
                         }
 
-                        soundManager.PlaySound();
+                        //soundManager.PlaySound();
 
 
 
@@ -358,6 +358,14 @@ namespace SoftwareDevelopmentProjects
                         string tikoku = "正常";
 
                         tikoku = LateClass.LateJudge(DateTimelecture, nowTime, lateTime);
+
+                        if(tikoku == "遅刻" || tikoku == "無効")
+                        {
+                            soundManager.PlaySound(Properties.Resources.chikoku_sound);
+                        } else
+                        {
+                            soundManager.PlaySound();
+                        }
 
                         //リスト項目に追加
                         string[] row = { str, nowTime.ToString("t"),tikoku };
