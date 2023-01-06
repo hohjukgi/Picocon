@@ -892,13 +892,21 @@ namespace SoftwareDevelopmentProjects
         {
             string selfId = Microsoft.VisualBasic.Interaction.InputBox("学籍番号を入力してください。", "手動出席", "", -1, -1);
             if (selfId == "") return;
-            string selfTime = Microsoft.VisualBasic.Interaction.InputBox("時刻をコンマ(,)区切りで入力してください。\r\n年～秒まで", "手動出席", "", -1, -1);
-            if (selfTime == "") return;
+            string[] msg =
+            {
+                "年", "月", "日", "時", "分", "秒"
+            };
+            List<int> inputTime = new List<int>();
+            for (int i = 0; i < msg.Length; i++)
+            {
+                string selfTime = Microsoft.VisualBasic.Interaction.InputBox(msg[i] + "を入力してください。", "手動出席", "", -1, -1);
+                if (selfTime == "") return;
+                inputTime.Add(int.Parse(selfTime));
+            }
             try
             {
-                string[] selfSplitTime = selfTime.Split(',');
-                DateTime selfDateTime = new DateTime(int.Parse(selfSplitTime[0]), int.Parse(selfSplitTime[1]), int.Parse(selfSplitTime[2]),
-                    int.Parse(selfSplitTime[3]), int.Parse(selfSplitTime[4]), int.Parse(selfSplitTime[5]));
+                DateTime selfDateTime = new DateTime(inputTime[0], inputTime[1], inputTime[2],
+                    inputTime[3], inputTime[4], inputTime[5]);
 
                 string[] row =
                 {
