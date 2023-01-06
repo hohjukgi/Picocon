@@ -47,6 +47,8 @@ namespace SoftwareDevelopmentProjects
             //系列追加
             listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Right);
             listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Right);
+            listStudentId.Columns.Add("出席状況", 100, HorizontalAlignment.Right);
+
 
             /*
             //リストに画像を表示するための設定
@@ -308,12 +310,30 @@ namespace SoftwareDevelopmentProjects
 
                         soundManager.PlaySound();
 
+
+
                         //時間を取得
                         DateTime dateTime = DateTime.Now;
 
+                       string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
+
+                        string[] strs = ac.Split(',');
+
+
+                        DateTime DateTimelecture = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, int.Parse(strs[0]), int.Parse(strs[1]),0,0);
+
+                        //MessageBox.Show((dateTime - DateTimelecture)+"");
+
+                        string tikoku = "正常"; 
+
+                        if (int.Parse((dateTime - DateTimelecture).ToString()) > 15.0){
+                            tikoku = "遅刻";
+                                }
+
                         //リスト項目に追加
-                        string[] row = { str, dateTime.ToString("t") };
+                        string[] row = { str, dateTime.ToString("t"),tikoku };
                         listStudentId.Items.Add(new ListViewItem(row));
+
 
                         LogManager.LogOutput("学籍番号を取得: " + str);
                     }
@@ -784,6 +804,10 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        private void Pikokon_Load(object sender, EventArgs e)
+        {
+        }
+        
         /// <summary>
         /// サウンドテストボタン用
         /// </summary>
@@ -825,7 +849,7 @@ namespace SoftwareDevelopmentProjects
         private void folderPictureBox_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(
-    "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\名簿フォルダ");
+            "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\
         }
     }
 }
