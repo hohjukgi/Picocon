@@ -63,7 +63,7 @@ namespace SoftwareDevelopmentProjects
             foreach(string file in files)
             {
                 string cutFileName = file.Replace(name + "\\", "");
-                if (cutFileName == "出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".xlsx")
+                if (cutFileName == "出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv")
                 {
                     DialogResult dialogResult =
                         MessageBox.Show("ファイルが上書きされます\r\nいいですか?", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

@@ -49,6 +49,8 @@ namespace SoftwareDevelopmentProjects
             //系列追加
             listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Right);
             listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Right);
+            listStudentId.Columns.Add("出席状況", 100, HorizontalAlignment.Right);
+
 
             /*
             //リストに画像を表示するための設定
@@ -260,7 +262,7 @@ namespace SoftwareDevelopmentProjects
             if (listStudentId.SelectedItems.Count > 0)
             {
                 //指定した特徴量を削除
-                camera.RemoveFaceDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
+                if(checkBoxDetectFace.Checked)camera.RemoveFaceDess(listStudentId.Items.IndexOf(listStudentId.SelectedItems[0]));
                 //指定した学籍番号をリストから削除
                 listStudentId.Items.Remove(listStudentId.SelectedItems[0]);
                 LogManager.LogOutput("選択した項目を削除");
@@ -335,12 +337,34 @@ namespace SoftwareDevelopmentProjects
 
                         soundManager.PlaySound();
 
+
+
                         //時間を取得
                         DateTime dateTime = DateTime.Now;
 
-                        //リスト項目に追加
-                        string[] row = { str, dateTime.ToString("t") };
+                       string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
+
+                        string[] strs = ac.Split(',');
+
+
+                        DateTime DateTimelecture = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, int.Parse(strs[0]), int.Parse(strs[1]),0,0);
+
+                        //MessageBox.Show((dateTime - DateTimelecture)+"");
+
+                        string tikoku = "正常"; 
+
+                        if (TimeSpan.Parse("0:15:0") < dateTime - DateTimelecture){
+                            tikoku = "無効";
+                        }
+                        else if (TimeSpan.Parse("0:0:0") < dateTime - DateTimelecture)
+                        {
+                            tikoku = "遅刻";
+                        }
+
+                            //リスト項目に追加
+                            string[] row = { str, dateTime.ToString("t"),tikoku };
                         listStudentId.Items.Add(new ListViewItem(row));
+
 
                         LogManager.LogOutput("学籍番号を取得: " + str);
                     }
@@ -811,6 +835,10 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        private void Pikokon_Load(object sender, EventArgs e)
+        {
+        }
+        
         /// <summary>
         /// サウンドテストボタン用
         /// </summary>
