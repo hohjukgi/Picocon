@@ -25,6 +25,8 @@ namespace SoftwareDevelopmentProjects
 
         private string rosterPath;                          //名簿ファイルパス
 
+        private TimeSpan lateTime;                          //遅刻時間
+
         public Pikokon()
         {
             InitializeComponent();
@@ -132,6 +134,9 @@ namespace SoftwareDevelopmentProjects
             //乱数最大値の初期化
             reaPerTextBox.Text = soundManager.randMax.ToString();
             SetReaSoundPer();
+
+            //遅刻猶予を設定
+            lateTime = TimeSpan.Parse("0:15:0");
 
             //初期化終了
             ready = true;
@@ -340,29 +345,22 @@ namespace SoftwareDevelopmentProjects
 
 
                         //時間を取得
-                        DateTime dateTime = DateTime.Now;
+                        DateTime nowTime = DateTime.Now;
 
-                       string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
+                        string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
 
                         string[] strs = ac.Split(',');
 
-
-                        DateTime DateTimelecture = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, int.Parse(strs[0]), int.Parse(strs[1]),0,0);
+                        DateTime DateTimelecture = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, int.Parse(strs[0]), int.Parse(strs[1]),0,0);
 
                         //MessageBox.Show((dateTime - DateTimelecture)+"");
 
-                        string tikoku = "正常"; 
+                        string tikoku = "正常";
 
-                        if (TimeSpan.Parse("0:15:0") < dateTime - DateTimelecture){
-                            tikoku = "無効";
-                        }
-                        else if (TimeSpan.Parse("0:0:0") < dateTime - DateTimelecture)
-                        {
-                            tikoku = "遅刻";
-                        }
+                        tikoku = LateClass.LateJudge(DateTimelecture, nowTime, lateTime);
 
-                            //リスト項目に追加
-                            string[] row = { str, dateTime.ToString("t"),tikoku };
+                        //リスト項目に追加
+                        string[] row = { str, nowTime.ToString("t"),tikoku };
                         listStudentId.Items.Add(new ListViewItem(row));
 
 
@@ -890,19 +888,44 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void plusStudentIdButton_Click(object sender, EventArgs e)
         {
+            if (LectureSelectComboBox.SelectedIndex < 0)
+            {
+                LogManager.LogOutput("講義を選択してください");
+                return;
+            }
             string selfId = Microsoft.VisualBasic.Interaction.InputBox("学籍番号を入力してください。", "手動出席", "", -1, -1);
             if (selfId == "") return;
-            string selfTime = Microsoft.VisualBasic.Interaction.InputBox("時刻をコンマ(,)区切りで入力してください。\r\n年～秒まで", "手動出席", "", -1, -1);
-            if (selfTime == "") return;
+            string[] msg =
+            {
+                "年", "月", "日", "時", "分", "秒"
+            };
+            List<int> inputTime = new List<int>();
+            for (int i = 0; i < msg.Length; i++)
+            {
+                string selfTime = Microsoft.VisualBasic.Interaction.InputBox(msg[i] + "を入力してください。", "手動出席", "", -1, -1);
+                if (selfTime == "") return;
+                inputTime.Add(int.Parse(selfTime));
+            }
             try
             {
-                string[] selfSplitTime = selfTime.Split(',');
-                DateTime selfDateTime = new DateTime(int.Parse(selfSplitTime[0]), int.Parse(selfSplitTime[1]), int.Parse(selfSplitTime[2]),
-                    int.Parse(selfSplitTime[3]), int.Parse(selfSplitTime[4]), int.Parse(selfSplitTime[5]));
+                DateTime selfDateTime = new DateTime(inputTime[0], inputTime[1], inputTime[2],
+                    inputTime[3], inputTime[4], inputTime[5]);
+
+                //時間を取得
+                DateTime nowTime = DateTime.Now;
+
+                string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
+
+                string[] strs = ac.Split(',');
+
+
+                DateTime DateTimelecture = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, int.Parse(strs[0]), int.Parse(strs[1]), 0, 0);
+
+                string state = LateClass.LateJudge(DateTimelecture, nowTime, lateTime);
 
                 string[] row =
                 {
-                    selfId, selfDateTime.ToString("t")
+                    selfId, selfDateTime.ToString("t"), state
                 };
 
                 listStudentId.Items.Add(new ListViewItem(row));
