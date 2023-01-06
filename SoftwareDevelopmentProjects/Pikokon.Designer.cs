@@ -83,8 +83,6 @@ namespace SoftwareDevelopmentProjects
             this.upDownCamera = new System.Windows.Forms.NumericUpDown();
             this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.reaPerTextBox = new System.Windows.Forms.TextBox();
             this.reaPerCalcLabel = new System.Windows.Forms.Label();
@@ -787,27 +785,6 @@ namespace SoftwareDevelopmentProjects
             this.label8.TabIndex = 16;
             this.label8.Text = "カメラ";
             // 
-            // takePhotoPictureBox
-            // 
-            this.takePhotoPictureBox.BackColor = System.Drawing.SystemColors.Desktop;
-            this.takePhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.takePhotoPictureBox.Location = new System.Drawing.Point(16, 38);
-            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
-            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 180);
-            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.takePhotoPictureBox.TabIndex = 14;
-            this.takePhotoPictureBox.TabStop = false;
-            // 
-            // featurePictureBox
-            // 
-            this.featurePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.featurePictureBox.Location = new System.Drawing.Point(271, 168);
-            this.featurePictureBox.Name = "featurePictureBox";
-            this.featurePictureBox.Size = new System.Drawing.Size(70, 50);
-            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.featurePictureBox.TabIndex = 26;
-            this.featurePictureBox.TabStop = false;
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.reaPerTextBox);
@@ -950,7 +927,6 @@ namespace SoftwareDevelopmentProjects
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
