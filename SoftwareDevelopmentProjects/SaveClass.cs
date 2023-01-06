@@ -16,16 +16,40 @@ namespace SoftwareDevelopmentProjects
         /// <summary>
         /// 保存してあるデータをexportTextにまとめる
         /// </summary>
+        /// <param name="Idlist">取得した出欠データ</param>
         public static void ConvertToSaveData(ListView.ListViewItemCollection Idlist)
         {
             exportText = "";
             for(int i = 0; i < Idlist.Count; i++)
             {
-                exportText += Idlist[i].SubItems[0].Text + "," + Idlist[i].SubItems[1].Text +"\n";
+                for (int j = 0; j < Idlist[i].SubItems.Count; j++)
+                {
+                    exportText += Idlist[i].SubItems[j].Text + ",";
+                }
+                exportText = exportText.Remove(exportText.Length - 1);
+                exportText += "\n";
             }
 
             //確認用メッセージボックス
             //MessageBox.Show(exportText);
+        }
+
+        /// <summary>
+        /// 名簿ファイルをもとにcsvファイルを保存する
+        /// </summary>
+        /// <param name="Idlist">取得した出欠データ</param>
+        /// <param name="rosterPath">名簿ファイル</param>
+        public static void ConvertToSaveData(ListView.ListViewItemCollection Idlist, string rosterPath)
+        {
+            string initStr = "";
+            MiniFileManager rosterFile = new MiniFileManager(rosterPath);
+            string[] rosterString = rosterFile.ReadDataArray(initStr);
+
+            foreach(string roster in rosterString)
+            {
+                exportText += roster + ",";
+                //TODO
+            }
         }
 
         /// <summary>

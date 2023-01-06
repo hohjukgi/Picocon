@@ -67,6 +67,8 @@ namespace SoftwareDevelopmentProjects
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.folderPictureBox = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.featureValueLabel = new System.Windows.Forms.Label();
@@ -81,7 +83,8 @@ namespace SoftwareDevelopmentProjects
             this.upDownCamera = new System.Windows.Forms.NumericUpDown();
             this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.labelName = new System.Windows.Forms.PictureBox();
+            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.reaPerTextBox = new System.Windows.Forms.TextBox();
             this.reaPerCalcLabel = new System.Windows.Forms.Label();
@@ -89,28 +92,26 @@ namespace SoftwareDevelopmentProjects
             this.label15 = new System.Windows.Forms.Label();
             this.soundNameLabel = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.testProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.folderPictureBox = new System.Windows.Forms.PictureBox();
             this.playPictureBox = new System.Windows.Forms.PictureBox();
+            this.testProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelName = new System.Windows.Forms.PictureBox();
+            this.plusStudentIdButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage5.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.testProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -207,6 +208,7 @@ namespace SoftwareDevelopmentProjects
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.plusStudentIdButton);
             this.tabPage1.Controls.Add(this.LectureSelectComboBox);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.checkBoxDetectFace);
@@ -599,6 +601,28 @@ namespace SoftwareDevelopmentProjects
             this.tabPage5.Text = "名簿";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SoftwareDevelopmentProjects.Properties.Resources.explain;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(396, 370);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // folderPictureBox
+            // 
+            this.folderPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.folderPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.ei_folder;
+            this.folderPictureBox.Location = new System.Drawing.Point(409, 37);
+            this.folderPictureBox.Name = "folderPictureBox";
+            this.folderPictureBox.Size = new System.Drawing.Size(45, 45);
+            this.folderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.folderPictureBox.TabIndex = 1;
+            this.folderPictureBox.TabStop = false;
+            this.folderPictureBox.Click += new System.EventHandler(this.folderPictureBox_Click);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -763,6 +787,27 @@ namespace SoftwareDevelopmentProjects
             this.label8.TabIndex = 16;
             this.label8.Text = "カメラ";
             // 
+            // takePhotoPictureBox
+            // 
+            this.takePhotoPictureBox.BackColor = System.Drawing.SystemColors.Desktop;
+            this.takePhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.takePhotoPictureBox.Location = new System.Drawing.Point(16, 38);
+            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
+            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 180);
+            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.takePhotoPictureBox.TabIndex = 14;
+            this.takePhotoPictureBox.TabStop = false;
+            // 
+            // featurePictureBox
+            // 
+            this.featurePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.featurePictureBox.Location = new System.Drawing.Point(271, 168);
+            this.featurePictureBox.Name = "featurePictureBox";
+            this.featurePictureBox.Size = new System.Drawing.Size(70, 50);
+            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.featurePictureBox.TabIndex = 26;
+            this.featurePictureBox.TabStop = false;
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.reaPerTextBox);
@@ -838,6 +883,17 @@ namespace SoftwareDevelopmentProjects
             this.label12.TabIndex = 0;
             this.label12.Text = "サウンドテスト";
             // 
+            // playPictureBox
+            // 
+            this.playPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.playButton;
+            this.playPictureBox.Location = new System.Drawing.Point(46, 53);
+            this.playPictureBox.Name = "playPictureBox";
+            this.playPictureBox.Size = new System.Drawing.Size(50, 50);
+            this.playPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.playPictureBox.TabIndex = 1;
+            this.playPictureBox.TabStop = false;
+            this.playPictureBox.Click += new System.EventHandler(this.playPictureBox_Click);
+            // 
             // testProvider
             // 
             this.testProvider.ContainerControl = this;
@@ -853,59 +909,16 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
-            // pictureBox1
+            // plusStudentIdButton
             // 
-            this.pictureBox1.Image = global::SoftwareDevelopmentProjects.Properties.Resources.explain;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(396, 370);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // folderPictureBox
-            // 
-            this.folderPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.folderPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.ei_folder;
-            this.folderPictureBox.Location = new System.Drawing.Point(409, 37);
-            this.folderPictureBox.Name = "folderPictureBox";
-            this.folderPictureBox.Size = new System.Drawing.Size(45, 45);
-            this.folderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.folderPictureBox.TabIndex = 1;
-            this.folderPictureBox.TabStop = false;
-            this.folderPictureBox.Click += new System.EventHandler(this.folderPictureBox_Click);
-            // 
-            // takePhotoPictureBox
-            // 
-            this.takePhotoPictureBox.BackColor = System.Drawing.SystemColors.Desktop;
-            this.takePhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.takePhotoPictureBox.Location = new System.Drawing.Point(16, 38);
-            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
-            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 180);
-            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.takePhotoPictureBox.TabIndex = 14;
-            this.takePhotoPictureBox.TabStop = false;
-            // 
-            // featurePictureBox
-            // 
-            this.featurePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.featurePictureBox.Location = new System.Drawing.Point(271, 168);
-            this.featurePictureBox.Name = "featurePictureBox";
-            this.featurePictureBox.Size = new System.Drawing.Size(70, 50);
-            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.featurePictureBox.TabIndex = 26;
-            this.featurePictureBox.TabStop = false;
-            // 
-            // playPictureBox
-            // 
-            this.playPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.playButton;
-            this.playPictureBox.Location = new System.Drawing.Point(46, 53);
-            this.playPictureBox.Name = "playPictureBox";
-            this.playPictureBox.Size = new System.Drawing.Size(50, 50);
-            this.playPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.playPictureBox.TabIndex = 1;
-            this.playPictureBox.TabStop = false;
-            this.playPictureBox.Click += new System.EventHandler(this.playPictureBox_Click);
+            this.plusStudentIdButton.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.plusStudentIdButton.Location = new System.Drawing.Point(451, 377);
+            this.plusStudentIdButton.Name = "plusStudentIdButton";
+            this.plusStudentIdButton.Size = new System.Drawing.Size(29, 29);
+            this.plusStudentIdButton.TabIndex = 18;
+            this.plusStudentIdButton.Text = "+";
+            this.plusStudentIdButton.UseVisualStyleBackColor = true;
+            this.plusStudentIdButton.Click += new System.EventHandler(this.plusStudentIdButton_Click);
             // 
             // Pikokon
             // 
@@ -916,6 +929,7 @@ namespace SoftwareDevelopmentProjects
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelTime);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pikokon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -930,18 +944,19 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.testProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1010,6 +1025,7 @@ namespace SoftwareDevelopmentProjects
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.PictureBox folderPictureBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button plusStudentIdButton;
     }
 }
 

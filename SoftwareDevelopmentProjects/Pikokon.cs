@@ -23,6 +23,8 @@ namespace SoftwareDevelopmentProjects
         private string[] lectureTime;                       //講義時間保存
         private List<int> lectureStartTime;                 //講義開始時刻保存
 
+        private string rosterPath;                          //名簿ファイルパス
+
         public Pikokon()
         {
             InitializeComponent();
@@ -169,11 +171,36 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            //講義が選択されていなかったら
             if (LectureSelectComboBox.SelectedIndex < 0)
             {
                 LogManager.LogOutput("講義を選択してください");
                 return;
             }
+
+            //名簿フォルダの中にあるcsvファイルをすべて取得
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\名簿フォルダ", "*.csv");
+
+            //名簿ファイル変数
+            string rosterName;
+            //名簿パス
+            rosterPath = string.Empty;
+
+            foreach(string file in files)
+            {
+                //取得したcsvファイルの講義名部分だけを抽出
+                rosterName = file.Replace(Directory.GetCurrentDirectory() + "\\名簿フォルダ\\", "");
+                rosterName = file.Replace(".csv", "");
+
+                //csvファイル名が現在の講義と一致したら
+                if(rosterName == LectureSelectComboBox.Items[LectureSelectComboBox.SelectedIndex].ToString())
+                {
+                    //名簿ファイルのパスを代入
+                    rosterPath = file;
+                    break;
+                }
+            }
+
             ToggleFelica();
             /*
 
@@ -853,7 +880,37 @@ namespace SoftwareDevelopmentProjects
         private void folderPictureBox_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(
-            "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\");
+                "EXPLORER.EXE", Directory.GetCurrentDirectory() + "\\名簿フォルダ");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void plusStudentIdButton_Click(object sender, EventArgs e)
+        {
+            string selfId = Microsoft.VisualBasic.Interaction.InputBox("学籍番号を入力してください。", "手動出席", "", -1, -1);
+            if (selfId == "") return;
+            string selfTime = Microsoft.VisualBasic.Interaction.InputBox("時刻をコンマ(,)区切りで入力してください。\r\n年～秒まで", "手動出席", "", -1, -1);
+            if (selfTime == "") return;
+            try
+            {
+                string[] selfSplitTime = selfTime.Split(',');
+                DateTime selfDateTime = new DateTime(int.Parse(selfSplitTime[0]), int.Parse(selfSplitTime[1]), int.Parse(selfSplitTime[2]),
+                    int.Parse(selfSplitTime[3]), int.Parse(selfSplitTime[4]), int.Parse(selfSplitTime[5]));
+
+                string[] row =
+                {
+                    selfId, selfDateTime.ToString("t")
+                };
+
+                listStudentId.Items.Add(new ListViewItem(row));
+            }
+            catch(Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
+            }
         }
     }
 }
