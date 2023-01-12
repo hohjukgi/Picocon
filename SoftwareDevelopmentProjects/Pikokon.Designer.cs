@@ -42,6 +42,7 @@ namespace SoftwareDevelopmentProjects
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.plusStudentIdButton = new System.Windows.Forms.Button();
             this.LectureSelectComboBox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.checkBoxDetectFace = new System.Windows.Forms.CheckBox();
@@ -67,8 +68,6 @@ namespace SoftwareDevelopmentProjects
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.folderPictureBox = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.featureValueLabel = new System.Windows.Forms.Label();
@@ -79,9 +78,7 @@ namespace SoftwareDevelopmentProjects
             this.faceFeatureResetButton = new System.Windows.Forms.Button();
             this.ImageProcessingTestButton = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.upDownCamera = new System.Windows.Forms.NumericUpDown();
-            this.featurePictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.reaPerTextBox = new System.Windows.Forms.TextBox();
@@ -90,26 +87,29 @@ namespace SoftwareDevelopmentProjects
             this.label15 = new System.Windows.Forms.Label();
             this.soundNameLabel = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.playPictureBox = new System.Windows.Forms.PictureBox();
             this.testProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.labelName = new System.Windows.Forms.PictureBox();
-            this.plusStudentIdButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.folderPictureBox = new System.Windows.Forms.PictureBox();
+            this.takePhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.featurePictureBox = new System.Windows.Forms.PictureBox();
+            this.playPictureBox = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -227,6 +227,17 @@ namespace SoftwareDevelopmentProjects
             this.tabPage1.Text = "出席登録";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // plusStudentIdButton
+            // 
+            this.plusStudentIdButton.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.plusStudentIdButton.Location = new System.Drawing.Point(451, 377);
+            this.plusStudentIdButton.Name = "plusStudentIdButton";
+            this.plusStudentIdButton.Size = new System.Drawing.Size(29, 29);
+            this.plusStudentIdButton.TabIndex = 18;
+            this.plusStudentIdButton.Text = "+";
+            this.plusStudentIdButton.UseVisualStyleBackColor = true;
+            this.plusStudentIdButton.Click += new System.EventHandler(this.plusStudentIdButton_Click);
             // 
             // LectureSelectComboBox
             // 
@@ -463,62 +474,6 @@ namespace SoftwareDevelopmentProjects
             this.label4.TabIndex = 6;
             this.label4.Text = "時限";
             // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.radioButton5.Location = new System.Drawing.Point(328, 124);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(60, 25);
-            this.radioButton5.TabIndex = 20;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "3限";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
-            // 
-            // button3
-            // 
-            this.button3.Enabled = false;
-            this.button3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button3.Location = new System.Drawing.Point(220, 99);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(40, 40);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "-";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label10.Location = new System.Drawing.Point(84, 20);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(0, 19);
-            this.label10.TabIndex = 22;
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(285, 246);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 24);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "開始時刻";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(285, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 24);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "時限";
-            // 
             // numericUpDown2
             // 
             this.numericUpDown2.BackColor = System.Drawing.SystemColors.Window;
@@ -599,28 +554,6 @@ namespace SoftwareDevelopmentProjects
             this.tabPage5.Text = "名簿";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::SoftwareDevelopmentProjects.Properties.Resources.explain;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(396, 370);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // folderPictureBox
-            // 
-            this.folderPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.folderPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.ei_folder;
-            this.folderPictureBox.Location = new System.Drawing.Point(409, 37);
-            this.folderPictureBox.Name = "folderPictureBox";
-            this.folderPictureBox.Size = new System.Drawing.Size(45, 45);
-            this.folderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.folderPictureBox.TabIndex = 1;
-            this.folderPictureBox.TabStop = false;
-            this.folderPictureBox.Click += new System.EventHandler(this.folderPictureBox_Click);
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -684,7 +617,6 @@ namespace SoftwareDevelopmentProjects
             // 
             // upDownDetectType
             // 
-            this.upDownDetectType.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.upDownDetectType.BackColor = System.Drawing.SystemColors.Window;
             this.upDownDetectType.Items.Add("顔認識");
             this.upDownDetectType.Items.Add("目認識");
@@ -738,17 +670,6 @@ namespace SoftwareDevelopmentProjects
             this.label14.TabIndex = 27;
             this.label14.Text = "特徴量画像";
             // 
-            // takePhotoPictureBox
-            // 
-            this.takePhotoPictureBox.BackColor = System.Drawing.SystemColors.Desktop;
-            this.takePhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.takePhotoPictureBox.Location = new System.Drawing.Point(16, 38);
-            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
-            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 180);
-            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.takePhotoPictureBox.TabIndex = 14;
-            this.takePhotoPictureBox.TabStop = false;
-            // 
             // upDownCamera
             // 
             this.upDownCamera.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -764,16 +685,6 @@ namespace SoftwareDevelopmentProjects
             this.upDownCamera.TabIndex = 15;
             this.upDownCamera.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.upDownCamera.ValueChanged += new System.EventHandler(this.upDownCamera_ValueChanged);
-            // 
-            // featurePictureBox
-            // 
-            this.featurePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.featurePictureBox.Location = new System.Drawing.Point(271, 168);
-            this.featurePictureBox.Name = "featurePictureBox";
-            this.featurePictureBox.Size = new System.Drawing.Size(70, 50);
-            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.featurePictureBox.TabIndex = 26;
-            this.featurePictureBox.TabStop = false;
             // 
             // label8
             // 
@@ -860,17 +771,6 @@ namespace SoftwareDevelopmentProjects
             this.label12.TabIndex = 0;
             this.label12.Text = "サウンドテスト";
             // 
-            // playPictureBox
-            // 
-            this.playPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.playButton;
-            this.playPictureBox.Location = new System.Drawing.Point(46, 53);
-            this.playPictureBox.Name = "playPictureBox";
-            this.playPictureBox.Size = new System.Drawing.Size(50, 50);
-            this.playPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.playPictureBox.TabIndex = 1;
-            this.playPictureBox.TabStop = false;
-            this.playPictureBox.Click += new System.EventHandler(this.playPictureBox_Click);
-            // 
             // testProvider
             // 
             this.testProvider.ContainerControl = this;
@@ -886,16 +786,59 @@ namespace SoftwareDevelopmentProjects
             this.labelName.TabStop = false;
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
-            // plusStudentIdButton
+            // pictureBox1
             // 
-            this.plusStudentIdButton.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.plusStudentIdButton.Location = new System.Drawing.Point(451, 377);
-            this.plusStudentIdButton.Name = "plusStudentIdButton";
-            this.plusStudentIdButton.Size = new System.Drawing.Size(29, 29);
-            this.plusStudentIdButton.TabIndex = 18;
-            this.plusStudentIdButton.Text = "+";
-            this.plusStudentIdButton.UseVisualStyleBackColor = true;
-            this.plusStudentIdButton.Click += new System.EventHandler(this.plusStudentIdButton_Click);
+            this.pictureBox1.Image = global::SoftwareDevelopmentProjects.Properties.Resources.explain;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(396, 370);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // folderPictureBox
+            // 
+            this.folderPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.folderPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.ei_folder;
+            this.folderPictureBox.Location = new System.Drawing.Point(409, 37);
+            this.folderPictureBox.Name = "folderPictureBox";
+            this.folderPictureBox.Size = new System.Drawing.Size(45, 45);
+            this.folderPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.folderPictureBox.TabIndex = 1;
+            this.folderPictureBox.TabStop = false;
+            this.folderPictureBox.Click += new System.EventHandler(this.folderPictureBox_Click);
+            // 
+            // takePhotoPictureBox
+            // 
+            this.takePhotoPictureBox.BackColor = System.Drawing.SystemColors.Desktop;
+            this.takePhotoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.takePhotoPictureBox.Location = new System.Drawing.Point(16, 38);
+            this.takePhotoPictureBox.Name = "takePhotoPictureBox";
+            this.takePhotoPictureBox.Size = new System.Drawing.Size(220, 180);
+            this.takePhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.takePhotoPictureBox.TabIndex = 14;
+            this.takePhotoPictureBox.TabStop = false;
+            // 
+            // featurePictureBox
+            // 
+            this.featurePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.featurePictureBox.Location = new System.Drawing.Point(271, 168);
+            this.featurePictureBox.Name = "featurePictureBox";
+            this.featurePictureBox.Size = new System.Drawing.Size(70, 50);
+            this.featurePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.featurePictureBox.TabIndex = 26;
+            this.featurePictureBox.TabStop = false;
+            // 
+            // playPictureBox
+            // 
+            this.playPictureBox.Image = global::SoftwareDevelopmentProjects.Properties.Resources.playButton;
+            this.playPictureBox.Location = new System.Drawing.Point(46, 53);
+            this.playPictureBox.Name = "playPictureBox";
+            this.playPictureBox.Size = new System.Drawing.Size(50, 50);
+            this.playPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.playPictureBox.TabIndex = 1;
+            this.playPictureBox.TabStop = false;
+            this.playPictureBox.Click += new System.EventHandler(this.playPictureBox_Click);
             // 
             // Pikokon
             // 
@@ -921,18 +864,18 @@ namespace SoftwareDevelopmentProjects
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownCamera)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.labelName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.folderPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.takePhotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.featurePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

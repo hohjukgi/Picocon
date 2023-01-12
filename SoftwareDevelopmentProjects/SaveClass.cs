@@ -29,9 +29,6 @@ namespace SoftwareDevelopmentProjects
                 exportText = exportText.Remove(exportText.Length - 1);
                 exportText += "\n";
             }
-
-            //確認用メッセージボックス
-            //MessageBox.Show(exportText);
         }
 
         /// <summary>
@@ -45,22 +42,34 @@ namespace SoftwareDevelopmentProjects
             MiniFileManager rosterFile = new MiniFileManager(rosterPath);
             string[] rosterString = rosterFile.ReadDataArray(initStr);
 
-            foreach(string roster in rosterString)
+            foreach (string roster in rosterString)
             {
-                exportText += roster + ",";
-                //TODO
+                string[] splitedRoster = roster.Split(',');
+                foreach (ListViewItem id in Idlist)
+                {
+                    if (splitedRoster[0] == id.SubItems[0].Text)
+                    {
+                        exportText += splitedRoster[0] + "," + splitedRoster[1] + "," + id.SubItems[1].Text + "," + id.SubItems[2].Text + "\n";
+                    }
+                    else
+                    {
+                        exportText += splitedRoster[0] + "," + splitedRoster[1] + ",-,欠席\n";
+                    }
+                }
             }
         }
 
         /// <summary>
-        /// exportTextをCSV形式に出力
+        /// exportTextをエンコード形式をしていしてCSV形式に出力
         /// </summary>
-        public static void ExportCsv(string fileName)
+        /// <param name="fileName">ファイル名</param>
+        /// <param name="encodeMode">エンコード形式</param>
+        public static void ExportCsv(string fileName, string encodeMode)
         {
             const string name = "Picocon出席表フォルダ";
             Directory.CreateDirectory(name);
             string[] files = Directory.GetFiles(name);
-            foreach(string file in files)
+            foreach (string file in files)
             {
                 string cutFileName = file.Replace(name + "\\", "");
                 if (cutFileName == "出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv")
@@ -68,14 +77,44 @@ namespace SoftwareDevelopmentProjects
                     DialogResult dialogResult =
                         MessageBox.Show("ファイルが上書きされます\r\nいいですか?", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-                    if(dialogResult == DialogResult.Cancel)
+                    if (dialogResult == DialogResult.Cancel)
                     {
                         return;
                     }
                 }
             }
             StreamWriter sw = new StreamWriter(name + "/出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv"
-                ,false, System.Text.Encoding.GetEncoding("shift_jis"));
+                , false, System.Text.Encoding.GetEncoding(encodeMode));
+            sw.WriteLine(exportText);
+            sw.Close();
+            LogManager.LogOutput("CSVに出力");
+        }
+
+        /// <summary>
+        /// exportTextをCSV形式に出力
+        /// </summary>
+        /// <param name="fileName">ファイル名</param>
+        public static void ExportCsv(string fileName)
+        {
+            const string name = "Picocon出席表フォルダ";
+            Directory.CreateDirectory(name);
+            string[] files = Directory.GetFiles(name);
+            foreach (string file in files)
+            {
+                string cutFileName = file.Replace(name + "\\", "");
+                if (cutFileName == "出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv")
+                {
+                    DialogResult dialogResult =
+                        MessageBox.Show("ファイルが上書きされます\r\nいいですか?", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                    if (dialogResult == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                }
+            }
+            StreamWriter sw = new StreamWriter(name + "/出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv"
+                , false);
             sw.WriteLine(exportText);
             sw.Close();
             LogManager.LogOutput("CSVに出力");

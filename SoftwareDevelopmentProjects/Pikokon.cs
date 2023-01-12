@@ -183,29 +183,6 @@ namespace SoftwareDevelopmentProjects
                 return;
             }
 
-            //名簿フォルダの中にあるcsvファイルをすべて取得
-            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\名簿フォルダ", "*.csv");
-
-            //名簿ファイル変数
-            string rosterName;
-            //名簿パス
-            rosterPath = string.Empty;
-
-            foreach(string file in files)
-            {
-                //取得したcsvファイルの講義名部分だけを抽出
-                rosterName = file.Replace(Directory.GetCurrentDirectory() + "\\名簿フォルダ\\", "");
-                rosterName = file.Replace(".csv", "");
-
-                //csvファイル名が現在の講義と一致したら
-                if(rosterName == LectureSelectComboBox.Items[LectureSelectComboBox.SelectedIndex].ToString())
-                {
-                    //名簿ファイルのパスを代入
-                    rosterPath = file;
-                    break;
-                }
-            }
-
             ToggleFelica();
             /*
 
@@ -411,15 +388,31 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            if(LectureSelectComboBox.SelectedIndex < 0)
+            try
             {
-                LogManager.LogOutput("講義を選択してください");
-                return;
+                if (LectureSelectComboBox.SelectedIndex < 0)
+                {
+                    LogManager.LogOutput("講義を選択してください");
+                    return;
+                }
+
+                if (rosterPath != string.Empty && rosterPath != null)//名簿ファイルがあった際
+                {
+                    //名簿ファイルを試用してデータを保存しやすいように変換
+                    SaveClass.ConvertToSaveData(listStudentId.Items, rosterPath);
+                }
+                else//名簿ファイルがなかった際
+                {
+                    //データを保存しやすいように変換
+                    SaveClass.ConvertToSaveData(listStudentId.Items);
+                }
+                //保存
+                SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString(), "shift_jis");
+                LogManager.LogOutput("保存成功");
+            }catch (Exception ex)
+            {
+                LogManager.LogOutput(ex.Message);
             }
-            //データを保存しやすいように変換
-            SaveClass.ConvertToSaveData(listStudentId.Items);
-            //保存
-            SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString());
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -801,9 +794,43 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /// <summary>
+        /// 講義が変更された際の処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LectureSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (LectureSelectComboBox.SelectedIndex < 0)
+            {
+                return;
+            }
 
+            //名簿フォルダの中にあるcsvファイルをすべて取得
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\名簿フォルダ", "*.csv");
+
+            //名簿ファイル変数
+            string rosterName;
+
+            //名簿パス
+            rosterPath = string.Empty;
+
+            foreach (string file in files)
+            {
+                //取得したcsvファイルの講義名部分だけを抽出
+                rosterName = file.Replace(Directory.GetCurrentDirectory() + "\\名簿フォルダ\\", "");
+                rosterName = rosterName.Replace(".csv", "");
+
+                //csvファイル名が現在の講義と一致したら
+                if (rosterName == LectureSelectComboBox.Items[LectureSelectComboBox.SelectedIndex].ToString())
+                {
+                    //名簿ファイルのパスを代入
+                    rosterPath = file;
+
+                    LogManager.LogOutput("名簿ファイル発見");
+                    break;
+                }
+            }
         }
 
         //listBox1選択時にescを押すと選択解除
@@ -898,46 +925,63 @@ namespace SoftwareDevelopmentProjects
         }
 
         /// <summary>
-        /// 
+        /// 手動入力
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void plusStudentIdButton_Click(object sender, EventArgs e)
         {
+            //講義が選択されていなかったら
             if (LectureSelectComboBox.SelectedIndex < 0)
             {
+                //エラー出力
                 LogManager.LogOutput("講義を選択してください");
                 return;
             }
+
+            //学籍番号の入力
             string selfId = Microsoft.VisualBasic.Interaction.InputBox("学籍番号を入力してください。", "手動出席", "", -1, -1);
+            //未入力なら
             if (selfId == "") return;
+
+            //メッセージ切り替え用配列の宣言
             string[] msg =
             {
                 "年", "月", "日", "時", "分", "秒"
             };
+            //時間入力保存リスト
             List<int> inputTime = new List<int>();
+
+            //年～秒まで
             for (int i = 0; i < msg.Length; i++)
             {
+                //入力させる
                 string selfTime = Microsoft.VisualBasic.Interaction.InputBox(msg[i] + "を入力してください。", "手動出席", "", -1, -1);
+                //未入力なら
                 if (selfTime == "") return;
+                //時間入力リストに追加
                 inputTime.Add(int.Parse(selfTime));
             }
+            //入力がおかしい場合の対策
             try
             {
+                //時間入力保存リストの内容をDateTime型に変換
                 DateTime selfDateTime = new DateTime(inputTime[0], inputTime[1], inputTime[2],
                     inputTime[3], inputTime[4], inputTime[5]);
 
-                //時間を取得
-                DateTime nowTime = DateTime.Now;
 
+                //講義の開始時刻を取得
                 string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
 
+                //計算がしやすいように分ける
                 string[] strs = ac.Split(',');
 
 
-                DateTime DateTimelecture = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, int.Parse(strs[0]), int.Parse(strs[1]), 0, 0);
+                //講義の開始時刻をDateTime型に変換
+                DateTime DateTimelecture = new DateTime(selfDateTime.Year, selfDateTime.Month, selfDateTime.Day, int.Parse(strs[0]), int.Parse(strs[1]), 0, 0);
 
-                string state = LateClass.LateJudge(DateTimelecture, nowTime, lateTime);
+                //遅刻判断
+                string state = LateClass.LateJudge(DateTimelecture, selfDateTime, lateTime);
 
                 string[] row =
                 {
