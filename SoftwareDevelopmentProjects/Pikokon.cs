@@ -898,45 +898,64 @@ namespace SoftwareDevelopmentProjects
         }
 
         /// <summary>
-        /// 
+        /// 手動入力
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void plusStudentIdButton_Click(object sender, EventArgs e)
         {
+            //講義が選択されていなかったら
             if (LectureSelectComboBox.SelectedIndex < 0)
             {
+                //エラー出力
                 LogManager.LogOutput("講義を選択してください");
                 return;
             }
+
+            //学籍番号の入力
             string selfId = Microsoft.VisualBasic.Interaction.InputBox("学籍番号を入力してください。", "手動出席", "", -1, -1);
+            //未入力なら
             if (selfId == "") return;
+
+            //メッセージ切り替え用配列の宣言
             string[] msg =
             {
                 "年", "月", "日", "時", "分", "秒"
             };
+            //時間入力保存リスト
             List<int> inputTime = new List<int>();
+
+            //年～秒まで
             for (int i = 0; i < msg.Length; i++)
             {
+                //入力させる
                 string selfTime = Microsoft.VisualBasic.Interaction.InputBox(msg[i] + "を入力してください。", "手動出席", "", -1, -1);
+                //未入力なら
                 if (selfTime == "") return;
+                //時間入力リストに追加
                 inputTime.Add(int.Parse(selfTime));
             }
+            //入力がおかしい場合の対策
             try
             {
+                //時間入力保存リストの内容をDateTime型に変換
                 DateTime selfDateTime = new DateTime(inputTime[0], inputTime[1], inputTime[2],
                     inputTime[3], inputTime[4], inputTime[5]);
 
                 //時間を取得
                 DateTime nowTime = DateTime.Now;
 
+                //講義の開始時刻を取得
                 string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
 
+                //計算がしやすいように分ける
                 string[] strs = ac.Split(',');
 
 
+                //講義の開始時刻をDateTime型に変換
                 DateTime DateTimelecture = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, int.Parse(strs[0]), int.Parse(strs[1]), 0, 0);
 
+                //遅刻判断
                 string state = LateClass.LateJudge(DateTimelecture, nowTime, lateTime);
 
                 string[] row =
