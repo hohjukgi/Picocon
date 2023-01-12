@@ -45,10 +45,20 @@ namespace SoftwareDevelopmentProjects
             MiniFileManager rosterFile = new MiniFileManager(rosterPath);
             string[] rosterString = rosterFile.ReadDataArray(initStr);
 
-            foreach(string roster in rosterString)
+            foreach (string roster in rosterString)
             {
-                exportText += roster + ",";
-                //TODO
+                string[] splitedRoster = roster.Split(',');
+                foreach (ListViewItem id in Idlist)
+                {
+                    if (roster == id.SubItems.ToString())
+                    {
+                        exportText += roster[0] + "," + roster[1] + "," + id.SubItems[1] + "," + id.SubItems[2];
+                    }
+                    else
+                    {
+                        exportText += roster[0] + "," + roster[1] + "," + id.SubItems[1] + ",欠席";
+                    }
+                }
             }
         }
 
