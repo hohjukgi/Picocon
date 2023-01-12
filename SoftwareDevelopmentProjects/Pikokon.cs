@@ -183,29 +183,6 @@ namespace SoftwareDevelopmentProjects
                 return;
             }
 
-            //名簿フォルダの中にあるcsvファイルをすべて取得
-            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\名簿フォルダ", "*.csv");
-
-            //名簿ファイル変数
-            string rosterName;
-            //名簿パス
-            rosterPath = string.Empty;
-
-            foreach(string file in files)
-            {
-                //取得したcsvファイルの講義名部分だけを抽出
-                rosterName = file.Replace(Directory.GetCurrentDirectory() + "\\名簿フォルダ\\", "");
-                rosterName = file.Replace(".csv", "");
-
-                //csvファイル名が現在の講義と一致したら
-                if(rosterName == LectureSelectComboBox.Items[LectureSelectComboBox.SelectedIndex].ToString())
-                {
-                    //名簿ファイルのパスを代入
-                    rosterPath = file;
-                    break;
-                }
-            }
-
             ToggleFelica();
             /*
 
@@ -416,8 +393,17 @@ namespace SoftwareDevelopmentProjects
                 LogManager.LogOutput("講義を選択してください");
                 return;
             }
-            //データを保存しやすいように変換
-            SaveClass.ConvertToSaveData(listStudentId.Items);
+
+            if(rosterPath != string.Empty && rosterPath != null)//名簿ファイルがあった際
+            {
+                //名簿ファイルを試用してデータを保存しやすいように変換
+                SaveClass.ConvertToSaveData(listStudentId.Items, rosterPath);
+            }
+            else//名簿ファイルがなかった際
+            {
+                //データを保存しやすいように変換
+                SaveClass.ConvertToSaveData(listStudentId.Items);
+            }
             //保存
             SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString());
         }
@@ -801,9 +787,43 @@ namespace SoftwareDevelopmentProjects
             }
         }
 
+        /// <summary>
+        /// 講義が変更された際の処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LectureSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (LectureSelectComboBox.SelectedIndex < 0)
+            {
+                LogManager.LogOutput("講義を選択してください");
+                return;
+            }
 
+            //名簿フォルダの中にあるcsvファイルをすべて取得
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + "\\名簿フォルダ", "*.csv");
+
+            //名簿ファイル変数
+            string rosterName;
+            //名簿パス
+            rosterPath = string.Empty;
+
+            foreach (string file in files)
+            {
+                //取得したcsvファイルの講義名部分だけを抽出
+                rosterName = file.Replace(Directory.GetCurrentDirectory() + "\\名簿フォルダ\\", "");
+                rosterName = file.Replace(".csv", "");
+
+                //csvファイル名が現在の講義と一致したら
+                if (rosterName == LectureSelectComboBox.Items[LectureSelectComboBox.SelectedIndex].ToString())
+                {
+                    //名簿ファイルのパスを代入
+                    rosterPath = file;
+
+                    LogManager.LogOutput("名簿ファイル発見");
+                    break;
+                }
+            }
         }
 
         //listBox1選択時にescを押すと選択解除
