@@ -796,7 +796,6 @@ namespace SoftwareDevelopmentProjects
         {
             if (LectureSelectComboBox.SelectedIndex < 0)
             {
-                LogManager.LogOutput("講義を選択してください");
                 return;
             }
 
@@ -805,6 +804,7 @@ namespace SoftwareDevelopmentProjects
 
             //名簿ファイル変数
             string rosterName;
+
             //名簿パス
             rosterPath = string.Empty;
 
@@ -812,7 +812,7 @@ namespace SoftwareDevelopmentProjects
             {
                 //取得したcsvファイルの講義名部分だけを抽出
                 rosterName = file.Replace(Directory.GetCurrentDirectory() + "\\名簿フォルダ\\", "");
-                rosterName = file.Replace(".csv", "");
+                rosterName = rosterName.Replace(".csv", "");
 
                 //csvファイル名が現在の講義と一致したら
                 if (rosterName == LectureSelectComboBox.Items[LectureSelectComboBox.SelectedIndex].ToString())
