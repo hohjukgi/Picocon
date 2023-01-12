@@ -29,9 +29,6 @@ namespace SoftwareDevelopmentProjects
                 exportText = exportText.Remove(exportText.Length - 1);
                 exportText += "\n";
             }
-
-            //確認用メッセージボックス
-            //MessageBox.Show(exportText);
         }
 
         /// <summary>
@@ -48,6 +45,7 @@ namespace SoftwareDevelopmentProjects
             foreach (string roster in rosterString)
             {
                 string[] splitedRoster = roster.Split(',');
+                MessageBox.Show(splitedRoster[1]);
                 foreach (ListViewItem id in Idlist)
                 {
                     if (splitedRoster[0] == id.SubItems[0].Text)

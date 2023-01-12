@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SoftwareDevelopmentProjects
 {
@@ -21,6 +22,7 @@ namespace SoftwareDevelopmentProjects
         /// <returns>文字列</returns>
         public static string LateJudge(DateTime timeStart, DateTime timeNow, TimeSpan postponement)
         {
+            MessageBox.Show((timeNow - timeStart).TotalMinutes.ToString());
             if (postponement < timeNow - timeStart)
             {
                 return "無効";

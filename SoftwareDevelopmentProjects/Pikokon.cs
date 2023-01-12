@@ -969,8 +969,6 @@ namespace SoftwareDevelopmentProjects
                 DateTime selfDateTime = new DateTime(inputTime[0], inputTime[1], inputTime[2],
                     inputTime[3], inputTime[4], inputTime[5]);
 
-                //時間を取得
-                DateTime nowTime = DateTime.Now;
 
                 //講義の開始時刻を取得
                 string ac = lectureTime[lectureStartTime[LectureSelectComboBox.SelectedIndex]];
@@ -980,10 +978,10 @@ namespace SoftwareDevelopmentProjects
 
 
                 //講義の開始時刻をDateTime型に変換
-                DateTime DateTimelecture = new DateTime(nowTime.Year, nowTime.Month, nowTime.Day, int.Parse(strs[0]), int.Parse(strs[1]), 0, 0);
+                DateTime DateTimelecture = new DateTime(selfDateTime.Year, selfDateTime.Month, selfDateTime.Day, int.Parse(strs[0]), int.Parse(strs[1]), 0, 0);
 
                 //遅刻判断
-                string state = LateClass.LateJudge(DateTimelecture, nowTime, lateTime);
+                string state = LateClass.LateJudge(DateTimelecture, selfDateTime, lateTime);
 
                 string[] row =
                 {
