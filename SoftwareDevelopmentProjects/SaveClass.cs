@@ -50,13 +50,13 @@ namespace SoftwareDevelopmentProjects
                 string[] splitedRoster = roster.Split(',');
                 foreach (ListViewItem id in Idlist)
                 {
-                    if (roster == id.SubItems.ToString())
+                    if (splitedRoster[0] == id.SubItems[0].Text)
                     {
-                        exportText += roster[0] + "," + roster[1] + "," + id.SubItems[1] + "," + id.SubItems[2];
+                        exportText += splitedRoster[0] + "," + splitedRoster[1] + "," + id.SubItems[1].Text + "," + id.SubItems[2].Text + "\n";
                     }
                     else
                     {
-                        exportText += roster[0] + "," + roster[1] + "," + id.SubItems[1] + ",欠席";
+                        exportText += splitedRoster[0] + "," + splitedRoster[1] + ",-,欠席\n";
                     }
                 }
             }
@@ -70,7 +70,7 @@ namespace SoftwareDevelopmentProjects
             const string name = "Picocon出席表フォルダ";
             Directory.CreateDirectory(name);
             string[] files = Directory.GetFiles(name);
-            foreach(string file in files)
+            foreach (string file in files)
             {
                 string cutFileName = file.Replace(name + "\\", "");
                 if (cutFileName == "出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv")
@@ -78,14 +78,14 @@ namespace SoftwareDevelopmentProjects
                     DialogResult dialogResult =
                         MessageBox.Show("ファイルが上書きされます\r\nいいですか?", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-                    if(dialogResult == DialogResult.Cancel)
+                    if (dialogResult == DialogResult.Cancel)
                     {
                         return;
                     }
                 }
             }
             StreamWriter sw = new StreamWriter(name + "/出席表_" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd") + ".csv"
-                ,false, System.Text.Encoding.GetEncoding("shift_jis"));
+                , false, System.Text.Encoding.GetEncoding("shift_jis"));
             sw.WriteLine(exportText);
             sw.Close();
             LogManager.LogOutput("CSVに出力");

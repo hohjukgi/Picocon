@@ -388,24 +388,31 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            if(LectureSelectComboBox.SelectedIndex < 0)
+            try
             {
-                LogManager.LogOutput("講義を選択してください");
-                return;
-            }
+                if (LectureSelectComboBox.SelectedIndex < 0)
+                {
+                    LogManager.LogOutput("講義を選択してください");
+                    return;
+                }
 
-            if(rosterPath != string.Empty && rosterPath != null)//名簿ファイルがあった際
+                if (rosterPath != string.Empty && rosterPath != null)//名簿ファイルがあった際
+                {
+                    //名簿ファイルを試用してデータを保存しやすいように変換
+                    SaveClass.ConvertToSaveData(listStudentId.Items, rosterPath);
+                }
+                else//名簿ファイルがなかった際
+                {
+                    //データを保存しやすいように変換
+                    SaveClass.ConvertToSaveData(listStudentId.Items);
+                }
+                //保存
+                SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString());
+                LogManager.LogOutput("保存成功");
+            }catch (Exception ex)
             {
-                //名簿ファイルを試用してデータを保存しやすいように変換
-                SaveClass.ConvertToSaveData(listStudentId.Items, rosterPath);
+                LogManager.LogOutput(ex.Message);
             }
-            else//名簿ファイルがなかった際
-            {
-                //データを保存しやすいように変換
-                SaveClass.ConvertToSaveData(listStudentId.Items);
-            }
-            //保存
-            SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString());
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
