@@ -407,7 +407,7 @@ namespace SoftwareDevelopmentProjects
                     SaveClass.ConvertToSaveData(listStudentId.Items);
                 }
                 //保存
-                SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString());
+                SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString(), "shift_jis");
                 LogManager.LogOutput("保存成功");
             }catch (Exception ex)
             {

@@ -22,7 +22,6 @@ namespace SoftwareDevelopmentProjects
         /// <returns>文字列</returns>
         public static string LateJudge(DateTime timeStart, DateTime timeNow, TimeSpan postponement)
         {
-            MessageBox.Show((timeNow - timeStart).TotalMinutes.ToString());
             if (postponement < timeNow - timeStart)
             {
                 return "無効";
