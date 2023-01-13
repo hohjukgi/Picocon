@@ -20,7 +20,9 @@ namespace SoftwareDevelopmentProjects
         public static void ConvertToSaveData(ListView.ListViewItemCollection Idlist)
         {
             exportText = "";
-            for(int i = 0; i < Idlist.Count; i++)
+            exportText += "学籍番号,出席時刻,出席状況\n";
+
+            for (int i = 0; i < Idlist.Count; i++)
             {
                 for (int j = 0; j < Idlist[i].SubItems.Count; j++)
                 {
@@ -41,6 +43,8 @@ namespace SoftwareDevelopmentProjects
             string initStr = "";
             MiniFileManager rosterFile = new MiniFileManager(rosterPath);
             string[] rosterString = rosterFile.ReadDataArray(initStr);
+
+            exportText += "学籍番号,氏名,出席時刻,出席状況\n";
 
             foreach (string roster in rosterString)
             {
