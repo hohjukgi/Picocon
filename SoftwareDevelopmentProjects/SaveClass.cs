@@ -49,16 +49,30 @@ namespace SoftwareDevelopmentProjects
             foreach (string roster in rosterString)
             {
                 string[] splitedRoster = roster.Split(',');
-                foreach (ListViewItem id in Idlist)
+
+                bool syusseki = false;
+                int idNum = -1;
+
+                for (int i = 0; i < Idlist.Count; i++)
                 {
-                    if (splitedRoster[0] == id.SubItems[0].Text)
+                    if (splitedRoster[0] == Idlist[i].SubItems[0].Text)
                     {
-                        exportText += splitedRoster[0] + "," + splitedRoster[1] + "," + id.SubItems[1].Text + "," + id.SubItems[2].Text + "\n";
+                        idNum = i;
+                        syusseki = true;
                     }
                     else
                     {
-                        exportText += splitedRoster[0] + "," + splitedRoster[1] + ",-,欠席\n";
+                        syusseki = false;
                     }
+                }
+
+                if (syusseki)
+                {
+                    exportText += splitedRoster[0] + "," + splitedRoster[1] + "," + Idlist[idNum].SubItems[1].Text + "," + Idlist[idNum].SubItems[2].Text + "\n";
+                }
+                else
+                {
+                    exportText += splitedRoster[0] + "," + splitedRoster[1] + ",-,欠席\n";
                 }
             }
         }
