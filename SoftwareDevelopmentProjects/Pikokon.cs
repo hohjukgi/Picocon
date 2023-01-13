@@ -828,8 +828,10 @@ namespace SoftwareDevelopmentProjects
                     rosterPath = file;
 
                     LogManager.LogOutput("名簿ファイル発見");
-                    break;
+                    return;
                 }
+
+                LogManager.LogOutput("名簿ファイル未発見");
             }
         }
 
