@@ -488,12 +488,34 @@ namespace SoftwareDevelopmentProjects
         }
 
         /// <summary>
+        /// すべての顔特徴量を削除
+        /// </summary>
+        public void RemoveAllFaceDess()
+        {
+            for(int i = 0; i < _faceDess.Count; i++)
+            {
+                _faceDess.RemoveAt(i);
+            }
+        }
+
+        /// <summary>
         /// 指定した目特徴量を削除
         /// </summary>
         /// <param name="index">要素</param>
         public void RemoveEyesDess(int index)
         {
             _eyesDess.RemoveAt(index);
+        }
+
+        /// <summary>
+        /// すべての目特徴量を削除
+        /// </summary>
+        public void RemoveAllEyesDess()
+        {
+            for(int i = 0; i < _eyesDess.Count; i++)
+            {
+                _eyesDess.RemoveAt(i);
+            }
         }
 
         /// <summary>
