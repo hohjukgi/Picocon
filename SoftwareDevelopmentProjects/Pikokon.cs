@@ -27,6 +27,8 @@ namespace SoftwareDevelopmentProjects
 
         private TimeSpan lateTime;                          //遅刻時間
 
+        private int prevLectureIndex;                       //前の講義インデックス
+
         public Pikokon()
         {
             InitializeComponent();
@@ -135,6 +137,9 @@ namespace SoftwareDevelopmentProjects
             reaPerTextBox.Text = soundManager.randMax.ToString();
             SetReaSoundPer();
 
+            //前の講義インデックスを初期化
+            prevLectureIndex = -1;
+
             //遅刻猶予を設定
             lateTime = TimeSpan.Parse("0:15:0");
 
@@ -147,8 +152,8 @@ namespace SoftwareDevelopmentProjects
         /// </summary>
         private void ToggleFelica()
         {
-            //ボタンのロックを切り替え
-            checkBoxDetectFace.Enabled = !checkBoxDetectFace.Enabled;
+            //ズル防止ボタンをブロック
+            checkBoxDetectFace.Enabled = false;
 
             //学生証読み取り開始
             fericaLoadTimer.Enabled = !fericaLoadTimer.Enabled;
@@ -801,9 +806,45 @@ namespace SoftwareDevelopmentProjects
         /// <param name="e"></param>
         private void LectureSelectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //講義が選択されていない場合
             if (LectureSelectComboBox.SelectedIndex < 0)
             {
                 return;
+            }
+
+            //講義が前と同じ(もとに戻された)場合
+            if(prevLectureIndex == LectureSelectComboBox.SelectedIndex)
+            {
+                return;
+            }
+
+            //講義変更の確認
+            if(prevLectureIndex >= 0 && listStudentId.Items.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("保存されていない内容はすべて削除されます\nよろしいですか?", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (result == DialogResult.OK)
+                {
+                    if (checkBoxDetectFace.Checked)
+                    {
+                        //すべての顔特徴量を削除
+                        camera.RemoveAllFaceDess();
+                    }
+
+                    //出席リストを削除
+                    listStudentId.Clear();
+
+                    //系列追加
+                    listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Right);
+                    listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Right);
+                    listStudentId.Columns.Add("出席状況", 100, HorizontalAlignment.Right);
+                }
+                else
+                {
+                    //選択されている講義をもとに戻す
+                    LectureSelectComboBox.SelectedIndex = prevLectureIndex;
+                    return;
+                }
             }
 
             //名簿フォルダの中にあるcsvファイルをすべて取得
@@ -827,12 +868,21 @@ namespace SoftwareDevelopmentProjects
                     //名簿ファイルのパスを代入
                     rosterPath = file;
 
+                    //前の講義インデックスを設定
+                    prevLectureIndex = LectureSelectComboBox.SelectedIndex;
+
                     LogManager.LogOutput("名簿ファイル発見");
                     return;
                 }
 
                 LogManager.LogOutput("名簿ファイル未発見");
             }
+
+            //再有効化
+            checkBoxDetectFace.Enabled = true;
+
+            //前の講義インデックスを設定
+            prevLectureIndex = LectureSelectComboBox.SelectedIndex;
         }
 
         //listBox1選択時にescを押すと選択解除
