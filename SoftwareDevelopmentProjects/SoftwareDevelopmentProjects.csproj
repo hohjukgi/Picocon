@@ -8,7 +8,7 @@
     <ProjectGuid>{9BCA6926-4C21-4143-97A4-285DEDF25626}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SoftwareDevelopmentProjects</RootNamespace>
-    <AssemblyName>SoftwareDevelopmentProjects</AssemblyName>
+    <AssemblyName>Picocon</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -74,6 +74,9 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>44c1826a8f9edab446761ffae476df87_xxo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
@@ -171,6 +174,7 @@
     <None Include="Resources\lucky_sound.wav" />
     <None Include="Resources\ei-folder.png" />
     <None Include="Resources\explain.png" />
+    <Content Include="44c1826a8f9edab446761ffae476df87_xxo.ico" />
     <Content Include="Resources\lucky_sound3.wav" />
     <Content Include="Resources\lucky_sound2.wav" />
     <Content Include="Resources\lucky_sound4.wav" />
