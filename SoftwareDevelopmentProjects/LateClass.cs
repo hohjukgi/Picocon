@@ -19,9 +19,14 @@ namespace SoftwareDevelopmentProjects
         /// <param name="timeStart">講義開始時間</param>
         /// <param name="timeNow">現在時刻</param>
         /// <param name="postponement">猶予</param>
+        /// <param name="taiseki">退席</param>
         /// <returns>文字列</returns>
-        public static string LateJudge(DateTime timeStart, DateTime timeNow, TimeSpan postponement)
+        public static string LateJudge(DateTime timeStart, DateTime timeNow, TimeSpan postponement, bool taiseki)
         {
+            if (taiseki)
+            {
+                return "退席";
+            }
             if (postponement < timeNow - timeStart)
             {
                 return "無効";

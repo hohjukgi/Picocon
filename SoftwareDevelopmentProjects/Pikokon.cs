@@ -9,25 +9,27 @@ namespace SoftwareDevelopmentProjects
 {
     public partial class Pikokon : Form
     {
-        private CameraClass camera;                         //実装用のカメラクラス
-        private CameraClass testCamera;                     //テスト用のカメラクラス
-        private bool ready = false;                         //初期化が完了したかどうか
+        private CameraClass camera;                                                 //実装用のカメラクラス
+        private CameraClass testCamera;                                             //テスト用のカメラクラス
+        private bool ready = false;                                                 //初期化が完了したかどうか
+            
+        private MiniFileManager cameraIndexMan;                                     //カメラ番号ファイルの操作クラス
+        private MiniFileManager lectureTimeMan;                                     //講義時間ファイルの操作クラス
+        private MiniFileManager lectureName;                                        //講義名
+        private MiniFileManager detectType;                                         //検出場所
 
-        private MiniFileManager cameraIndexMan;             //カメラ番号ファイルの操作クラス
-        private MiniFileManager lectureTimeMan;             //講義時間ファイルの操作クラス
-        private MiniFileManager lectureName;                //講義名
-        private MiniFileManager detectType;                 //検出場所
+        private SoundManager soundManager;                                          //音声管理クラス
 
-        private SoundManager soundManager;                  //音声管理クラス
+        private string[] lectureTime;                                               //講義時間保存
+        private List<int> lectureStartTime;                                         //講義開始時刻保存
 
-        private string[] lectureTime;                       //講義時間保存
-        private List<int> lectureStartTime;                 //講義開始時刻保存
+        private string rosterPath;                                                  //名簿ファイルパス
 
-        private string rosterPath;                          //名簿ファイルパス
+        private TimeSpan lateTime;                                                  //遅刻時間
 
-        private TimeSpan lateTime;                          //遅刻時間
+        private int prevLectureIndex;                                               //前の講義インデックス
 
-        private int prevLectureIndex;                       //前の講義インデックス
+        private ListView syussekiHikaku;                                            //出退勤比較用リストビュー
 
         public Pikokon()
         {
@@ -142,6 +144,9 @@ namespace SoftwareDevelopmentProjects
 
             //遅刻猶予を設定
             lateTime = TimeSpan.Parse("0:15:0");
+
+            //出席比較の初期化
+            syussekiHikaku = new ListView();
 
             //初期化終了
             ready = true;
@@ -339,7 +344,7 @@ namespace SoftwareDevelopmentProjects
 
                         string tikoku = "正常";
 
-                        tikoku = LateClass.LateJudge(DateTimelecture, nowTime, lateTime);
+                        tikoku = LateClass.LateJudge(DateTimelecture, nowTime, lateTime, radioButton2.Checked);
 
                         if(tikoku == "遅刻" || tikoku == "無効")
                         {
@@ -401,19 +406,61 @@ namespace SoftwareDevelopmentProjects
                     return;
                 }
 
+                //出席比較用のリストが空じゃないなら
+                if (syussekiHikaku.Items.Count > 0)
+                {
+                    for (int i = 0; i < syussekiHikaku.Items.Count; i++)
+                    {
+                        //発見フラグ
+                        bool findFlg = false;
+
+                        for(int j = 0; j < listStudentId.Items.Count; j++)
+                        {
+                            //出席、退席時ともに確認
+                            if (listStudentId.Items[j].SubItems[0].Text == syussekiHikaku.Items[i].SubItems[0].Text)
+                            {
+                                findFlg = true;
+                                break;
+                            }
+                        }
+                        //早退
+                        if (!findFlg && syussekiHikaku.Items[i].SubItems[2].Text != "無効")
+                        {
+                            syussekiHikaku.Items[i].SubItems[2].Text = "早退";
+                        }
+                    }
+                }
+
                 if (rosterPath != string.Empty && rosterPath != null)//名簿ファイルがあった際
                 {
-                    //名簿ファイルを試用してデータを保存しやすいように変換
-                    SaveClass.ConvertToSaveData(listStudentId.Items, rosterPath);
+                    //退席データがある
+                    if (syussekiHikaku.Items.Count > 0)
+                    {
+                        //名簿ファイルを使用してデータを保存しやすいように変換
+                        SaveClass.ConvertToSaveData(syussekiHikaku.Items, rosterPath);
+                    }
+                    else//退席データがない
+                    {
+                        //名簿ファイルを使用してデータを保存しやすいように変換
+                        SaveClass.ConvertToSaveData(listStudentId.Items, rosterPath);
+                    }
                 }
                 else//名簿ファイルがなかった際
                 {
-                    //データを保存しやすいように変換
-                    SaveClass.ConvertToSaveData(listStudentId.Items);
+                    //退席データがある
+                    if (syussekiHikaku.Items.Count > 0)
+                    {
+                        //データを保存しやすいように変換
+                        SaveClass.ConvertToSaveData(syussekiHikaku.Items);
+                    }
+                    else//退席データがない
+                    {
+                        //データを保存しやすいように変換
+                        SaveClass.ConvertToSaveData(listStudentId.Items);
+                    }
                 }
                 //保存
                 SaveClass.ExportCsv(LectureSelectComboBox.SelectedItem.ToString(), "shift_jis");
-                LogManager.LogOutput("保存成功");
             }catch (Exception ex)
             {
                 LogManager.LogOutput(ex.Message);
@@ -834,10 +881,16 @@ namespace SoftwareDevelopmentProjects
                     //出席リストを削除
                     listStudentId.Clear();
 
+                    //出退勤リストを削除
+                    syussekiHikaku.Clear();
+
                     //系列追加
                     listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Right);
                     listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Right);
                     listStudentId.Columns.Add("出席状況", 100, HorizontalAlignment.Right);
+
+                    //ラジオボタンを戻す
+                    radioButton1.Checked = true;
                 }
                 else
                 {
@@ -1033,7 +1086,7 @@ namespace SoftwareDevelopmentProjects
                 DateTime DateTimelecture = new DateTime(selfDateTime.Year, selfDateTime.Month, selfDateTime.Day, int.Parse(strs[0]), int.Parse(strs[1]), 0, 0);
 
                 //遅刻判断
-                string state = LateClass.LateJudge(DateTimelecture, selfDateTime, lateTime);
+                string state = LateClass.LateJudge(DateTimelecture, selfDateTime, lateTime, radioButton2.Checked);
 
                 string[] row =
                 {
@@ -1046,6 +1099,58 @@ namespace SoftwareDevelopmentProjects
             {
                 LogManager.LogOutput(ex.Message);
             }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            //チェックが外れた際
+            if (!radioButton2.Checked)
+            {
+                return;
+            }
+
+            //講義が指定されていない
+            if (LectureSelectComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("講義を選択してください");
+                radioButton1.Checked = true;
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("退席モードに切り替えますか?", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (result != DialogResult.OK)
+            {
+                radioButton1.Checked = true;
+                return;
+            }
+
+            syussekiHikaku.Clear();
+
+            //系列追加
+            syussekiHikaku.Columns.Add("学籍番号", 100, HorizontalAlignment.Right);
+            syussekiHikaku.Columns.Add("出席時刻", 100, HorizontalAlignment.Right);
+            syussekiHikaku.Columns.Add("出席状況", 100, HorizontalAlignment.Right);
+
+            //コピー
+            for(int i = 0; i < listStudentId.Items.Count; i++)
+            {
+                string[] row =
+                {
+                    listStudentId.Items[i].SubItems[0].Text,
+                    listStudentId.Items[i].SubItems[1].Text,
+                    listStudentId.Items[i].SubItems[2].Text
+                };
+                syussekiHikaku.Items.Add(new ListViewItem(row));
+            }
+
+            //リストをクリア
+            listStudentId.Clear();
+
+            //系列追加
+            listStudentId.Columns.Add("学籍番号", 100, HorizontalAlignment.Right);
+            listStudentId.Columns.Add("出席時刻", 100, HorizontalAlignment.Right);
+            listStudentId.Columns.Add("出席状況", 100, HorizontalAlignment.Right);
         }
     }
 }
